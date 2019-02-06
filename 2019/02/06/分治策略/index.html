@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="分治策略hello">
+<meta name="description" content="最大子数组问题思路暴力求解方法尝试每对可能的买进和卖出日期组合，只要卖出日期在买入日期之后即可。n天中共有$C_n^2$种日期组合。日期组合复杂度$C_n^2=\Theta(n^2)$，处理每对日期所花费的时间至少是常量，因此这种方法的运行时间是$\Omega(n^2)$ 分治策略目的寻找一段日期，使得从第一天到最后一天的股票价格净变值最大，不再从每日价格的角度去思考，而是考察每日的价格变化，第i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分治策略">
 <meta property="og:url" content="http://yoursite.com/2019/02/06/分治策略/index.html">
 <meta property="og:site_name" content="Lmin">
-<meta property="og:description" content="分治策略hello">
+<meta property="og:description" content="最大子数组问题思路暴力求解方法尝试每对可能的买进和卖出日期组合，只要卖出日期在买入日期之后即可。n天中共有$C_n^2$种日期组合。日期组合复杂度$C_n^2=\Theta(n^2)$，处理每对日期所花费的时间至少是常量，因此这种方法的运行时间是$\Omega(n^2)$ 分治策略目的寻找一段日期，使得从第一天到最后一天的股票价格净变值最大，不再从每日价格的角度去思考，而是考察每日的价格变化，第i">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-06T08:28:46.759Z">
+<meta property="og:updated_time" content="2019-02-06T08:41:30.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分治策略">
-<meta name="twitter:description" content="分治策略hello">
+<meta name="twitter:description" content="最大子数组问题思路暴力求解方法尝试每对可能的买进和卖出日期组合，只要卖出日期在买入日期之后即可。n天中共有$C_n^2$种日期组合。日期组合复杂度$C_n^2=\Theta(n^2)$，处理每对日期所花费的时间至少是常量，因此这种方法的运行时间是$\Omega(n^2)$ 分治策略目的寻找一段日期，使得从第一天到最后一天的股票价格净变值最大，不再从每日价格的角度去思考，而是考察每日的价格变化，第i">
 
 
 
@@ -339,7 +339,8 @@
       
 
       
-        <h3 id="分治策略"><a href="#分治策略" class="headerlink" title="分治策略"></a>分治策略</h3><p>hello</p>
+        <h2 id="最大子数组问题"><a href="#最大子数组问题" class="headerlink" title="最大子数组问题"></a>最大子数组问题</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><h4 id="暴力求解方法"><a href="#暴力求解方法" class="headerlink" title="暴力求解方法"></a>暴力求解方法</h4><p>尝试每对可能的买进和卖出日期组合，只要卖出日期在买入日期之后即可。<br>n天中共有$C_n^2$种日期组合。日期组合复杂度$C_n^2=\Theta(n^2)$，处理每对日期所花费的时间至少是常量，因此这种方法的运行时间是$\Omega(n^2)$</p>
+<h4 id="分治策略"><a href="#分治策略" class="headerlink" title="分治策略"></a>分治策略</h4><p>目的寻找一段日期，使得从第一天到最后一天的股票价格净变值最大，不再从每日价格的角度去思考，而是考察每日的价格变化，第i天的价格变化是指第i天和第i-1天的价格差。那问题转换为寻找数组的和最大的非空连续子数组，称为最大子数组。</p>
 
       
     </div>
@@ -373,6 +374,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/06/分治策略之最大子数组问题/" rel="prev" title="分治策略之最大子数组问题">
+                分治策略之最大子数组问题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -455,7 +460,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -468,7 +473,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -501,7 +506,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#分治策略"><span class="nav-number">1.</span> <span class="nav-text">分治策略</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#最大子数组问题"><span class="nav-number">1.</span> <span class="nav-text">最大子数组问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">1.1.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#暴力求解方法"><span class="nav-number">1.1.1.</span> <span class="nav-text">暴力求解方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分治策略"><span class="nav-number">1.1.2.</span> <span class="nav-text">分治策略</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
