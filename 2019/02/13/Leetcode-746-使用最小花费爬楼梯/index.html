@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Leetcode,动态规划,">
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lmin">
-<meta property="og:url" content="http://yoursite.com/tags/Two-Points/index.html">
+<meta name="description" content="方法方法1：动态规划求到达每一阶的最小成本。倒数第一和倒数第二的最小值即为解。只有两种方法到达第i阶：  从第i-1阶走一步 从第i-2阶走两步  但是出发点人选cost[0]或cost[1]，会以为有两个起始点，比如到达cost[2]:  cost[1]走一步 cost[0]走两步 cost[0]走两个一步  cost[0]如果选择走两个一步到达cost[2]，那么这在cost[1]走一步到达c">
+<meta name="keywords" content="Leetcode,动态规划">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 746.使用最小花费爬楼梯">
+<meta property="og:url" content="http://yoursite.com/2019/02/13/Leetcode-746-使用最小花费爬楼梯/index.html">
 <meta property="og:site_name" content="Lmin">
+<meta property="og:description" content="方法方法1：动态规划求到达每一阶的最小成本。倒数第一和倒数第二的最小值即为解。只有两种方法到达第i阶：  从第i-1阶走一步 从第i-2阶走两步  但是出发点人选cost[0]或cost[1]，会以为有两个起始点，比如到达cost[2]:  cost[1]走一步 cost[0]走两步 cost[0]走两个一步  cost[0]如果选择走两个一步到达cost[2]，那么这在cost[1]走一步到达c">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-13T09:57:17.092Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lmin">
+<meta name="twitter:title" content="Leetcode 746.使用最小花费爬楼梯">
+<meta name="twitter:description" content="方法方法1：动态规划求到达每一阶的最小成本。倒数第一和倒数第二的最小值即为解。只有两种方法到达第i阶：  从第i-1阶走一步 从第i-2阶走两步  但是出发点人选cost[0]或cost[1]，会以为有两个起始点，比如到达cost[2]:  cost[1]走一步 cost[0]走两步 cost[0]走两个一步  cost[0]如果选择走两个一步到达cost[2]，那么这在cost[1]走一步到达c">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Two-Points/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/13/Leetcode-746-使用最小花费爬楼梯/">
 
 
 
 
 
-  <title>Tag: Two Points | Lmin</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Leetcode 746.使用最小花费爬楼梯 | Lmin</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -140,7 +145,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -244,52 +249,174 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Two Points<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/13/Leetcode-746-使用最小花费爬楼梯/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lmin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lmin">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/02/02/Leetcode-977/" itemprop="url">
-              
-                <span itemprop="name">Leetcode-977</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Leetcode 746.使用最小花费爬楼梯</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-02T11:15:29+08:00" content="2019-02-02">
-          02-02
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-13T17:28:14+08:00">
+                2019-02-13
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/13/Leetcode-746-使用最小花费爬楼梯/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/13/Leetcode-746-使用最小花费爬楼梯/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="方法1：动态规划"><a href="#方法1：动态规划" class="headerlink" title="方法1：动态规划"></a>方法1：动态规划</h4><p>求到达每一阶的最小成本。倒数第一和倒数第二的最小值即为解。只有两种方法到达第i阶：</p>
+<ul>
+<li>从第i-1阶走一步</li>
+<li>从第i-2阶走两步</li>
+</ul>
+<p>但是出发点人选cost[0]或cost[1]，会以为有两个起始点，比如到达cost[2]:</p>
+<ul>
+<li>cost[1]走一步</li>
+<li>cost[0]走两步</li>
+<li>cost[0]走两个一步</li>
+</ul>
+<p>cost[0]如果选择走两个一步到达cost[2]，那么这在cost[1]走一步到达cost[2]的基础上还要增加花费，完全没有必要考虑上述第三种情况。因此只有两种方法到达某一台阶i.因此到达台阶i的花费即为两种方法中代价最小的。表示为：cost[i] = min(cost[i-2]+cost[i],cost[i-1]+cost[i]).</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://blog.csdn.net/qq_34364995/article/details/80786967" target="_blank" rel="noopener">博客</a></li>
+<li><a href="https://leetcode.com/problems/min-cost-climbing-stairs/discuss/139035/Clean-python-solution-with-detailed-explanation" target="_blank" rel="noopener">Leetcode Discussion</a></li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+          
+            <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/13/Leetcode-70-爬楼梯/" rel="next" title="Leetcode 70.爬楼梯">
+                <i class="fa fa-chevron-left"></i> Leetcode 70.爬楼梯
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -297,6 +424,16 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2019/02/13/Leetcode-746-使用最小花费爬楼梯/" data-title="Leetcode 746.使用最小花费爬楼梯" data-url="http://yoursite.com/2019/02/13/Leetcode-746-使用最小花费爬楼梯/">
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -317,8 +454,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -369,6 +515,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">1.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法1：动态规划"><span class="nav-number">1.1.</span> <span class="nav-text">方法1：动态规划</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">2.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -502,6 +664,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
