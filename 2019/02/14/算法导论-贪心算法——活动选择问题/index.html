@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="算法导论,贪心算法,活动选择问题,">
 
 
 
@@ -79,14 +79,18 @@
 
 
 
+<meta name="description" content="代码贪心算法的递归实现 $O(n)$123456789101112131415&quot;&quot;&quot;递归贪心算法&quot;&quot;&quot;def recursive_activity_selector(s,f,k,n):    m=k+1    while m&amp;lt;n and s[m]&amp;lt;f[k]:        m+=1    if m&amp;lt;n:        return [m]+recursive_activity_s">
+<meta name="keywords" content="算法导论,贪心算法,活动选择问题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构 优先队列">
-<meta property="og:url" content="http://yoursite.com/2019/02/12/数据结构-优先队列/index.html">
+<meta property="og:title" content="算法导论 贪心算法之活动选择问题">
+<meta property="og:url" content="http://yoursite.com/2019/02/14/算法导论-贪心算法——活动选择问题/index.html">
 <meta property="og:site_name" content="Lmin">
+<meta property="og:description" content="代码贪心算法的递归实现 $O(n)$123456789101112131415&quot;&quot;&quot;递归贪心算法&quot;&quot;&quot;def recursive_activity_selector(s,f,k,n):    m=k+1    while m&amp;lt;n and s[m]&amp;lt;f[k]:        m+=1    if m&amp;lt;n:        return [m]+recursive_activity_s">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-12T06:07:37.869Z">
+<meta property="og:updated_time" content="2019-02-14T06:35:17.084Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据结构 优先队列">
+<meta name="twitter:title" content="算法导论 贪心算法之活动选择问题">
+<meta name="twitter:description" content="代码贪心算法的递归实现 $O(n)$123456789101112131415&quot;&quot;&quot;递归贪心算法&quot;&quot;&quot;def recursive_activity_selector(s,f,k,n):    m=k+1    while m&amp;lt;n and s[m]&amp;lt;f[k]:        m+=1    if m&amp;lt;n:        return [m]+recursive_activity_s">
 
 
 
@@ -116,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/12/数据结构-优先队列/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/14/算法导论-贪心算法——活动选择问题/">
 
 
 
 
 
-  <title>数据结构 优先队列 | Lmin</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>算法导论 贪心算法之活动选择问题 | Lmin</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -259,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/12/数据结构-优先队列/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/14/算法导论-贪心算法——活动选择问题/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lmin">
@@ -276,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据结构 优先队列</h1>
+          <h1 class="post-title" itemprop="name headline">算法导论 贪心算法之活动选择问题</h1>
         
 
         <div class="post-meta">
@@ -288,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-12T14:07:37+08:00">
-                2019-02-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-14T12:33:55+08:00">
+                2019-02-14
               </time>
             
 
@@ -307,8 +311,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/12/数据结构-优先队列/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/12/数据结构-优先队列/" itemprop="commentCount"></span>
+                <a href="/2019/02/14/算法导论-贪心算法——活动选择问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/14/算法导论-贪心算法——活动选择问题/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -336,7 +340,18 @@
       
 
       
-        
+        <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="贪心算法的递归实现-O-n"><a href="#贪心算法的递归实现-O-n" class="headerlink" title="贪心算法的递归实现 $O(n)$"></a>贪心算法的递归实现 $O(n)$</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""递归贪心算法"""</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recursive_activity_selector</span><span class="params">(s,f,k,n)</span>:</span></span><br><span class="line">    m=k+<span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> m&lt;n <span class="keyword">and</span> s[m]&lt;f[k]:</span><br><span class="line">        m+=<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> m&lt;n:</span><br><span class="line">        <span class="keyword">return</span> [m]+recursive_activity_selector(s,f,m,n)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"><span class="comment"># if __name__=='__main__':</span></span><br><span class="line"><span class="comment">#     s = [-1,1, 3, 0, 5, 3, 5, 6, 8, 8, 2, 12]</span></span><br><span class="line"><span class="comment">#     f = [0,4, 5, 6, 7, 9, 9, 10, 11, 12, 14, 16]</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#     print('recursive:\t',recursive_activity_selector(s,f,0,len(s)))</span></span><br><span class="line"><span class="comment">#     print('non_recursive:\t',greedy_activity_selector(s,f))</span></span><br></pre></td></tr></table></figure>
+<h4 id="贪心算法的迭代实现-O-n"><a href="#贪心算法的迭代实现-O-n" class="headerlink" title="贪心算法的迭代实现 $O(n)$"></a>贪心算法的迭代实现 $O(n)$</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">greedy_activity_selector</span><span class="params">(s,f)</span>:</span></span><br><span class="line">    <span class="keyword">assert</span> len(s)==len(f)</span><br><span class="line">    n=len(s)</span><br><span class="line">    A=[<span class="number">1</span>]</span><br><span class="line">    k=<span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> m <span class="keyword">in</span> range(<span class="number">2</span>,n):</span><br><span class="line">        <span class="keyword">if</span> s[m]&gt;f[k]:</span><br><span class="line">            A.append(m)</span><br><span class="line">            k=m</span><br><span class="line">    <span class="keyword">return</span> A</span><br><span class="line"><span class="comment"># if __name__=='__main__':</span></span><br><span class="line"><span class="comment">#     s = [-1,1, 3, 0, 5, 3, 5, 6, 8, 8, 2, 12]</span></span><br><span class="line"><span class="comment">#     f = [0,4, 5, 6, 7, 9, 9, 10, 11, 12, 14, 16]</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#     print('recursive:\t',recursive_activity_selector(s,f,0,len(s)))</span></span><br><span class="line"><span class="comment">#     print('non_recursive:\t',greedy_activity_selector(s,f))</span></span><br></pre></td></tr></table></figure>
+<h4 id="动态规划的自底向上实现"><a href="#动态规划的自底向上实现" class="headerlink" title="动态规划的自底向上实现"></a>动态规划的自底向上实现</h4><ul>
+<li>(<a href="https://wenku.baidu.com/view/bec65461f90f76c661371aa0.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/bec65461f90f76c661371aa0.html</a>)<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3></li>
+<li><a href="https://blog.csdn.net/luoshixian099/article/details/46559737" target="_blank" rel="noopener">算法导论—贪心算法与动态规划（活动选择问题）</a></li>
+<li><a href="https://blog.csdn.net/march_on/article/details/6799524" target="_blank" rel="noopener">活动选择问题（动态规划算法和贪心算法）</a></li>
+<li>(<a href="https://github.com/nbro/ands/blob/702267f868884d4960a5b5b8eddb9a3d94b0a005/ands/algorithms/greedy/activity_selection.py" target="_blank" rel="noopener">https://github.com/nbro/ands/blob/702267f868884d4960a5b5b8eddb9a3d94b0a005/ands/algorithms/greedy/activity_selection.py</a>)</li>
+<li>(<a href="https://github.com/shaotao1988/Introduction-to-Algrithm/blob/d39ad16f201e55fef10e140d45755af6569940fd/Greedy%20Algrithm/activity_selector.py" target="_blank" rel="noopener">https://github.com/shaotao1988/Introduction-to-Algrithm/blob/d39ad16f201e55fef10e140d45755af6569940fd/Greedy%20Algrithm/activity_selector.py</a>)</li>
+<li>(<a href="https://github.com/buptjz/PythonGod/blob/ecc91524c22dcb7051dc32cccd0cb67af6d1ebaa/IntroToAlgo/Chap16/DynamicActivitySelector.py" target="_blank" rel="noopener">https://github.com/buptjz/PythonGod/blob/ecc91524c22dcb7051dc32cccd0cb67af6d1ebaa/IntroToAlgo/Chap16/DynamicActivitySelector.py</a>)</li>
+<li>(<a href="https://github.com/yflau/dsapp/blob/013e77352d5efac2f4470ea9c1e94bb939981a40/dsapp/greedy.py" target="_blank" rel="noopener">https://github.com/yflau/dsapp/blob/013e77352d5efac2f4470ea9c1e94bb939981a40/dsapp/greedy.py</a>)</li>
+</ul>
+
       
     </div>
     
@@ -351,6 +366,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/算法导论/" rel="tag"># 算法导论</a>
+          
+            <a href="/tags/贪心算法/" rel="tag"># 贪心算法</a>
+          
+            <a href="/tags/活动选择问题/" rel="tag"># 活动选择问题</a>
+          
+        </div>
+      
 
       
       
@@ -360,8 +385,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/12/Leetcode-111-二叉树的最小深度/" rel="next" title="Leetcode 111.二叉树的最小深度">
-                <i class="fa fa-chevron-left"></i> Leetcode 111.二叉树的最小深度
+              <a href="/2019/02/13/Leetcode-64-最小路径和/" rel="next" title="Leetcode 64.最小路径和">
+                <i class="fa fa-chevron-left"></i> Leetcode 64.最小路径和
               </a>
             
           </div>
@@ -369,10 +394,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/12/算法导论-堆排序/" rel="prev" title="算法导论 堆排序">
-                算法导论 堆排序 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -403,7 +424,7 @@
 
   
     <div class="comments" id="comments">
-      <div class="ds-thread" data-thread-key="2019/02/12/数据结构-优先队列/" data-title="数据结构 优先队列" data-url="http://yoursite.com/2019/02/12/数据结构-优先队列/">
+      <div class="ds-thread" data-thread-key="2019/02/14/算法导论-贪心算法——活动选择问题/" data-title="算法导论 贪心算法之活动选择问题" data-url="http://yoursite.com/2019/02/14/算法导论-贪心算法——活动选择问题/">
       </div>
     </div>
 
@@ -430,8 +451,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -482,6 +512,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#贪心算法的递归实现-O-n"><span class="nav-number">1.1.</span> <span class="nav-text">贪心算法的递归实现 $O(n)$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#贪心算法的迭代实现-O-n"><span class="nav-number">1.2.</span> <span class="nav-text">贪心算法的迭代实现 $O(n)$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态规划的自底向上实现"><span class="nav-number">1.3.</span> <span class="nav-text">动态规划的自底向上实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">2.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
