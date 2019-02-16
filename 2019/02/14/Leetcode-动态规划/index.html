@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Lmin">
 <meta property="og:description" content="动态规划算法 刻画一个最优解的结构特征，利用这种子结构从子问题的最优解构造出原问题的最优解 递归定义最优解的值 计算最优解的值，通常采用自底向上的方法 利用计算的信息构造一个最优解  动态规划的原理动态规划方法求解的最优化问题必须具备两个要素：最优子结构和子问题重叠。  最优子结构：问题的最优解由相关子问题的最优解组合而成 重叠子问题：子问题空间必须足够小，即问题的递归算法会反复地求解相同地子问题">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-16T03:01:27.960Z">
+<meta property="og:updated_time" content="2019-02-16T03:03:16.288Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 动态规划">
 <meta name="twitter:description" content="动态规划算法 刻画一个最优解的结构特征，利用这种子结构从子问题的最优解构造出原问题的最优解 递归定义最优解的值 计算最优解的值，通常采用自底向上的方法 利用计算的信息构造一个最优解  动态规划的原理动态规划方法求解的最优化问题必须具备两个要素：最优子结构和子问题重叠。  最优子结构：问题的最优解由相关子问题的最优解组合而成 重叠子问题：子问题空间必须足够小，即问题的递归算法会反复地求解相同地子问题">
@@ -369,14 +369,8 @@
 <li>最优子结构<h4 id="递归定义最优解"><a href="#递归定义最优解" class="headerlink" title="递归定义最优解"></a>递归定义最优解</h4>如果$x_m=y_n$，需要求解$X_{m-1}$和$Y_{n-1}$的一个LCS。将$x_m=y_n$追加到这个LCS末尾，就得到X和Y的一个LCS。<br>如果$x_m  \neq y_n$，求解两个子问题：就$X_{m-1}$和Y的一个LCS和X和$Y_{n-1}$的一个LCS。两个LCS较长者几位X和Y的一个LCS。</li>
 </ul>
 <p>重叠性：为了求X和Y的LCS，可能需要求X和$Y_{n-1}$的一个LCS以及$X_{m-1}$和Y的一个LCS。但这几个子问题都包含求解$X_{m-1}$和$Y_{n-1}$的LCS的子子问题。</p>
-<script type="math/tex; mode=display">c[i,j]=</script><script type="math/tex; mode=display">
-\left\{
-c[i,j]= \begin{array}{c}
-0 & \text {if $i=0 or j=0$}\\
-c[i-1,j-1]=1 & \text {if $i,j>0 and x_i=y_j$} \\
-max(c[i,j-1],c[i-1,j]) & \text {if $i,j>0 and x_i \neq y_j$}
-\end{array}
-\right.</script>
+<script type="math/tex; mode=display">c[i,j]=\begin{cases} 0 & \text {if $i=0 or j=0$} \\ c[i-1,j-1]=1 & \text {if $i,j>0 and x_i=y_j$} \\
+max(c[i,j-1],c[i-1,j]) & \text {if $i,j>0 and x_i \neq y_j$} \end{cases}</script>
       
     </div>
     
