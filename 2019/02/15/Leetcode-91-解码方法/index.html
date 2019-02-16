@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Lmin">
 <meta property="og:description" content="91. 解码方法题目一条包含字母 A-Z 的消息通过以下方式进行了编码：12345678910111213141516&amp;apos;A&amp;apos; -&amp;gt; 1&amp;apos;B&amp;apos; -&amp;gt; 2...&amp;apos;Z&amp;apos; -&amp;gt; 26给定一个只包含数字的非空字符串，请计算解码方法的总数。示例 1:输入: &amp;quot;12&amp;quot;输出: 2解释: 它可以解码为 &amp;quot;AB">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-15T10:16:55.406Z">
+<meta property="og:updated_time" content="2019-02-16T14:13:16.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 91.解码方法">
 <meta name="twitter:description" content="91. 解码方法题目一条包含字母 A-Z 的消息通过以下方式进行了编码：12345678910111213141516&amp;apos;A&amp;apos; -&amp;gt; 1&amp;apos;B&amp;apos; -&amp;gt; 2...&amp;apos;Z&amp;apos; -&amp;gt; 26给定一个只包含数字的非空字符串，请计算解码方法的总数。示例 1:输入: &amp;quot;12&amp;quot;输出: 2解释: 它可以解码为 &amp;quot;AB">
@@ -345,7 +345,7 @@
 <li>s[0]=’0’无效</li>
 <li>dp[i]表示len(s)-i字符串的decode种类</li>
 <li>将s[i]看作一位数，且s[i]!=’0’，则有效，dp[i+1]+=dp[i]</li>
-<li>将s[i:i+1]看作两位数，且范围10&lt;=s[i:i+1]&lt;=26，则有效，dp[i+1]+=dp[i-2]</li>
+<li>将s[i-1:i+1]看作两位数，且范围10&lt;=s[i-1:i+1]&lt;=26，则有效，dp[i+1]+=dp[i-2]</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numDecodings</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        n=len(s)</span><br><span class="line">        dp=[<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(n+<span class="number">1</span>)]</span><br><span class="line">        dp[<span class="number">0</span>]=<span class="number">1</span></span><br><span class="line">        dp[<span class="number">1</span>]=<span class="number">1</span> <span class="keyword">if</span> s[<span class="number">0</span>]!=<span class="string">'0'</span> <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,n):</span><br><span class="line">            one_digit=s[i]</span><br><span class="line">            two_digit=int(s[i<span class="number">-1</span>:i+<span class="number">1</span>])       <span class="comment"># s是字符串，只有使用int()，才能使字符转换为数字</span></span><br><span class="line">            <span class="keyword">if</span> one_digit!=<span class="string">'0'</span>:</span><br><span class="line">                dp[i+<span class="number">1</span>]+=dp[i]</span><br><span class="line">            <span class="keyword">if</span> <span class="number">10</span>&lt;=two_digit&lt;=<span class="number">26</span>:</span><br><span class="line">                dp[i+<span class="number">1</span>]+=dp[i<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
 <ul>
@@ -479,7 +479,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
