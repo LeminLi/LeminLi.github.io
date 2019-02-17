@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Leetcode,动态规划,因式分解,">
 
 
 
@@ -79,14 +79,18 @@
 
 
 
+<meta name="description" content="650.只有两个键的键盘题目最初在一个记事本上只有一个字符 ‘A’。你每次可以对这个记事本进行两种操作： Copy All (复制全部) : 你可以复制这个记事本中的所有字符(部分的复制是不允许的)。Paste (粘贴) : 你可以粘贴你上一次复制的字符。给定一个数字 n 。你需要使用最少的操作次数，在记事本中打印出恰好 n 个 ‘A’。输出能够打印出 n 个 ‘A’ 的最少操作次数。123456">
+<meta name="keywords" content="Leetcode,动态规划,因式分解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode 650.只有两个键的键盘">
 <meta property="og:url" content="http://yoursite.com/2019/02/16/Leetcode-650-只有两个键的键盘/index.html">
 <meta property="og:site_name" content="Lmin">
+<meta property="og:description" content="650.只有两个键的键盘题目最初在一个记事本上只有一个字符 ‘A’。你每次可以对这个记事本进行两种操作： Copy All (复制全部) : 你可以复制这个记事本中的所有字符(部分的复制是不允许的)。Paste (粘贴) : 你可以粘贴你上一次复制的字符。给定一个数字 n 。你需要使用最少的操作次数，在记事本中打印出恰好 n 个 ‘A’。输出能够打印出 n 个 ‘A’ 的最少操作次数。123456">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-16T03:20:30.629Z">
+<meta property="og:updated_time" content="2019-02-17T06:33:54.046Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 650.只有两个键的键盘">
+<meta name="twitter:description" content="650.只有两个键的键盘题目最初在一个记事本上只有一个字符 ‘A’。你每次可以对这个记事本进行两种操作： Copy All (复制全部) : 你可以复制这个记事本中的所有字符(部分的复制是不允许的)。Paste (粘贴) : 你可以粘贴你上一次复制的字符。给定一个数字 n 。你需要使用最少的操作次数，在记事本中打印出恰好 n 个 ‘A’。输出能够打印出 n 个 ‘A’ 的最少操作次数。123456">
 
 
 
@@ -336,7 +340,17 @@
       
 
       
-        
+        <h2 id="650-只有两个键的键盘"><a href="#650-只有两个键的键盘" class="headerlink" title="650.只有两个键的键盘"></a><a href="https://leetcode-cn.com/problems/2-keys-keyboard/" target="_blank" rel="noopener">650.只有两个键的键盘</a></h2><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>最初在一个记事本上只有一个字符 ‘A’。你每次可以对这个记事本进行两种操作：</p>
+<p>Copy All (复制全部) : 你可以复制这个记事本中的所有字符(部分的复制是不允许的)。<br>Paste (粘贴) : 你可以粘贴你上一次复制的字符。<br>给定一个数字 n 。你需要使用最少的操作次数，在记事本中打印出恰好 n 个 ‘A’。输出能够打印出 n 个 ‘A’ 的最少操作次数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">示例 1:</span><br><span class="line"></span><br><span class="line">输入: 3</span><br><span class="line">输出: 3</span><br><span class="line">解释:</span><br><span class="line">最初, 我们只有一个字符 &apos;A&apos;。</span><br><span class="line">第 1 步, 我们使用 Copy All 操作。</span><br><span class="line">第 2 步, 我们使用 Paste 操作来获得 &apos;AA&apos;。</span><br><span class="line">第 3 步, 我们使用 Paste 操作来获得 &apos;AAA&apos;。</span><br></pre></td></tr></table></figure></p>
+<p>说明:</p>
+<p>n 的取值范围是 [1, 1000] 。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="方法1：动态规划"><a href="#方法1：动态规划" class="headerlink" title="方法1：动态规划"></a>方法1：动态规划</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minSteps</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        dp=[<span class="number">0</span>]*(n+<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,n+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i//<span class="number">2</span>,<span class="number">0</span>,<span class="number">-1</span>):</span><br><span class="line">                <span class="keyword">if</span> i%j==<span class="number">0</span>:</span><br><span class="line">                    dp[i]=dp[j]+i//j</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minSteps</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># maximum number of steps to get x A , is to get copy 1 A and paste it x-1 times - total x operations</span></span><br><span class="line">        dp = [ i <span class="keyword">for</span> i <span class="keyword">in</span> range(n+<span class="number">1</span>)]</span><br><span class="line">        dp[<span class="number">0</span>]=dp[<span class="number">1</span>]=<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,n+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i<span class="number">-1</span>,<span class="number">1</span>,<span class="number">-1</span>):</span><br><span class="line">                <span class="keyword">if</span> i%j==<span class="number">0</span>:</span><br><span class="line">                    dp[i]=dp[j]+i//j</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<h4 id="方法1：因式分解"><a href="#方法1：因式分解" class="headerlink" title="方法1：因式分解"></a>方法1：因式分解</h4><ul>
+<li><a href="https://leetcode.com/problems/2-keys-keyboard/discuss/105951/Python-solution-with-detailed-explanation" target="_blank" rel="noopener">Leetcode Solution:Python solution with detailed explanation</a></li>
+<li><a href="https://leetcode.com/problems/2-keys-keyboard/discuss/105954/My-explanation-of-solution-DP-python" target="_blank" rel="noopener">Leetcode Solution:My explanation of solution - DP - python</a></li>
+</ul>
+
       
     </div>
     
@@ -350,6 +364,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+          
+            <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
+          
+            <a href="/tags/因式分解/" rel="tag"># 因式分解</a>
+          
+        </div>
       
 
       
@@ -369,6 +393,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/17/Leetcode-688-马在棋盘上的概率/" rel="prev" title="Leetcode 688.马在棋盘上的概率">
+                Leetcode 688.马在棋盘上的概率 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -426,8 +454,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -442,7 +479,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">72</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -455,7 +492,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -478,6 +515,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#650-只有两个键的键盘"><span class="nav-number">1.</span> <span class="nav-text">650.只有两个键的键盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">2.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">2.1.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法1：动态规划"><span class="nav-number">2.1.1.</span> <span class="nav-text">方法1：动态规划</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法1：因式分解"><span class="nav-number">2.1.2.</span> <span class="nav-text">方法1：因式分解</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
