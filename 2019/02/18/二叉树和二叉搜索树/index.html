@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Lmin">
 <meta property="og:description" content="二叉树和树二叉树：概念和性质定义二叉树是结点的有穷集合。这个集合或者是空集，或者其中有一个成为根节点的特殊结点，其余结点分属两棵不相交的二叉树，这两棵二叉树分别是原二叉树（或者说是原二叉树的根结点）的左子树和右子树。  二叉树是一种递归结构，是最简单的树形结构，是复杂结构  基本概念 分类：空树、单点树、其他 结点：父结点、子结点、兄弟结点、叶结点 关系：父子关系、祖先关系、子孙关系 度数：一个结">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-18T04:26:39.676Z">
+<meta property="og:updated_time" content="2019-02-18T04:28:45.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉树和二叉搜索树">
 <meta name="twitter:description" content="二叉树和树二叉树：概念和性质定义二叉树是结点的有穷集合。这个集合或者是空集，或者其中有一个成为根节点的特殊结点，其余结点分属两棵不相交的二叉树，这两棵二叉树分别是原二叉树（或者说是原二叉树的根结点）的左子树和右子树。  二叉树是一种递归结构，是最简单的树形结构，是复杂结构  基本概念 分类：空树、单点树、其他 结点：父结点、子结点、兄弟结点、叶结点 关系：父子关系、祖先关系、子孙关系 度数：一个结">
@@ -369,7 +369,7 @@
 <h4 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h4><ul>
 <li>定义：对于一棵高度为h的二叉树，如果第0-h-1层的结点都满（就是说$0&lt;=i&lt;=h-1$，第i层有$2^i$个结点）。如果下一层的结点不满，则左右结点在最左边连续排列，空位都在右边。这种二叉树称为完全二叉树。</li>
 <li>性质<ul>
-<li>n个结点的完全二叉树高度$h=\lfloor \log_2n \rfloor$，即不大于$\lfloor \log_2n \rfloor$的自最大整数。设完全二叉树有n个结点，高度是h。由于T在n个结点的二叉树里面最低，所以$2^{h}-1&lt;n\leq 2^{h+1}-1$，即$2^h\leqn&lt;2^{h+1}-1$，取对数得$h \leq \log_2n&lt;h+1$</li>
+<li>n个结点的完全二叉树高度$h=\lfloor \log_2n \rfloor$，即不大于$\lfloor \log_2n \rfloor$的自最大整数。设完全二叉树有n个结点，高度是h。由于T在n个结点的二叉树里面最低，所以$2^{h}-1&lt;n \leq 2^{h+1}-1$，即$2^h \leq n&lt;2^{h+1}-1$，取对数得$h \leq \log_2n&lt;h+1$</li>
 <li>包含n个结点的完全二叉树的结点按层次并按从左到右的顺序从0开始编号，对于任一结点i（$0 \leq i \leq n-1$）有：<ul>
 <li>序号为0的是根结点</li>
 <li>对于i&gt;0，其父结点的编号是$(i-1)/2$</li>
