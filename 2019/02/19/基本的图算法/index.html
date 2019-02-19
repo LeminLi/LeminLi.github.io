@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Lmin">
 <meta property="og:description" content="图算法基本的图算法图的表示邻接链表对图$G=(V,E)$，其邻接链表表示有一个包含$|V|$条链表的数组Adj所构成，每个结点都有一条链表。对于每个结点$u \in V$，邻接链表Adj[u]包含所有与结点u之间右边相连的结点v，即Adj[u]包含图中与u邻接的结点  如果G是有向图，所有的邻接链表的长度之和为$|E|$；如果G是无向图，所有邻接链表的长度之和为$2|E|$ 空间复杂度有：不管是有">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-19T06:21:04.833Z">
+<meta property="og:updated_time" content="2019-02-19T09:00:54.714Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基本的图算法">
 <meta name="twitter:description" content="图算法基本的图算法图的表示邻接链表对图$G=(V,E)$，其邻接链表表示有一个包含$|V|$条链表的数组Adj所构成，每个结点都有一条链表。对于每个结点$u \in V$，邻接链表Adj[u]包含所有与结点u之间右边相连的结点v，即Adj[u]包含图中与u邻接的结点  如果G是有向图，所有的邻接链表的长度之和为$|E|$；如果G是无向图，所有邻接链表的长度之和为$2|E|$ 空间复杂度有：不管是有">
@@ -377,7 +377,25 @@
 <li>（广度优先搜索的正确性）设$G=(V,E)$为一个有向图或无向图，有假设BFS以s为源结点在图G上进行。那么算法执行过程中，BFS将发现从源结点s可以到达的所有节点$v \in V$，并在算法结束时，对所有的$v \in V,v.d=\delta(s,v)$。并且，对于任意可以从s到达的结点$v \neq s$，从源结点s到结点v的其中一条最短路径为从s到达$v.\pi$的最短路径加上边$(v.\pi,v)</li>
 </ul>
 <h4 id="广度优先树"><a href="#广度优先树" class="headerlink" title="广度优先树"></a>广度优先树</h4><p>过程BFS在对图进行搜索的过程中将创建一棵广度优先树。该树对应的是$\pi$属性。对图$G=(V,E)$的前驱子图$G_\pi=(V_\pi,E_\pi)$，其中$V_\pi={v \in V:v.\pi\neq NIL}\bigcup{s}，E={(v.\pi,v):v\in V_\pi-{s}}$。前驱子图是一棵优先树，树边$|E_\pi|=|V_\pi|-1$。</p>
-<h3 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h3><h3 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h3>
+<h3 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h3><p>深度优先搜索的前驱子图形成一个有多棵深度优先搜索树构成的深度优先深林。森林$E_\pi$中的边仍称为树边。</p>
+<ul>
+<li>创建一个深度优先搜索森林</li>
+<li>在每个结点v有两个时间戳：第一个时间戳v.d记录结点v第一次被 <strong>发现的时间</strong>（涂上灰色的时候），第二个时间戳v.f记录的是搜索完成对v的邻接链表扫描的时间（<strong>结束时间</strong>）（涂上黑色的时候）。这些时间戳提供了图结构的重要信息，通常能够有助于推断深度优先搜索算法的行为。</li>
+</ul>
+<h4 id="深度优先搜索的性质"><a href="#深度优先搜索的性质" class="headerlink" title="深度优先搜索的性质"></a>深度优先搜索的性质</h4><h5 id="基本性质"><a href="#基本性质" class="headerlink" title="基本性质"></a>基本性质</h5><ul>
+<li>深度优先搜索生成的前驱子图$G_\pi$形成一个由多棵树构成的森林</li>
+<li>结点的发现时间和结束时间具有所谓的括号化结构</li>
+<li>可以通过搜索对数如图G的边进行分类</li>
+</ul>
+<h5 id="定理及推论"><a href="#定理及推论" class="headerlink" title="定理及推论"></a>定理及推论</h5><p><strong>括号化定理</strong>：在对有向图或无向图$G=(V,E)$进行任意深度优先搜索中，对于任意两个结点u和v来说，下面三种情况只有一种成立：</p>
+<ul>
+<li>区间[u.d,u.f]和[v.d,v.f]完全分离，在深度优先森林中，结点u不是结点v的后代，结点v也不是结点u的后代</li>
+<li>区间[u.d,u.f]完全包含在[v.d,v.f]内，在深度优先森林中，结点u是结点v的后代</li>
+<li>区间[v.d,v.f]完全包含在[u.d,u.f]内，在深度优先森林中，结点v是结点u的后代</li>
+</ul>
+<p><strong>后代区间嵌套</strong>：在有向或者无向图的深度优先搜索中，结点v是结点u的真后代当且仅当$u.d&lt;v.d&lt;v.f&lt;u.f$</p>
+<p><strong>白色路径定理</strong>：在有向或者无向图的深度优先森林中，结点v是接待你u的后代，当且仅当在发现u的时间u.d，存在一条从结点u到结点v的全部白色结点所构成的路径。</p>
+<h3 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h3>
       
     </div>
     
@@ -546,7 +564,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#图算法"><span class="nav-number">1.</span> <span class="nav-text">图算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本的图算法"><span class="nav-number">1.1.</span> <span class="nav-text">基本的图算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图的表示"><span class="nav-number">1.1.1.</span> <span class="nav-text">图的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#邻接链表"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">邻接链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#邻接矩阵"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">邻接矩阵</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广度优先搜索"><span class="nav-number">1.1.2.</span> <span class="nav-text">广度优先搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复杂度分析"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">复杂度分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最短路径"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">最短路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#广度优先树"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">广度优先树</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度优先搜索"><span class="nav-number">1.1.3.</span> <span class="nav-text">深度优先搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拓扑排序"><span class="nav-number">1.1.4.</span> <span class="nav-text">拓扑排序</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#图算法"><span class="nav-number">1.</span> <span class="nav-text">图算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本的图算法"><span class="nav-number">1.1.</span> <span class="nav-text">基本的图算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图的表示"><span class="nav-number">1.1.1.</span> <span class="nav-text">图的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#邻接链表"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">邻接链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#邻接矩阵"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">邻接矩阵</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广度优先搜索"><span class="nav-number">1.1.2.</span> <span class="nav-text">广度优先搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复杂度分析"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">复杂度分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最短路径"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">最短路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#广度优先树"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">广度优先树</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度优先搜索"><span class="nav-number">1.1.3.</span> <span class="nav-text">深度优先搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#深度优先搜索的性质"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">深度优先搜索的性质</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本性质"><span class="nav-number">1.1.3.1.1.</span> <span class="nav-text">基本性质</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#定理及推论"><span class="nav-number">1.1.3.1.2.</span> <span class="nav-text">定理及推论</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拓扑排序"><span class="nav-number">1.1.4.</span> <span class="nav-text">拓扑排序</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
