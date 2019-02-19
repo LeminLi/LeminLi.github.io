@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Lmin">
 <meta property="og:description" content="图算法基本的图算法图的表示邻接链表对图$G=(V,E)$，其邻接链表表示有一个包含$|V|$条链表的数组Adj所构成，每个结点都有一条链表。对于每个结点$u \in V$，邻接链表Adj[u]包含所有与结点u之间右边相连的结点v，即Adj[u]包含图中与u邻接的结点  如果G是有向图，所有的邻接链表的长度之和为$|E|；如果G是无向图，所有邻接链表的长度之和为$2|E|$ 空间复杂度有：不管是有向">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-19T02:47:11.165Z">
+<meta property="og:updated_time" content="2019-02-19T02:58:15.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基本的图算法">
 <meta name="twitter:description" content="图算法基本的图算法图的表示邻接链表对图$G=(V,E)$，其邻接链表表示有一个包含$|V|$条链表的数组Adj所构成，每个结点都有一条链表。对于每个结点$u \in V$，邻接链表Adj[u]包含所有与结点u之间右边相连的结点v，即Adj[u]包含图中与u邻接的结点  如果G是有向图，所有的邻接链表的长度之和为$|E|；如果G是无向图，所有邻接链表的长度之和为$2|E|$ 空间复杂度有：不管是有向">
@@ -369,11 +369,12 @@
 <ul>
 <li>给定$G=(V,E)$，G是一个有向图或无向图，设$s \in V$是任意一个结点，则对任意边$(u,v) \in E，\delta (s,v) \leq \delta(s,u)+1$</li>
 <li>设$G=(V,E)$为一个有向图或无向图，假设BFS一给定结点$s\in V$作为源结点在图G上运行。那么在BFS终结时，对于每个节点$v \in V$，BFS所计算出的v.d满足$v.d \leq \delta(s,v)$</li>
-<li>假定BFS在图$G=(V,E)$上运行的过程中，队列Q包含的结点$<v_1,v_2,...,v_r>$，这里$v_1$是队列的头，$v_r$是队列的尾，那么$v_r.d \leq v_1+1$，并且对$i=1,…,i-1，v_i.d \leq v_{i+1}.d$</v_1,v_2,...,v_r></li>
+<li>假定BFS在图$G=(V,E)$上运行的过程中，队列Q包含的结点$\langlev_1,v_2,…,v_r\rangle<br>$，这里$v_1$是队列的头，$v_r$是队列的尾，那么$v_r.d \leq v_1+1$，并且对$i=1,…,i-1，v_i.d \leq v_{i+1}.d$</li>
 <li>假定执行BFS时，结点$v_i$和结点$v_j$都加入队列Q里，并且$v_i$在$v_j$前面入队，则在$v_j$入队时，有$v_i.d \leq v_j.d$</li>
 <li>（广度优先搜索的正确性）设$G=(V,E)$为一个有向图或无向图，有假设BFS以s为源结点在图G上进行。那么算法执行过程中，BFS将发现从源结点s可以到达的所有节点$v \in V$，并在算法结束时，对所有的$v \in V,v.d=\delta(s,v)$。并且，对于任意可以从s到达的结点$v \neq s$，从源结点s到结点v的其中一条最短路径为从s到达$v.\pi$的最短路径加上边$(v.\pi,v)</li>
 </ul>
-<h4 id="广度优先树"><a href="#广度优先树" class="headerlink" title="广度优先树"></a>广度优先树</h4><h3 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h3><h3 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h3>
+<h4 id="广度优先树"><a href="#广度优先树" class="headerlink" title="广度优先树"></a>广度优先树</h4><p>过程BFS在对图进行搜索的过程中将创建一棵广度优先树。该树对应的是$\pi$属性。对图$G=(V,E)$的前驱子图$G_\pi=(V_\pi,E_\pi)$，其中$V_\pi={v \in V:v.\pi\neq NIL}\bigcup{s}，E={(v.\pi,v):v\in V_\pi-{s}}$。前驱子图是一棵优先树，树边$|E_\pi|=|V_\pi|-1$。</p>
+<h3 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h3><h3 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h3>
       
     </div>
     
