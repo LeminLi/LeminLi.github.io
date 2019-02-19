@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="图算法基本的图算法图的表示邻接链表对图$G=(V,E)$，其邻接链表表示有一个包含$|V|$条链表的数组Adj所构成，每个结点都有一条链表。对于每个结点$u \in V$，邻接链表Adj[u]包含所有与结点u之间右边相连的结点v，即Adj[u]包含图中与u邻接的结点  如果G是有向图，所有的邻接链表的长度之和为$|E|；如果G是无向图，所有邻接链表的长度之和为$2|E|$ 空间复杂度有：不管是有向">
+<meta name="description" content="图算法基本的图算法图的表示邻接链表对图$G=(V,E)$，其邻接链表表示有一个包含$|V|$条链表的数组Adj所构成，每个结点都有一条链表。对于每个结点$u \in V$，邻接链表Adj[u]包含所有与结点u之间右边相连的结点v，即Adj[u]包含图中与u邻接的结点  如果G是有向图，所有的邻接链表的长度之和为$|E|$；如果G是无向图，所有邻接链表的长度之和为$2|E|$ 空间复杂度有：不管是有">
 <meta name="keywords" content="算法导论,图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基本的图算法">
 <meta property="og:url" content="http://yoursite.com/2019/02/19/基本的图算法/index.html">
 <meta property="og:site_name" content="Lmin">
-<meta property="og:description" content="图算法基本的图算法图的表示邻接链表对图$G=(V,E)$，其邻接链表表示有一个包含$|V|$条链表的数组Adj所构成，每个结点都有一条链表。对于每个结点$u \in V$，邻接链表Adj[u]包含所有与结点u之间右边相连的结点v，即Adj[u]包含图中与u邻接的结点  如果G是有向图，所有的邻接链表的长度之和为$|E|；如果G是无向图，所有邻接链表的长度之和为$2|E|$ 空间复杂度有：不管是有向">
+<meta property="og:description" content="图算法基本的图算法图的表示邻接链表对图$G=(V,E)$，其邻接链表表示有一个包含$|V|$条链表的数组Adj所构成，每个结点都有一条链表。对于每个结点$u \in V$，邻接链表Adj[u]包含所有与结点u之间右边相连的结点v，即Adj[u]包含图中与u邻接的结点  如果G是有向图，所有的邻接链表的长度之和为$|E|$；如果G是无向图，所有邻接链表的长度之和为$2|E|$ 空间复杂度有：不管是有">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-19T05:43:30.204Z">
+<meta property="og:updated_time" content="2019-02-19T06:21:04.833Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基本的图算法">
-<meta name="twitter:description" content="图算法基本的图算法图的表示邻接链表对图$G=(V,E)$，其邻接链表表示有一个包含$|V|$条链表的数组Adj所构成，每个结点都有一条链表。对于每个结点$u \in V$，邻接链表Adj[u]包含所有与结点u之间右边相连的结点v，即Adj[u]包含图中与u邻接的结点  如果G是有向图，所有的邻接链表的长度之和为$|E|；如果G是无向图，所有邻接链表的长度之和为$2|E|$ 空间复杂度有：不管是有向">
+<meta name="twitter:description" content="图算法基本的图算法图的表示邻接链表对图$G=(V,E)$，其邻接链表表示有一个包含$|V|$条链表的数组Adj所构成，每个结点都有一条链表。对于每个结点$u \in V$，邻接链表Adj[u]包含所有与结点u之间右边相连的结点v，即Adj[u]包含图中与u邻接的结点  如果G是有向图，所有的邻接链表的长度之和为$|E|$；如果G是无向图，所有邻接链表的长度之和为$2|E|$ 空间复杂度有：不管是有">
 
 
 
@@ -342,7 +342,7 @@
       
         <h1 id="图算法"><a href="#图算法" class="headerlink" title="图算法"></a>图算法</h1><h2 id="基本的图算法"><a href="#基本的图算法" class="headerlink" title="基本的图算法"></a>基本的图算法</h2><h3 id="图的表示"><a href="#图的表示" class="headerlink" title="图的表示"></a>图的表示</h3><h4 id="邻接链表"><a href="#邻接链表" class="headerlink" title="邻接链表"></a>邻接链表</h4><p>对图$G=(V,E)$，其邻接链表表示有一个包含$|V|$条链表的数组Adj所构成，每个结点都有一条链表。对于每个结点$u \in V$，邻接链表Adj[u]包含所有与结点u之间右边相连的结点v，即Adj[u]包含图中与u邻接的结点</p>
 <ul>
-<li>如果G是有向图，所有的邻接链表的长度之和为$|E|；如果G是无向图，所有邻接链表的长度之和为$2|E|$</li>
+<li>如果G是有向图，所有的邻接链表的长度之和为$|E|$；如果G是无向图，所有邻接链表的长度之和为$2|E|$</li>
 <li>空间复杂度有：不管是有向图还是无向图，邻接链表表示的空间存储需求都是$\Theta (V+E)$</li>
 <li>缺点：无法快速判断一条边(u,v)是否是图中的一条边，唯一的办法是在邻接链表Adj[u]里搜索结点v</li>
 </ul>
