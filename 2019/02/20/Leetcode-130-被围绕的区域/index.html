@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Leetcode,二叉树,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="方法方法1：递归参考资料 Leetcode Discussion：递归先序遍历">
-<meta name="keywords" content="Leetcode,二叉树">
+<meta name="description" content="方法方法1：广度优先搜索123456789101112131415161718192021222324252627282930313233343536373839class Solution(object):    def solve(self, board):        &quot;&quot;&quot;        :type board: List[List[str]]        :rtype: void D">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode 111.二叉树的最小深度">
-<meta property="og:url" content="http://yoursite.com/2019/02/12/Leetcode-111-二叉树的最小深度/index.html">
+<meta property="og:title" content="Leetcode 130.被围绕的区域">
+<meta property="og:url" content="http://yoursite.com/2019/02/20/Leetcode-130-被围绕的区域/index.html">
 <meta property="og:site_name" content="Lmin">
-<meta property="og:description" content="方法方法1：递归参考资料 Leetcode Discussion：递归先序遍历">
+<meta property="og:description" content="方法方法1：广度优先搜索123456789101112131415161718192021222324252627282930313233343536373839class Solution(object):    def solve(self, board):        &quot;&quot;&quot;        :type board: List[List[str]]        :rtype: void D">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-12T04:26:08.267Z">
+<meta property="og:updated_time" content="2019-02-20T06:55:06.351Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode 111.二叉树的最小深度">
-<meta name="twitter:description" content="方法方法1：递归参考资料 Leetcode Discussion：递归先序遍历">
+<meta name="twitter:title" content="Leetcode 130.被围绕的区域">
+<meta name="twitter:description" content="方法方法1：广度优先搜索123456789101112131415161718192021222324252627282930313233343536373839class Solution(object):    def solve(self, board):        &quot;&quot;&quot;        :type board: List[List[str]]        :rtype: void D">
 
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/12/Leetcode-111-二叉树的最小深度/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/20/Leetcode-130-被围绕的区域/">
 
 
 
 
 
-  <title>Leetcode 111.二叉树的最小深度 | Lmin</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Leetcode 130.被围绕的区域 | Lmin</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -263,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/12/Leetcode-111-二叉树的最小深度/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/Leetcode-130-被围绕的区域/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lmin">
@@ -280,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode 111.二叉树的最小深度</h1>
+          <h1 class="post-title" itemprop="name headline">Leetcode 130.被围绕的区域</h1>
         
 
         <div class="post-meta">
@@ -292,8 +291,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-12T12:24:47+08:00">
-                2019-02-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-20T13:14:04+08:00">
+                2019-02-20
               </time>
             
 
@@ -311,8 +310,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/12/Leetcode-111-二叉树的最小深度/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/12/Leetcode-111-二叉树的最小深度/" itemprop="commentCount"></span>
+                <a href="/2019/02/20/Leetcode-130-被围绕的区域/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/20/Leetcode-130-被围绕的区域/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -340,8 +339,10 @@
       
 
       
-        <h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="方法1：递归"><a href="#方法1：递归" class="headerlink" title="方法1：递归"></a>方法1：递归</h4><h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
-<li><a href="https://leetcode.com/problems/minimum-depth-of-binary-tree/discuss/193458/Python-recursion-way-and-bfs-way" target="_blank" rel="noopener">Leetcode Discussion：递归先序遍历</a></li>
+        <h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="方法1：广度优先搜索"><a href="#方法1：广度优先搜索" class="headerlink" title="方法1：广度优先搜索"></a>方法1：广度优先搜索</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">solve</span><span class="params">(self, board)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type board: List[List[str]]</span></span><br><span class="line"><span class="string">        :rtype: void Do not return anything, modify board in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> len(board)&lt;<span class="number">3</span> <span class="keyword">or</span> len(board[<span class="number">0</span>])&lt;<span class="number">3</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        m,n=len(board),len(board[<span class="number">0</span>])              <span class="comment"># 这两段代码调转后居然会引起索引问题</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> [<span class="number">0</span>,n<span class="number">-1</span>]:</span><br><span class="line">                <span class="keyword">if</span> board[i][j]==<span class="string">'O'</span>:</span><br><span class="line">                    self.bfs(board,i,j,m,n)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">0</span>,m<span class="number">-1</span>]:</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,n):</span><br><span class="line">                <span class="keyword">if</span> board[i][j]==<span class="string">'O'</span>:</span><br><span class="line">                    self.bfs(board,i,j,m,n)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> board[i][j]!=<span class="string">'X'</span>:</span><br><span class="line">                    <span class="keyword">if</span> board[i][j]==<span class="string">'O'</span>:</span><br><span class="line">                        board[i][j]=<span class="string">'X'</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        board[i][j]=<span class="string">'O'</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bfs</span><span class="params">(self,board,i,j,m,n)</span>:</span></span><br><span class="line">        <span class="comment"># O: White, X:Black, G:Gray</span></span><br><span class="line">        queue=collections.deque([[i,j]])</span><br><span class="line">        board[i][j]=<span class="string">'G'</span></span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            i,j=queue.popleft()</span><br><span class="line">            <span class="keyword">for</span> nr,nc <span class="keyword">in</span> ((i+<span class="number">1</span>,j),(i<span class="number">-1</span>,j),(i,j+<span class="number">1</span>),(i,j<span class="number">-1</span>)):</span><br><span class="line">                <span class="keyword">if</span> <span class="number">0</span>&lt;=nr&lt;m <span class="keyword">and</span> <span class="number">0</span>&lt;=nc&lt;n <span class="keyword">and</span> board[nr][nc]==<span class="string">'O'</span>:</span><br><span class="line">                    queue.append([nr,nc])</span><br><span class="line">                    board[nr][nc]=<span class="string">'G'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://leetcode.com/problems/surrounded-regions/discuss/41812/AC-Python-140-ms-solution-BFS-starting-from-boundary-&#39;O&#39;" target="_blank" rel="noopener">Leetcode Discussion:AC Python 140 ms solution, BFS starting from boundary ‘O’</a></li>
+<li><a href="https://leetcode.com/problems/surrounded-regions/discuss/166135/DFS-Python-Solution" target="_blank" rel="noopener">Leetcode Discussion:DFS Python Solution</a></li>
 </ul>
 
       
@@ -358,14 +359,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
-          
-            <a href="/tags/二叉树/" rel="tag"># 二叉树</a>
-          
-        </div>
-      
 
       
       
@@ -375,8 +368,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/12/Leetcode-622-设计循环队列/" rel="next" title="Leetcode 622.设计循环队列">
-                <i class="fa fa-chevron-left"></i> Leetcode 622.设计循环队列
+              <a href="/2019/02/20/Leetcode-200-岛屿的个数-1/" rel="next" title="Leetcode 200.岛屿的个数">
+                <i class="fa fa-chevron-left"></i> Leetcode 200.岛屿的个数
               </a>
             
           </div>
@@ -384,10 +377,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/12/数据结构-优先队列/" rel="prev" title="数据结构 优先队列">
-                数据结构 优先队列 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -418,7 +407,7 @@
 
   
     <div class="comments" id="comments">
-      <div class="ds-thread" data-thread-key="2019/02/12/Leetcode-111-二叉树的最小深度/" data-title="Leetcode 111.二叉树的最小深度" data-url="http://yoursite.com/2019/02/12/Leetcode-111-二叉树的最小深度/">
+      <div class="ds-thread" data-thread-key="2019/02/20/Leetcode-130-被围绕的区域/" data-title="Leetcode 130.被围绕的区域" data-url="http://yoursite.com/2019/02/20/Leetcode-130-被围绕的区域/">
       </div>
     </div>
 
@@ -516,7 +505,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">1.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法1：递归"><span class="nav-number">1.1.</span> <span class="nav-text">方法1：递归</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">2.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">1.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法1：广度优先搜索"><span class="nav-number">1.1.</span> <span class="nav-text">方法1：广度优先搜索</span></a></li></ol></li></ol></div>
             
 
           </div>
