@@ -79,18 +79,15 @@
 
 
 
-<meta name="description" content="733. 图像渲染题目有一幅以二维整数数组表示的图画，每一个整数表示该图画的像素值大小，数值在 0 到 65535 之间。 给你一个坐标 (sr, sc) 表示图像渲染开始的像素值（行 ，列）和一个新的颜色值 newColor，让你重新上色这幅图像。 为了完成上色工作，从初始坐标开始，记录初始坐标的上下左右四个方向上像素值与初始坐标相同的相连像素点，接着再记录这四个方向上符合条件的像素点与他们对应">
 <meta name="keywords" content="Leetcode,深度优先搜索,广度优先搜索">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode 924.尽量减少恶意软件的传播">
 <meta property="og:url" content="http://yoursite.com/2019/02/20/Leetcode-924-尽量减少恶意软件的传播/index.html">
 <meta property="og:site_name" content="Lmin">
-<meta property="og:description" content="733. 图像渲染题目有一幅以二维整数数组表示的图画，每一个整数表示该图画的像素值大小，数值在 0 到 65535 之间。 给你一个坐标 (sr, sc) 表示图像渲染开始的像素值（行 ，列）和一个新的颜色值 newColor，让你重新上色这幅图像。 为了完成上色工作，从初始坐标开始，记录初始坐标的上下左右四个方向上像素值与初始坐标相同的相连像素点，接着再记录这四个方向上符合条件的像素点与他们对应">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-20T01:56:24.739Z">
+<meta property="og:updated_time" content="2019-02-20T02:05:21.542Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 924.尽量减少恶意软件的传播">
-<meta name="twitter:description" content="733. 图像渲染题目有一幅以二维整数数组表示的图画，每一个整数表示该图画的像素值大小，数值在 0 到 65535 之间。 给你一个坐标 (sr, sc) 表示图像渲染开始的像素值（行 ，列）和一个新的颜色值 newColor，让你重新上色这幅图像。 为了完成上色工作，从初始坐标开始，记录初始坐标的上下左右四个方向上像素值与初始坐标相同的相连像素点，接着再记录这四个方向上符合条件的像素点与他们对应">
 
 
 
@@ -340,26 +337,7 @@
       
 
       
-        <h2 id="733-图像渲染"><a href="#733-图像渲染" class="headerlink" title="733. 图像渲染"></a><a href="https://leetcode-cn.com/problems/flood-fill/submissions/" target="_blank" rel="noopener">733. 图像渲染</a></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>有一幅以二维整数数组表示的图画，每一个整数表示该图画的像素值大小，数值在 0 到 65535 之间。</p>
-<p>给你一个坐标 (sr, sc) 表示图像渲染开始的像素值（行 ，列）和一个新的颜色值 newColor，让你重新上色这幅图像。</p>
-<p>为了完成上色工作，从初始坐标开始，记录初始坐标的上下左右四个方向上像素值与初始坐标相同的相连像素点，接着再记录这四个方向上符合条件的像素点与他们对应四个方向上像素值与初始坐标相同的相连像素点，……，重复该过程。将所有有记录的像素点的颜色值改为新的颜色值。</p>
-<p>最后返回经过上色渲染后的图像。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">示例 1:</span><br><span class="line"></span><br><span class="line">输入:</span><br><span class="line">image = [[1,1,1],[1,1,0],[1,0,1]]</span><br><span class="line">sr = 1, sc = 1, newColor = 2</span><br><span class="line">输出: [[2,2,2],[2,2,0],[2,0,1]]</span><br><span class="line">解析:</span><br><span class="line">在图像的正中间，(坐标(sr,sc)=(1,1)),</span><br><span class="line">在路径上所有符合条件的像素点的颜色都被更改成2。</span><br><span class="line">注意，右下角的像素没有更改为2，</span><br><span class="line">因为它不是在上下左右四个方向上与初始点相连的像素点。</span><br></pre></td></tr></table></figure></p>
-<p>注意:</p>
-<p>image 和 image[0] 的长度在范围 [1, 50] 内。<br>给出的初始点将满足 0 &lt;= sr &lt; image.length 和 0 &lt;= sc &lt; image[0].length。<br>image[i][j] 和 newColor 表示的颜色值在范围 [0, 65535]内。</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="方法1：深度优先搜索"><a href="#方法1：深度优先搜索" class="headerlink" title="方法1：深度优先搜索"></a>方法1：深度优先搜索</h4><p>在开始结点执行DFS，然后继续执行DFS，如果：</p>
-<ul>
-<li>下一个结点在边界范围内</li>
-<li>下一个结点的颜色和原始结点的初始颜色相同</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">floodFill</span><span class="params">(self, image, sr, sc, newColor)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type image: List[List[int]]</span></span><br><span class="line"><span class="string">        :type sr: int</span></span><br><span class="line"><span class="string">        :type sc: int</span></span><br><span class="line"><span class="string">        :type newColor: int</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        R,C,originColor=len(image),len(image[<span class="number">0</span>]),image[sr][sc]</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">traverse</span><span class="params">(row,col)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> (<span class="number">0</span>&lt;=row&lt;R  <span class="keyword">and</span> <span class="number">0</span>&lt;=col&lt;C) <span class="keyword">or</span> image[row][col]!=originColor:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            image[row][col]=newColor</span><br><span class="line">            [traverse(row+x,col+y) <span class="keyword">for</span> (x,y) <span class="keyword">in</span> ((<span class="number">0</span>,<span class="number">1</span>),(<span class="number">0</span>,<span class="number">-1</span>),(<span class="number">1</span>,<span class="number">0</span>),(<span class="number">-1</span>,<span class="number">0</span>))]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> originColor!=newColor:</span><br><span class="line">            traverse(sr,sc)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> image</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">floodFill</span><span class="params">(self, image, sr, sc, newColor)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type image: List[List[int]]</span></span><br><span class="line"><span class="string">        :type sr: int</span></span><br><span class="line"><span class="string">        :type sc: int</span></span><br><span class="line"><span class="string">        :type newColor: int</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        oldColor,m,n=image[sr][sc],len(image),len(image[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(i,j)</span>:</span></span><br><span class="line">            image[i][j]=newColor</span><br><span class="line"></span><br><span class="line">            <span class="comment"># for x,y in ((1,0),(-1,0),(0,1),(0,-1)):</span></span><br><span class="line">            <span class="comment">#     if 0&lt;=i+x&lt;m and 0&lt;=j+y&lt;n and image[i+x][j+y]==oldColor:</span></span><br><span class="line">            <span class="comment">#         dfs(i+x,j+y)</span></span><br><span class="line">            <span class="keyword">for</span> x,y <span class="keyword">in</span> ((i<span class="number">-1</span>,j),(i+<span class="number">1</span>,j),(i,j<span class="number">-1</span>),(i,j+<span class="number">1</span>)):</span><br><span class="line">                <span class="keyword">if</span> <span class="number">0</span>&lt;=x&lt;m <span class="keyword">and</span> <span class="number">0</span>&lt;=y&lt;n <span class="keyword">and</span> image[x][y]==oldColor:</span><br><span class="line">                    dfs(x,y)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> oldColor!=newColor:</span><br><span class="line">            dfs(sr,sc)</span><br><span class="line">        <span class="keyword">return</span> image</span><br></pre></td></tr></table></figure>
-<h4 id="方法2：广度优先搜索"><a href="#方法2：广度优先搜索" class="headerlink" title="方法2：广度优先搜索"></a>方法2：广度优先搜索</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">floodFill</span><span class="params">(self, image, sr, sc, newColor)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type image: List[List[int]]</span></span><br><span class="line"><span class="string">        :type sr: int</span></span><br><span class="line"><span class="string">        :type sc: int</span></span><br><span class="line"><span class="string">        :type newColor: int</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        oldColor,m,n=image[sr][sc],len(image),len(image[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">if</span> oldColor!=newColor:</span><br><span class="line">            queue=collections.deque([(sr,sc)])</span><br><span class="line">            <span class="keyword">while</span> queue:</span><br><span class="line">                i,j=queue.popleft()</span><br><span class="line">                image[i][j]=newColor</span><br><span class="line">                <span class="keyword">for</span> x,y <span class="keyword">in</span> ((i<span class="number">-1</span>,j),(i+<span class="number">1</span>,j),(i,j+<span class="number">1</span>),(i,j<span class="number">-1</span>)):</span><br><span class="line">                    <span class="keyword">if</span> <span class="number">0</span>&lt;=x&lt;m <span class="keyword">and</span> <span class="number">0</span>&lt;=y&lt;n <span class="keyword">and</span> image[x][y]==oldColor:</span><br><span class="line">                        queue.append((x,y))</span><br><span class="line">        <span class="keyword">return</span> image</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a href="https://leetcode.com/problems/flood-fill/discuss/109604/Easy-Python-DFS-(no-need-for-visited" target="_blank" rel="noopener">Leetcode Discussion:Easy Python DFS (no need for visited)!!!
-</a>!!!)</li>
-<li><a href="https://leetcode.com/problems/flood-fill/discuss/187701/Python-nice-and-clean-DFS-and-BFS-solutions" target="_blank" rel="noopener">Leetcode Discussion:Python nice &amp; clean DFS &amp; BFS solutions</a></li>
-</ul>
-
+        
       
     </div>
     
@@ -463,17 +441,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -488,7 +457,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">93</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -501,7 +470,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -524,22 +493,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#733-图像渲染"><span class="nav-number">1.</span> <span class="nav-text">733. 图像渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">1.2.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法1：深度优先搜索"><span class="nav-number">1.2.1.</span> <span class="nav-text">方法1：深度优先搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法2：广度优先搜索"><span class="nav-number">1.2.2.</span> <span class="nav-text">方法2：广度优先搜索</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
