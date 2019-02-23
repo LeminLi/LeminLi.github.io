@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/06/分治策略之最大子数组问题/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/13/Leetcode-300-最长上升子序列/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lmin">
@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/06/分治策略之最大子数组问题/" itemprop="url">分治策略之最大子数组问题</a></h1>
+                <a class="post-title-link" href="/2019/02/13/Leetcode-300-最长上升子序列/" itemprop="url">Leetcode 300.最长上升子序列</a></h1>
         
 
         <div class="post-meta">
@@ -290,8 +290,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-06T16:41:26+08:00">
-                2019-02-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-13T15:08:10+08:00">
+                2019-02-13
               </time>
             
 
@@ -309,8 +309,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/06/分治策略之最大子数组问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/06/分治策略之最大子数组问题/" itemprop="commentCount"></span>
+                <a href="/2019/02/13/Leetcode-300-最长上升子序列/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/13/Leetcode-300-最长上升子序列/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -340,14 +340,13 @@
       
         
           
-          最大子数组思路使用分治策略意味着将子数组划分为两个规模尽量相等的子数组。也就是说需要找到子数组的中央位置mid。数组A[low…high]的任何连续子数组或最大子数组A[i…j]所处的位置必然是一下三种情况之一：
-
-完全位于左子数组A[low…mid]中
-完全位于右子数组A[mid+1…high]中
+          300. 最长上升子序列题目给定一个无序的整数数组，找到其中最长上升子序列的长度。12345示例:输入: [10,9,2,5,3,7,101,18]输出: 4解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。
+说明:
+可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。你
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/02/06/分治策略之最大子数组问题/#more" rel="contents">
+            <a class="btn" href="/2019/02/13/Leetcode-300-最长上升子序列/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -398,7 +397,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/06/分治策略/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/13/Leetcode-145-后序遍历/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lmin">
@@ -417,7 +416,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/06/分治策略/" itemprop="url">分治策略</a></h1>
+                <a class="post-title-link" href="/2019/02/13/Leetcode-145-后序遍历/" itemprop="url">Leetcode 145.后序遍历</a></h1>
         
 
         <div class="post-meta">
@@ -429,8 +428,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-06T16:28:23+08:00">
-                2019-02-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-13T00:35:42+08:00">
+                2019-02-13
               </time>
             
 
@@ -448,8 +447,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/06/分治策略/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/06/分治策略/" itemprop="commentCount"></span>
+                <a href="/2019/02/13/Leetcode-145-后序遍历/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/13/Leetcode-145-后序遍历/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -479,12 +478,13 @@
       
         
           
-          最大子数组问题思路暴力求解方法尝试每对可能的买进和卖出日期组合，只要卖出日期在买入日期之后即可。n天中共有$C_n^2$种日期组合。日期组合复杂度$C_n^2=\Theta(n^2)$，处理每对日期所花费的时间至少是常量，因此这种方法的运行时间是$\Omega(n^2)$
-分治策略目的寻找一段日期，
+          145. 二叉树的后序遍历题目给定一个二叉树，返回它的 后序 遍历。12345678910示例:输入: [1,null,2,3]     1    \     2    /   3输出: [3,2,1]
+进阶: 递归算法很简单，你可以通过迭代算法完成吗？
+方法方法1：递归12345678910111
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/02/06/分治策略/#more" rel="contents">
+            <a class="btn" href="/2019/02/13/Leetcode-145-后序遍历/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -535,7 +535,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/06/Algorithm-FindMaxSubarray/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/13/Leetcode-144-先序遍历/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lmin">
@@ -554,7 +554,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/06/Algorithm-FindMaxSubarray/" itemprop="url">Algorithm-FindMaxSubarray</a></h1>
+                <a class="post-title-link" href="/2019/02/13/Leetcode-144-先序遍历/" itemprop="url">Leetcode 144.先序遍历</a></h1>
         
 
         <div class="post-meta">
@@ -566,8 +566,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-06T15:32:08+08:00">
-                2019-02-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-13T00:24:48+08:00">
+                2019-02-13
               </time>
             
 
@@ -585,8 +585,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/06/Algorithm-FindMaxSubarray/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/06/Algorithm-FindMaxSubarray/" itemprop="commentCount"></span>
+                <a href="/2019/02/13/Leetcode-144-先序遍历/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/13/Leetcode-144-先序遍历/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -616,11 +616,13 @@
       
         
           
-          
-          
+          44. 二叉树的前序遍历题目给定一个二叉树，返回它的 前序 遍历。12345678910示例:输入: [1,null,2,3]     1    \     2    /   3输出: [1,2,3]
+进阶: 递归算法很简单，你可以通过迭代算法完成吗？
+方法方法1：递归123456789101112
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/02/06/Algorithm-FindMaxSubarray/#more" rel="contents">
+            <a class="btn" href="/2019/02/13/Leetcode-144-先序遍历/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -671,7 +673,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/02/Leetcode-977/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/13/Leetcode-94-中序遍历/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lmin">
@@ -690,7 +692,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/02/Leetcode-977/" itemprop="url">Leetcode-977</a></h1>
+                <a class="post-title-link" href="/2019/02/13/Leetcode-94-中序遍历/" itemprop="url">Leetcode 94.中序遍历</a></h1>
         
 
         <div class="post-meta">
@@ -702,8 +704,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-02T11:15:29+08:00">
-                2019-02-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-13T00:07:05+08:00">
+                2019-02-13
               </time>
             
 
@@ -721,8 +723,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/02/Leetcode-977/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/02/Leetcode-977/" itemprop="commentCount"></span>
+                <a href="/2019/02/13/Leetcode-94-中序遍历/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/13/Leetcode-94-中序遍历/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -752,13 +754,11 @@
       
         
           
-          题目给定一个按非递减顺序排序的整数数组 A，返回每个数字的平方组成的新数组，要求也按非递减顺序排序。
-1234567示例 1：输入：[-4,-1,0,3,10]输出：[0,1,9,16,100]示例 2：输入：[-7,-3,2,3,11]输出：[4,9,9,49,121]
-提示：1 &lt;= A.
+          94. 二叉树的中序遍历方法方法1：迭代123456789101112131415161718192021# Definition for a binary tree node.# class TreeNode(object):#     def __init__(self, x):#       
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/02/02/Leetcode-977/#more" rel="contents">
+            <a class="btn" href="/2019/02/13/Leetcode-94-中序遍历/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -809,7 +809,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/02/Algorithm-Sort/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/12/Leetcode-236-二叉树的最近公共祖先/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lmin">
@@ -828,7 +828,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/02/Algorithm-Sort/" itemprop="url">Algorithm-Sort</a></h1>
+                <a class="post-title-link" href="/2019/02/12/Leetcode-236-二叉树的最近公共祖先/" itemprop="url">Leetcode 236.二叉树的最近公共祖先</a></h1>
         
 
         <div class="post-meta">
@@ -840,8 +840,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-02T10:38:03+08:00">
-                2019-02-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-12T23:00:27+08:00">
+                2019-02-12
               </time>
             
 
@@ -859,8 +859,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/02/Algorithm-Sort/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/02/Algorithm-Sort/" itemprop="commentCount"></span>
+                <a href="/2019/02/12/Leetcode-236-二叉树的最近公共祖先/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/12/Leetcode-236-二叉树的最近公共祖先/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -890,17 +890,13 @@
       
         
           
-          比较排序：插入排序、归并排序、堆排序、快速排序
-线性时间排序排序算法的下界
-在最坏的情况下，任何比较算法都需要做$\Omega(n \lgn)$
-堆排序和归并排序都是渐进最优的比较排序算法
-
-计数排序基本思想：假设输入数据都属于一个小区间内的整数。对每一个输入元素x，确定小于x的元素个数
-Pytho
+          236. 二叉树的最近公共祖先题目给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
+百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”
+例如，给定如下二叉
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/02/02/Algorithm-Sort/#more" rel="contents">
+            <a class="btn" href="/2019/02/12/Leetcode-236-二叉树的最近公共祖先/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -951,7 +947,7 @@ Pytho
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/01/QuickSort/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/12/Leetcode-606-根据二叉树创建字符串/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lmin">
@@ -970,7 +966,7 @@ Pytho
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/01/QuickSort/" itemprop="url">QuickSort</a></h1>
+                <a class="post-title-link" href="/2019/02/12/Leetcode-606-根据二叉树创建字符串/" itemprop="url">Leetcode 606.根据二叉树创建字符串</a></h1>
         
 
         <div class="post-meta">
@@ -982,8 +978,8 @@ Pytho
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-01T09:16:47+08:00">
-                2019-02-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-12T21:52:35+08:00">
+                2019-02-12
               </time>
             
 
@@ -1001,8 +997,8 @@ Pytho
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/01/QuickSort/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/01/QuickSort/" itemprop="commentCount"></span>
+                <a href="/2019/02/12/Leetcode-606-根据二叉树创建字符串/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/12/Leetcode-606-根据二叉树创建字符串/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1032,16 +1028,12 @@ Pytho
       
         
           
-          快速排序时间复杂度分析最坏情况划分当划分产生的两个子问题分别包含了n-1和0个元素时，快速排序的最坏情况发生。不妨假设算法的每一次递归中都出现了这种不平衡划分。
-
-划分的操作时间复杂度是O(n)
-对大小为0的数组进行递归调用回直接返回，时间复杂度是T(0)=1   
-
-算法运行时间的递归式可以表示为
+          606. 根据二叉树创建字符串题目你需要采用前序遍历的方式，将一个二叉树转换成一个由括号和整数组成的字符串。
+空节点则用一对空括号 “()” 表示。而且你需要省略所有不影响字符串与原始二叉树之间的一对一映射关系的空括号对。123456789101112131415161718192021222324
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/02/01/QuickSort/#more" rel="contents">
+            <a class="btn" href="/2019/02/12/Leetcode-606-根据二叉树创建字符串/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1092,7 +1084,7 @@ Pytho
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/31/Leetcode-692/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/12/Leetcode-637-二叉树的层平均值/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lmin">
@@ -1111,7 +1103,7 @@ Pytho
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/31/Leetcode-692/" itemprop="url">Leetcode-692</a></h1>
+                <a class="post-title-link" href="/2019/02/12/Leetcode-637-二叉树的层平均值/" itemprop="url">Leetcode 637.二叉树的层平均值</a></h1>
         
 
         <div class="post-meta">
@@ -1123,8 +1115,8 @@ Pytho
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-31T23:34:48+08:00">
-                2019-01-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-12T21:12:34+08:00">
+                2019-02-12
               </time>
             
 
@@ -1142,8 +1134,8 @@ Pytho
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/31/Leetcode-692/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/01/31/Leetcode-692/" itemprop="commentCount"></span>
+                <a href="/2019/02/12/Leetcode-637-二叉树的层平均值/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/12/Leetcode-637-二叉树的层平均值/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1173,11 +1165,11 @@ Pytho
       
         
           
-          692. 前K个高频单词题目给一非空的单词列表，返回前 k 个出现次数最多的单词。返回的答案应该按单词出现频率由高到低排序。如果不同的单词有相同出现频率，按字母顺序排序。123456789101112示例 1：输入: [&quot;i&quot;, &quot;love&quot;, &quot;l
+          637. 二叉树的层平均值题目给定一个非空二叉树, 返回一个由每层节点平均值组成的数组.1234567891011示例 1:输入:    3   / \  9  20    /  \   15   7输出: [3, 14.5, 11]解释:第0层的平均值是 3,  第1层是 14.5, 第2层是 1
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/01/31/Leetcode-692/#more" rel="contents">
+            <a class="btn" href="/2019/02/12/Leetcode-637-二叉树的层平均值/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1228,7 +1220,7 @@ Pytho
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/31/Leetcode-451/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/12/Leetcode-110-平衡二叉树/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lmin">
@@ -1247,7 +1239,7 @@ Pytho
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/31/Leetcode-451/" itemprop="url">Leetcode-451</a></h1>
+                <a class="post-title-link" href="/2019/02/12/Leetcode-110-平衡二叉树/" itemprop="url">Leetcode 110.平衡二叉树</a></h1>
         
 
         <div class="post-meta">
@@ -1259,8 +1251,8 @@ Pytho
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-31T19:04:40+08:00">
-                2019-01-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-12T20:42:04+08:00">
+                2019-02-12
               </time>
             
 
@@ -1278,8 +1270,8 @@ Pytho
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/31/Leetcode-451/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/01/31/Leetcode-451/" itemprop="commentCount"></span>
+                <a href="/2019/02/12/Leetcode-110-平衡二叉树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/12/Leetcode-110-平衡二叉树/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1309,11 +1301,13 @@ Pytho
       
         
           
-          451. 根据字符出现频率排序题目给定一个字符串，请将字符串里的字符按照出现的频率降序排列。1234567891011121314151617181920212223242526272829303132示例 1:输入:&quot;tree&quot;输出:&quot;eert&quot;解释:&ap
+          110. 平衡二叉树题目给定一个二叉树，判断它是否是高度平衡的二叉树。
+本题中，一棵高度平衡二叉树定义为：
+一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过1。1234567891011121314151617181920212223示例 1:给定二叉树 [3,9,20,null,null,
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/01/31/Leetcode-451/#more" rel="contents">
+            <a class="btn" href="/2019/02/12/Leetcode-110-平衡二叉树/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1364,7 +1358,7 @@ Pytho
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/31/Leetcode-347/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/12/Leetcode-257-二叉树的所有路径/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lmin">
@@ -1383,7 +1377,7 @@ Pytho
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/31/Leetcode-347/" itemprop="url">Leetcode-347</a></h1>
+                <a class="post-title-link" href="/2019/02/12/Leetcode-257-二叉树的所有路径/" itemprop="url">Leetcode 257.二叉树的所有路径</a></h1>
         
 
         <div class="post-meta">
@@ -1395,8 +1389,8 @@ Pytho
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-31T17:52:16+08:00">
-                2019-01-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-12T19:46:39+08:00">
+                2019-02-12
               </time>
             
 
@@ -1414,8 +1408,8 @@ Pytho
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/31/Leetcode-347/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/01/31/Leetcode-347/" itemprop="commentCount"></span>
+                <a href="/2019/02/12/Leetcode-257-二叉树的所有路径/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/12/Leetcode-257-二叉树的所有路径/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1445,12 +1439,13 @@ Pytho
       
         
           
-          347. 前K个高频元素题目给定一个非空的整数数组，返回其中出现频率前 k 高的元素。1234567示例 1:输入: nums = [1,1,1,2,2,3], k = 2输出: [1,2]示例 2:输入: nums = [1], k = 1输出: [1]
-说明：你可以假设给定的 k 总是合理的，且
+          257. 二叉树的所有路径题目给定一个二叉树，返回所有从根节点到叶子节点的路径。说明: 叶子节点是指没有子节点的节点。
+示例:123456789输入:   1 /   \2     3 \  5输出: [&quot;1-&gt;2-&gt;5&quot;, &quot;1-&gt;3&quot;]
+
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/01/31/Leetcode-347/#more" rel="contents">
+            <a class="btn" href="/2019/02/12/Leetcode-257-二叉树的所有路径/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1501,7 +1496,7 @@ Pytho
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/31/Leetcode-703/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/12/Leetcode-104-二叉树的最大深度/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lmin">
@@ -1520,7 +1515,7 @@ Pytho
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/31/Leetcode-703/" itemprop="url">Leetcode-703</a></h1>
+                <a class="post-title-link" href="/2019/02/12/Leetcode-104-二叉树的最大深度/" itemprop="url">Leetcode 104.二叉树的最大深度</a></h1>
         
 
         <div class="post-meta">
@@ -1532,8 +1527,8 @@ Pytho
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-31T17:14:44+08:00">
-                2019-01-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-12T16:43:03+08:00">
+                2019-02-12
               </time>
             
 
@@ -1551,8 +1546,8 @@ Pytho
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/31/Leetcode-703/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/01/31/Leetcode-703/" itemprop="commentCount"></span>
+                <a href="/2019/02/12/Leetcode-104-二叉树的最大深度/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/12/Leetcode-104-二叉树的最大深度/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1582,12 +1577,12 @@ Pytho
       
         
           
-          703. 数据流中的第K大元素题目设计一个找到数据流中第K大元素的类（class）。注意是排序后的第K大元素，不是第K个不同的元素。
-你的 KthLargest 类需要一个同时接收整数 k 和整数数组nums 的构造器，它包含数据流中的初始元素。每次调用 KthLargest.add，返回当前数据流
+          104. 二叉树的最大深度题目给定一个二叉树，找出其最大深度。二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。说明: 叶子节点是指没有子节点的节点。
+示例：12345678给定二叉树 [3,9,20,null,null,15,7]，    3   / \  9  20    /  \   1
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/01/31/Leetcode-703/#more" rel="contents">
+            <a class="btn" href="/2019/02/12/Leetcode-104-二叉树的最大深度/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1629,7 +1624,7 @@ Pytho
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1675,7 +1670,7 @@ Pytho
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">142</span>
+                  <span class="site-state-item-count">160</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1688,7 +1683,7 @@ Pytho
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
