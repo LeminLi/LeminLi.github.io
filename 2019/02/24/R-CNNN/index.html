@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Leep Learnng,论文笔记,物体检测,Obejetc Detection,">
 
 
 
@@ -79,14 +79,18 @@
 
 
 
+<meta name="description" content="Rich feature hierarchies for accurate object detection and semantic segmentationR-CNN: Regions with CNN features 待解决问题：采用深度网络定位物体；只用少量的物体检测标注数据训练高性能模型 物体定位问题定义：回归问题；滑动窗口方法（sliding-window approach） Obj">
+<meta name="keywords" content="Leep Learnng,论文笔记,物体检测,Obejetc Detection">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R-CNNN">
 <meta property="og:url" content="http://yoursite.com/2019/02/24/R-CNNN/index.html">
 <meta property="og:site_name" content="Lmin">
+<meta property="og:description" content="Rich feature hierarchies for accurate object detection and semantic segmentationR-CNN: Regions with CNN features 待解决问题：采用深度网络定位物体；只用少量的物体检测标注数据训练高性能模型 物体定位问题定义：回归问题；滑动窗口方法（sliding-window approach） Obj">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-24T08:57:42.025Z">
+<meta property="og:updated_time" content="2019-02-24T09:46:22.457Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="R-CNNN">
+<meta name="twitter:description" content="Rich feature hierarchies for accurate object detection and semantic segmentationR-CNN: Regions with CNN features 待解决问题：采用深度网络定位物体；只用少量的物体检测标注数据训练高性能模型 物体定位问题定义：回归问题；滑动窗口方法（sliding-window approach） Obj">
 
 
 
@@ -336,7 +340,25 @@
       
 
       
-        
+        <h2 id="Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation"><a href="#Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation" class="headerlink" title="Rich feature hierarchies for accurate object detection and semantic segmentation"></a>Rich feature hierarchies for accurate object detection and semantic segmentation</h2><p>R-CNN: Regions with CNN features</p>
+<p>待解决问题：采用深度网络定位物体；只用少量的物体检测标注数据训练高性能模型</p>
+<p>物体定位问题定义：回归问题；滑动窗口方法（sliding-window approach）</p>
+<h3 id="Object-detection-with-R-CNN"><a href="#Object-detection-with-R-CNN" class="headerlink" title="Object detection with R-CNN"></a>Object detection with R-CNN</h3><p>物体检测系统包含三个模块：生成与类别无关的候选区域；CNN从每个区域提取固定长度的特征向量；特定类别的线性SVMs集合</p>
+<h4 id="Module-design"><a href="#Module-design" class="headerlink" title="Module design"></a>Module design</h4><p>Region proposals：采用选择性搜索方法<br>Feature extraction：采用AlexNet（5个卷积层，2个全连接层）从每个region提取4096维特征。</p>
+<ul>
+<li>统一regions尺寸为227 x 227：不考虑候选区域的size和ratio，直接将将最逼近的bounding box里的所有像素<blockquote>
+<p>Features are computed by forward propagating a<br>mean-subtracted 227 x 227 RGB image through five convolutional<br>layers and two fully connected layers.</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Test-Time测试"><a href="#Test-Time测试" class="headerlink" title="Test-Time测试"></a>Test-Time测试</h4><ul>
+<li>在测试图像中选择性搜索，提取大约2000个region proposals<br>-</li>
+<li><a href="http://www.cs.berkeley.edu/rbg/rcnn" target="_blank" rel="noopener">code</a></li>
+</ul>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/23006190" target="_blank" rel="noopener">知乎</a></li>
+</ul>
+
       
     </div>
     
@@ -350,6 +372,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Leep-Learnng/" rel="tag"># Leep Learnng</a>
+          
+            <a href="/tags/论文笔记/" rel="tag"># 论文笔记</a>
+          
+            <a href="/tags/物体检测/" rel="tag"># 物体检测</a>
+          
+            <a href="/tags/Obejetc-Detection/" rel="tag"># Obejetc Detection</a>
+          
+        </div>
       
 
       
@@ -369,6 +403,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/24/论文笔记-R-CNNN/" rel="prev" title="论文笔记 R-CNNN">
+                论文笔记 R-CNNN <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -426,8 +464,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -442,7 +489,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">161</span>
+                  <span class="site-state-item-count">163</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -455,7 +502,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -478,6 +525,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation"><span class="nav-number">1.</span> <span class="nav-text">Rich feature hierarchies for accurate object detection and semantic segmentation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-detection-with-R-CNN"><span class="nav-number">1.1.</span> <span class="nav-text">Object detection with R-CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Module-design"><span class="nav-number">1.1.1.</span> <span class="nav-text">Module design</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Test-Time测试"><span class="nav-number">1.1.2.</span> <span class="nav-text">Test-Time测试</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
