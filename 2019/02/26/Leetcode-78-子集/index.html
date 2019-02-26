@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="reuse combinations backtrack solution python Leetcode Discussion:Java backtrack">
+<meta name="description" content="回溯的基本方式是“递归+循环”，循环中嵌套着递归，递归中包含循环。关键：原数组中的每个元素都有两种状态，存在和不存在。  外层循环在中间集合tmp中加入元素nums[i]，使这个元素处于存在状态 123456789101112class Solution(object):    def subsets(self, nums):        def backtrack(start, end, tm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode 78.子集">
 <meta property="og:url" content="http://yoursite.com/2019/02/26/Leetcode-78-子集/index.html">
 <meta property="og:site_name" content="Lmin">
-<meta property="og:description" content="reuse combinations backtrack solution python Leetcode Discussion:Java backtrack">
+<meta property="og:description" content="回溯的基本方式是“递归+循环”，循环中嵌套着递归，递归中包含循环。关键：原数组中的每个元素都有两种状态，存在和不存在。  外层循环在中间集合tmp中加入元素nums[i]，使这个元素处于存在状态 123456789101112class Solution(object):    def subsets(self, nums):        def backtrack(start, end, tm">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-26T13:51:57.189Z">
+<meta property="og:updated_time" content="2019-02-26T14:37:02.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 78.子集">
-<meta name="twitter:description" content="reuse combinations backtrack solution python Leetcode Discussion:Java backtrack">
+<meta name="twitter:description" content="回溯的基本方式是“递归+循环”，循环中嵌套着递归，递归中包含循环。关键：原数组中的每个元素都有两种状态，存在和不存在。  外层循环在中间集合tmp中加入元素nums[i]，使这个元素处于存在状态 123456789101112class Solution(object):    def subsets(self, nums):        def backtrack(start, end, tm">
 
 
 
@@ -339,9 +339,16 @@
       
 
       
-        <ul>
-<li><a href="https://leetcode.com/problems/subsets/discuss/128724/reuse-combinations-backtrack-solution-python" target="_blank" rel="noopener">reuse combinations backtrack solution python</a></li>
+        <p>回溯的基本方式是“递归+循环”，循环中嵌套着递归，递归中包含循环。<br>关键：原数组中的每个元素都有两种状态，存在和不存在。</p>
+<ul>
+<li><p>外层循环在中间集合tmp中加入元素nums[i]，使这个元素处于存在状态</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subsets</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">backtrack</span><span class="params">(start, end, tmp)</span>:</span></span><br><span class="line">            ans.append(tmp[:])</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(start, end):</span><br><span class="line">                tmp.append(nums[i])</span><br><span class="line">                backtrack(i+<span class="number">1</span>, end, tmp)</span><br><span class="line">                a=tmp.pop()</span><br><span class="line"></span><br><span class="line">            ans = []</span><br><span class="line">            backtrack(<span class="number">0</span>, len(nums), [])</span><br><span class="line">            <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://leetcode.com/problems/subsets/discuss/128724/reuse-combinations-backtrack-solution-python" target="_blank" rel="noopener">reuse combinations backtrack solution python</a></p>
+</li>
+<li><a href="https://leetcode.com/problems/subsets/discuss/239137/Backtrack-(python3-94" target="_blank" rel="noopener">Leetcode Discussion:Backtrack (python3 94%)  Take or not take?</a>-Take-or-not-take)</li>
 <li><a href="https://leetcode.com/problems/subsets/discuss/187733/BackTrack-Template-Make-backtracking-Easy!!!" target="_blank" rel="noopener">Leetcode Discussion:Java backtrack</a></li>
+<li><a href="https://blog.csdn.net/happyaaaaaaaaaaa/article/details/51604217" target="_blank" rel="noopener"></a></li>
 </ul>
 
       
