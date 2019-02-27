@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Leetcode,回溯法,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="回溯的基本方式是“递归+循环”，循环中嵌套着递归，递归中包含循环。关键：原数组中的每个元素都有两种状态，存在和不存在。  外层循环在中间集合tmp中加入元素nums[i]，使这个元素处于存在状态 123456789101112class Solution(object):    def subsets(self, nums):        def backtrack(start, end, tm">
+<meta name="description" content="78.子集题目给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。 说明：解集不能包含重复的子集。1234567891011121314示例:输入: nums = [1,2,3]输出:[  [3],  [1],  [2],  [1,2,3],  [1,3],  [2,3],  [1,2],  []] 方法方法1：回溯法设n = len(nums)，那么这个问题可以考虑为n叉">
+<meta name="keywords" content="Leetcode,回溯法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode 78.子集">
 <meta property="og:url" content="http://yoursite.com/2019/02/26/Leetcode-78-子集/index.html">
 <meta property="og:site_name" content="Lmin">
-<meta property="og:description" content="回溯的基本方式是“递归+循环”，循环中嵌套着递归，递归中包含循环。关键：原数组中的每个元素都有两种状态，存在和不存在。  外层循环在中间集合tmp中加入元素nums[i]，使这个元素处于存在状态 123456789101112class Solution(object):    def subsets(self, nums):        def backtrack(start, end, tm">
+<meta property="og:description" content="78.子集题目给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。 说明：解集不能包含重复的子集。1234567891011121314示例:输入: nums = [1,2,3]输出:[  [3],  [1],  [2],  [1,2,3],  [1,3],  [2,3],  [1,2],  []] 方法方法1：回溯法设n = len(nums)，那么这个问题可以考虑为n叉">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-26T14:37:02.910Z">
+<meta property="og:updated_time" content="2019-02-27T07:25:08.829Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 78.子集">
-<meta name="twitter:description" content="回溯的基本方式是“递归+循环”，循环中嵌套着递归，递归中包含循环。关键：原数组中的每个元素都有两种状态，存在和不存在。  外层循环在中间集合tmp中加入元素nums[i]，使这个元素处于存在状态 123456789101112class Solution(object):    def subsets(self, nums):        def backtrack(start, end, tm">
+<meta name="twitter:description" content="78.子集题目给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。 说明：解集不能包含重复的子集。1234567891011121314示例:输入: nums = [1,2,3]输出:[  [3],  [1],  [2],  [1,2,3],  [1,3],  [2,3],  [1,2],  []] 方法方法1：回溯法设n = len(nums)，那么这个问题可以考虑为n叉">
 
 
 
@@ -339,16 +340,12 @@
       
 
       
-        <p>回溯的基本方式是“递归+循环”，循环中嵌套着递归，递归中包含循环。<br>关键：原数组中的每个元素都有两种状态，存在和不存在。</p>
+        <h2 id="78-子集"><a href="#78-子集" class="headerlink" title="78.子集"></a><a href="https://leetcode-cn.com/problems/subsets/" target="_blank" rel="noopener">78.子集</a></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。</p>
+<p>说明：解集不能包含重复的子集。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">示例:</span><br><span class="line"></span><br><span class="line">输入: nums = [1,2,3]</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">  [3],</span><br><span class="line">  [1],</span><br><span class="line">  [2],</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [1,3],</span><br><span class="line">  [2,3],</span><br><span class="line">  [1,2],</span><br><span class="line">  []</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="方法1：回溯法"><a href="#方法1：回溯法" class="headerlink" title="方法1：回溯法"></a>方法1：回溯法</h4><p>设n = len(nums)，那么这个问题可以考虑为n叉树，对这个树进行dfs，这个问题里的回溯点就是start=len(nums)时<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subsets</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        ans=[]</span><br><span class="line">        self.backtrack(nums,ans,[],<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">backtrack</span><span class="params">(self,nums,ans,tmp,start)</span>:</span></span><br><span class="line">        ans.append(list(tmp))</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(start,len(nums)):</span><br><span class="line">            tmp.append(nums[i])</span><br><span class="line">            self.backtrack(nums,ans,tmp,i+<span class="number">1</span>)</span><br><span class="line">            tmp.pop()</span><br><span class="line"></span><br><span class="line"><span class="comment"># backtrack([1, 2, 3], [], [], 0)</span></span><br><span class="line"><span class="comment"># backtrack([1, 2, 3], [[]], [1], 1)</span></span><br><span class="line"><span class="comment"># backtrack([1, 2, 3], [[], [1]], [1, 2], 2)</span></span><br><span class="line"><span class="comment"># backtrack([1, 2, 3], [[], [1], [1, 2]], [1, 2, 3], 3)</span></span><br><span class="line"><span class="comment"># --------------------</span></span><br><span class="line"><span class="comment"># pop:  3</span></span><br><span class="line"><span class="comment"># --------------------</span></span><br><span class="line"><span class="comment"># pop:  2</span></span><br><span class="line"><span class="comment"># backtrack([1, 2, 3], [[], [1], [1, 2], [1, 2, 3]], [1, 3], 3)</span></span><br><span class="line"><span class="comment"># --------------------</span></span><br><span class="line"><span class="comment"># pop:  3</span></span><br><span class="line"><span class="comment"># --------------------</span></span><br><span class="line"><span class="comment"># pop:  1</span></span><br><span class="line"><span class="comment"># backtrack([1, 2, 3], [[], [1], [1, 2], [1, 2, 3], [1, 3]], [2], 2)</span></span><br><span class="line"><span class="comment"># backtrack([1, 2, 3], [[], [1], [1, 2], [1, 2, 3], [1, 3], [2]], [2, 3], 3)</span></span><br><span class="line"><span class="comment"># --------------------</span></span><br><span class="line"><span class="comment"># pop:  3</span></span><br><span class="line"><span class="comment"># --------------------</span></span><br><span class="line"><span class="comment"># pop:  2</span></span><br><span class="line"><span class="comment"># backtrack([1, 2, 3], [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3]], [3], 3)</span></span><br><span class="line"><span class="comment"># --------------------</span></span><br><span class="line"><span class="comment"># pop:  3</span></span><br><span class="line"><span class="comment"># --------------------</span></span><br><span class="line"><span class="comment"># [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]</span></span><br></pre></td></tr></table></figure></p>
 <ul>
-<li><p>外层循环在中间集合tmp中加入元素nums[i]，使这个元素处于存在状态</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subsets</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">backtrack</span><span class="params">(start, end, tmp)</span>:</span></span><br><span class="line">            ans.append(tmp[:])</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(start, end):</span><br><span class="line">                tmp.append(nums[i])</span><br><span class="line">                backtrack(i+<span class="number">1</span>, end, tmp)</span><br><span class="line">                a=tmp.pop()</span><br><span class="line"></span><br><span class="line">            ans = []</span><br><span class="line">            backtrack(<span class="number">0</span>, len(nums), [])</span><br><span class="line">            <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><a href="https://leetcode.com/problems/subsets/discuss/128724/reuse-combinations-backtrack-solution-python" target="_blank" rel="noopener">reuse combinations backtrack solution python</a></p>
-</li>
-<li><a href="https://leetcode.com/problems/subsets/discuss/239137/Backtrack-(python3-94" target="_blank" rel="noopener">Leetcode Discussion:Backtrack (python3 94%)  Take or not take?</a>-Take-or-not-take)</li>
-<li><a href="https://leetcode.com/problems/subsets/discuss/187733/BackTrack-Template-Make-backtracking-Easy!!!" target="_blank" rel="noopener">Leetcode Discussion:Java backtrack</a></li>
-<li><a href="https://blog.csdn.net/happyaaaaaaaaaaa/article/details/51604217" target="_blank" rel="noopener"></a></li>
+<li><a href="https://leetcode.com/problems/subsets/discuss/27281/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partitioning" target="_blank" rel="noopener">A general approach to backtracking questions in Java (Subsets, Permutations, Combination Sum, Palindrome Partitioning)</a>)</li>
+<li><a href="https://blog.csdn.net/PKU_Jade/article/details/78020794" target="_blank" rel="noopener">python 回溯法模板</a></li>
 </ul>
 
       
@@ -364,6 +361,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+          
+            <a href="/tags/回溯法/" rel="tag"># 回溯法</a>
+          
+        </div>
       
 
       
@@ -444,8 +449,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -460,7 +474,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">174</span>
+                  <span class="site-state-item-count">180</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -473,7 +487,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -496,6 +510,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#78-子集"><span class="nav-number">1.</span> <span class="nav-text">78.子集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">1.2.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法1：回溯法"><span class="nav-number">1.2.1.</span> <span class="nav-text">方法1：回溯法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
