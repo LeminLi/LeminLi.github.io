@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="相关概念非极大值抑制（Non-maximum suppression, NMS）论文论文知乎">
+<meta name="description" content="物体检测RCNN算法分为4个步骤候选区域生成： 采用Selective Search 方法，一张图像生成2K个不分种类的候选区域（region proposals）特征提取： 对每个候选区域，使用深度卷积网络提一个固定长度的特征向量（4096维度）类别判断： 每个提取的特征送入每一类的SVM分类器，判别是否属于该类位置精修： 使用回归器精细修正候选框位置 候选框搜索阶段对每个输入图像采用选择性搜索">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文笔记 R-CNNN">
 <meta property="og:url" content="http://yoursite.com/2019/02/24/论文笔记-R-CNNN/index.html">
 <meta property="og:site_name" content="Lmin">
-<meta property="og:description" content="相关概念非极大值抑制（Non-maximum suppression, NMS）论文论文知乎">
+<meta property="og:description" content="物体检测RCNN算法分为4个步骤候选区域生成： 采用Selective Search 方法，一张图像生成2K个不分种类的候选区域（region proposals）特征提取： 对每个候选区域，使用深度卷积网络提一个固定长度的特征向量（4096维度）类别判断： 每个提取的特征送入每一类的SVM分类器，判别是否属于该类位置精修： 使用回归器精细修正候选框位置 候选框搜索阶段对每个输入图像采用选择性搜索">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-24T09:59:33.177Z">
+<meta property="og:updated_time" content="2019-02-27T14:15:49.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="论文笔记 R-CNNN">
-<meta name="twitter:description" content="相关概念非极大值抑制（Non-maximum suppression, NMS）论文论文知乎">
+<meta name="twitter:description" content="物体检测RCNN算法分为4个步骤候选区域生成： 采用Selective Search 方法，一张图像生成2K个不分种类的候选区域（region proposals）特征提取： 对每个候选区域，使用深度卷积网络提一个固定长度的特征向量（4096维度）类别判断： 每个提取的特征送入每一类的SVM分类器，判别是否属于该类位置精修： 使用回归器精细修正候选框位置 候选框搜索阶段对每个输入图像采用选择性搜索">
 
 
 
@@ -339,7 +339,58 @@
       
 
       
-        <h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><h4 id="非极大值抑制（Non-maximum-suppression-NMS）"><a href="#非极大值抑制（Non-maximum-suppression-NMS）" class="headerlink" title="非极大值抑制（Non-maximum suppression, NMS）"></a>非极大值抑制（Non-maximum suppression, NMS）</h4><p><a href="https://arxiv.org/pdf/1311.2524.pdf" target="_blank" rel="noopener">论文</a><br><a href="http://openaccess.thecvf.com/content_cvpr_2014/papers/Girshick_Rich_Feature_Hierarchies_2014_CVPR_paper.pdf" target="_blank" rel="noopener">论文</a><br><a href="https://zhuanlan.zhihu.com/p/23006190" target="_blank" rel="noopener">知乎</a></p>
+        <h3 id="物体检测"><a href="#物体检测" class="headerlink" title="物体检测"></a>物体检测</h3><h4 id="RCNN算法分为4个步骤"><a href="#RCNN算法分为4个步骤" class="headerlink" title="RCNN算法分为4个步骤"></a>RCNN算法分为4个步骤</h4><p>候选区域生成： 采用Selective Search 方法，一张图像生成2K个不分种类的候选区域（region proposals）<br>特征提取： 对每个候选区域，使用深度卷积网络提一个固定长度的特征向量（4096维度）<br>类别判断： 每个提取的特征送入每一类的SVM分类器，判别是否属于该类<br>位置精修： 使用回归器精细修正候选框位置</p>
+<h4 id="候选框搜索阶段"><a href="#候选框搜索阶段" class="headerlink" title="候选框搜索阶段"></a>候选框搜索阶段</h4><p>对每个输入图像采用选择性搜索，可以得到2k个候选框。对于每个输入的候选框都需要缩放到固定的大小，因为CNN对输入图片的大小是有固定的。<br><strong>各向异性缩放</strong>（图D)<br>各向异性（“warp”）地将每个候选对象缩放到CNN输入大小<br><strong>各向同性缩放</strong></p>
+<ul>
+<li>有上下文内容的最紧致的正方形（图B)</li>
+<li>没有上下文内容的最紧致的正方形（图C）</li>
+</ul>
+<p>对于上述每种变换，都可以考虑增加原始候选物体周围的额外的上下文内容。上下文内容填充的数量定义为输入变换坐标轴下原始候选物体周围的border size<br>上面的示意图中第1、3行就是结合了padding=0,第2、4行结果图采用padding=16的结果。经过最后的试验，作者发现采用各向异性缩放、padding=16的精度最高。</p>
+<h4 id="测试阶段"><a href="#测试阶段" class="headerlink" title="测试阶段"></a>测试阶段</h4><p>使用selective search的方法在测试图片上提取2000个region propasals ，将每个region proposals归一化到227x227，然后再CNN中正向传播，将最后一层得到的特征提取出来。然后对于每一个类别，使用为这一类训练的SVM分类器对提取的特征向量进行打分，得到测试图片中对于所有region proposals的对于这一类的分数，再使用贪心的非极大值抑制（NMS）去除相交的多余的框。再对这些框进行canny边缘检测，就可以得到bounding-box(then B-BoxRegression)。</p>
+<p>非极大值抑制（NMS）先计算出每一个bounding box的面积，然后根据score进行排序，把score最大的bounding box作为选定的框，计算其余bounding box与当前最大score的box的IoU，去除IoU大于设定的阈值的bounding box。然后重复上面的过程，直至候选bounding box为空，然后再将score小于一定阈值的选定框删除得到这一类的结果（然后继续进行下一个分类）。作者提到花费在region propasals和提取特征的时间是13s/张-GPU和53s/张-CPU，可以看出时间还是很长的，不能够达到及时性。</p>
+<h4 id="训练阶段"><a href="#训练阶段" class="headerlink" title="训练阶段"></a>训练阶段</h4><h5 id="有监督预训练"><a href="#有监督预训练" class="headerlink" title="有监督预训练"></a>有监督预训练</h5><p>paper在设计网络结构的时候，是直接用Alexnet的网络，然后连参数也是直接采用它的参数，作为初始的参数值，然后再fine-tuning训练。网络优化求解时采用随机梯度下降法，学习率大小为0.001；</p>
+<h5 id="特定任务的微调"><a href="#特定任务的微调" class="headerlink" title="特定任务的微调"></a>特定任务的微调</h5><p>采用 selective search 搜索出来的候选框 （PASCAL VOC 数据库中的图片） 继续对上面预训练的CNN模型进行fine-tuning训练。假设要检测的物体类别有N类，那么我们就需要把上面预训练阶段的CNN模型的最后一层给替换掉，替换成N+1个输出的神经元(加1，表示还有一个背景) (20 + 1bg = 21)，然后这一层直接采用参数随机初始化的方法，其它网络层的参数不变；接着就可以开始继续SGD训练了。开始的时候，SGD学习率选择0.001，在每次训练的时候，我们batch size大小选择128，其中32个是正样本、96个是负样本。</p>
+<p><strong>关于正负样本问题：</strong><br>在CNN阶段我们需要用IOU为2000个bounding box打标签。如果用selective search挑选出来的候选框与物体的人工标注矩形框（PASCAL VOC的图片都有人工标注）的重叠区域IoU大于0.5，那么我们就把这个候选框标注成物体类别（正样本），否则我们就把它当做背景类别（负样本）。</p>
+<h5 id="物体类别分类器"><a href="#物体类别分类器" class="headerlink" title="物体类别分类器"></a>物体类别分类器</h5><p>这是一个二分类问题，我么假设我们要检测车辆。我们知道只有当bounding box把整量车都包含在内，那才叫正样本；如果bounding box 没有包含到车辆，那么我们就可以把它当做负样本。但问题是当我们的检测窗口只有部分包含物体，那该怎么定义正负样本呢？作者测试了IOU阈值各种方案数值0,0.1,0.2,0.3,0.4,0.5。最后通过训练发现，如果选择IOU阈值为0.3效果最好（选择为0精度下降了4个百分点，选择0.5精度下降了5个百分点）,即当重叠度小于0.3的时候，我们就把它标注为负样本。</p>
+<p><strong>一旦CNN f7层特征被提取出来，那么我们将为每个物体类训练一个svm分类器。</strong> 当我们用CNN提取2000个候选框，可以得到2000<em>4096这样的特征向量矩阵，然后我们只需要把这样的一个矩阵与svm权值矩阵4096</em>N点乘(N为分类类别数目，因为我们训练的N个svm，每个svm包含了4096个权值w)，就可以得到结果了</p>
+<p>CNN训练的时候，本来就是对bounding box的物体进行识别分类训练，在训练的时候最后一层softmax就是分类层。<strong>那么为什么作者闲着没事干要先用CNN做特征提取（提取fc7层数据），然后再把提取的特征用于训练svm分类器？</strong></p>
+<p><strong>这个是因为svm训练和cnn训练过程的正负样本定义方式各有不同，导致最后采用CNN softmax输出比采用svm精度还低。</strong> 事情是这样的，cnn在训练的时候，对训练数据做了比较宽松的标注，比如一个bounding box可能只包含物体的一部分，那么我也把它标注为正样本，用于训练cnn；采用这个方法的主要原因在于因为CNN容易过拟合，所以需要大量的训练数据，所以在CNN训练阶段我们是对Bounding box的位置限制条件限制的比较松(IOU只要大于0.5都被标注为正样本了)；然而svm训练的时候，因为svm适用于少样本训练，所以对于训练样本数据的IOU要求比较严格，我们只有当bounding box把整个物体都包含进去了，我们才把它标注为物体类别，然后训练svm，具体请看下文。</p>
+<blockquote>
+<p>Training data is required for three procedures in R-CNN: (1) CNN fine-tuning, (2) detector SVM training, and (3) bounding-box regressor training.</p>
+</blockquote>
+<h5 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h5><ul>
+<li>不微调的情况下，pool5的效果不比fc6和fc7差，但参数少很多，意味着CNN的表示能力来源于卷积层，而不是更加密集的全连接层</li>
+<li><p>fc6和fc7的finetune效果要好于pool5，意味着，从ImageNet学习的pool5特征是一般特征，觉得大部分的提高来源于特定任务非线性分类器的学习</p>
+<h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><h4 id="选择性搜索（Selective-Search）"><a href="#选择性搜索（Selective-Search）" class="headerlink" title="选择性搜索（Selective Search）"></a>选择性搜索（Selective Search）</h4><p>使用一种过分割手段，将图像分割成小区域 (1k~2k 个)<br>查看现有小区域，按照合并规则合并可能性最高的相邻两个区域。重复直到整张图像合并成一个区域位置<br>输出所有曾经存在过的区域，所谓候选区域<br>其中合并规则如下： 优先合并以下四种区域：</p>
+</li>
+<li><p>颜色（颜色直方图）相近的</p>
+</li>
+<li>纹理（梯度直方图）相近的</li>
+<li>合并后总面积小的： 保证合并操作的尺度较为均匀，避免一个大区域陆续“吃掉”其他小区域 （例：设有区域a-b-c-d-e-f-g-h。较好的合并方式是：ab-cd-ef-gh -&gt; abcd-efgh -&gt; abcdefgh。 不好的合并方法是：ab-c-d-e-f-g-h -&gt;abcd-e-f-g-h -&gt;abcdef-gh -&gt; abcdefgh）<br>合并后，总面积在其BBOX中所占比例大的： 保证合并后形状规则</li>
+<li><a href="https://zhuanlan.zhihu.com/p/39927488" target="_blank" rel="noopener">理解Selective Search</a><h4 id="重叠度-intersection-overunion-IoU"><a href="#重叠度-intersection-overunion-IoU" class="headerlink" title="重叠度 intersection-overunion(IoU)"></a>重叠度 intersection-overunion(IoU)</h4>在目标检测的评价体系中，对于bounding box的定位精度有一个参数叫做 IoU ，简单来讲就是模型产生的目标窗口和原来标记窗口的交叠率。具体我们可以简单的理解为： 即检测结果(DetectionResult)与 GroundTruth 的交集比上它们的并集，即为检测的准确率 IoU :<script type="math/tex; mode=display">IOU=(DetectionResult \bigcap GrounthTruth )/(DetectionResult \bigcup GrounthTruth)</script></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Created on Sun Aug 07 14:26:51 2016</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">@author: Eddy_zheng</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">IOU</span><span class="params">(Reframe,GTframe)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    自定义函数，计算两矩形 IOU，传入为均为矩形对角线，（x,y）  坐标。</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    x1 = Reframe[<span class="number">0</span>]</span><br><span class="line">    y1 = Reframe[<span class="number">1</span>]</span><br><span class="line">    width1 = Reframe[<span class="number">2</span>]-Reframe[<span class="number">0</span>]</span><br><span class="line">    height1 = Reframe[<span class="number">3</span>]-Reframe[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    x2 = GTframe[<span class="number">0</span>]</span><br><span class="line">    y2 = GTframe[<span class="number">1</span>]</span><br><span class="line">    width2 = GTframe[<span class="number">2</span>]-GTframe[<span class="number">0</span>]</span><br><span class="line">    height2 = GTframe[<span class="number">3</span>]-GTframe[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    endx = max(x1+width1,x2+width2)</span><br><span class="line">    startx = min(x1,x2)</span><br><span class="line">    width = width1+width2-(endx-startx)</span><br><span class="line"></span><br><span class="line">    endy = max(y1+height1,y2+height2)</span><br><span class="line">    starty = min(y1,y2)</span><br><span class="line">    height = height1+height2-(endy-starty)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> width &lt;=<span class="number">0</span> <span class="keyword">or</span> height &lt;= <span class="number">0</span>:</span><br><span class="line">        ratio = <span class="number">0</span> <span class="comment"># 重叠率为 0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        Area = width*height <span class="comment"># 两矩形相交面积</span></span><br><span class="line">        Area1 = width1*height1</span><br><span class="line">        Area2 = width2*height2</span><br><span class="line">        ratio = Area*<span class="number">1.</span>/(Area1+Area2-Area)</span><br><span class="line">    <span class="comment"># return IOU</span></span><br><span class="line">    <span class="keyword">return</span> ratio,Reframe,GTframe</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://blog.csdn.net/eddy_zheng/article/details/52126641" target="_blank" rel="noopener">检测评价函数 intersection-over-union （ IOU ）</a></li>
+</ul>
+<h4 id="非极大值抑制（Non-maximum-suppression-NMS）"><a href="#非极大值抑制（Non-maximum-suppression-NMS）" class="headerlink" title="非极大值抑制（Non-maximum suppression, NMS）"></a>非极大值抑制（Non-maximum suppression, NMS）</h4><blockquote>
+<p>对于Bounding Box的列表B及其对应的置信度S,采用下面的计算方式.选择具有最大score的检测框M,将其从B集合中移除并加入到最终的检测结果D中.通常将B中剩余检测框中与M的IoU大于阈值Nt的框从B中移除.重复这个过程,直到B为空.</p>
+</blockquote>
+<p>因为一会儿讲RCNN算法，会从一张图片中找出n多个可能是物体的矩形框，然后为每个矩形框为做类别分类概率：</p>
+<p>就像上面的图片一样，定位一个车辆，最后算法就找出了一堆的方框，我们需要判别哪些矩形框是没用的。非极大值抑制：先假设有6个矩形框，根据分类器类别分类概率做排序，从小到大分别属于车辆的概率分别为A、B、C、D、E、F。</p>
+<p>　　(1)从最大概率矩形框F开始，分别判断A~E与F的重叠度IOU是否大于某个设定的阈值;</p>
+<p>　　(2)假设B、D与F的重叠度超过阈值，那么就扔掉B、D；并标记第一个矩形框F，是我们保留下来的。</p>
+<p>　　(3)从剩下的矩形框A、C、E中，选择概率最大的E，然后判断E与A、C的重叠度，重叠度大于一定的阈值，那么就扔掉；并标记E是我们保留下来的第二个矩形框。</p>
+<p>　　就这样一直重复，找到所有被保留下来的矩形框。</p>
+<ul>
+<li><a href="https://www.cnblogs.com/makefile/p/nms.html" target="_blank" rel="noopener">博客 非极大值抑制</a></li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://arxiv.org/pdf/1311.2524.pdf" target="_blank" rel="noopener">论文</a></li>
+<li><a href="http://openaccess.thecvf.com/content_cvpr_2014/papers/Girshick_Rich_Feature_Hierarchies_2014_CVPR_paper.pdf" target="_blank" rel="noopener">论文</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/23006190" target="_blank" rel="noopener">知乎</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/34142321" target="_blank" rel="noopener">知乎：干货 | 目标检测入门，看这篇就够了（已更完）</a></li>
+</ul>
 
       
     </div>
@@ -459,7 +510,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">182</span>
+                  <span class="site-state-item-count">185</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -505,7 +556,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#相关概念"><span class="nav-number">1.</span> <span class="nav-text">相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#非极大值抑制（Non-maximum-suppression-NMS）"><span class="nav-number">1.1.</span> <span class="nav-text">非极大值抑制（Non-maximum suppression, NMS）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#物体检测"><span class="nav-number">1.</span> <span class="nav-text">物体检测</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RCNN算法分为4个步骤"><span class="nav-number">1.1.</span> <span class="nav-text">RCNN算法分为4个步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#候选框搜索阶段"><span class="nav-number">1.2.</span> <span class="nav-text">候选框搜索阶段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试阶段"><span class="nav-number">1.3.</span> <span class="nav-text">测试阶段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#训练阶段"><span class="nav-number">1.4.</span> <span class="nav-text">训练阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#有监督预训练"><span class="nav-number">1.4.1.</span> <span class="nav-text">有监督预训练</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#特定任务的微调"><span class="nav-number">1.4.2.</span> <span class="nav-text">特定任务的微调</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#物体类别分类器"><span class="nav-number">1.4.3.</span> <span class="nav-text">物体类别分类器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对比"><span class="nav-number">1.4.4.</span> <span class="nav-text">对比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关概念"><span class="nav-number">2.</span> <span class="nav-text">相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#选择性搜索（Selective-Search）"><span class="nav-number">2.1.</span> <span class="nav-text">选择性搜索（Selective Search）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重叠度-intersection-overunion-IoU"><span class="nav-number">2.2.</span> <span class="nav-text">重叠度 intersection-overunion(IoU)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非极大值抑制（Non-maximum-suppression-NMS）"><span class="nav-number">2.3.</span> <span class="nav-text">非极大值抑制（Non-maximum suppression, NMS）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
