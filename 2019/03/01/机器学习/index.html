@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Lmin">
 <meta property="og:description" content="机器学习相关问题数学基础 机器学习理论篇1：机器学习的数学基础决策树   请问（决策树、Random Forest、Booting、Adaboot）GBDT和XGBoost的区别是什么？机器学习复习笔记之集成学习机器学习之梯度提升决策树(GBDT)ID3、C4.5、CART、随机森林、bagging、boosting、Adaboost、GBDT、xgboost算法总结  西瓜书详细讲解不同集成方法">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-03T07:06:51.258Z">
+<meta property="og:updated_time" content="2019-03-03T07:36:54.364Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习">
 <meta name="twitter:description" content="机器学习相关问题数学基础 机器学习理论篇1：机器学习的数学基础决策树   请问（决策树、Random Forest、Booting、Adaboot）GBDT和XGBoost的区别是什么？机器学习复习笔记之集成学习机器学习之梯度提升决策树(GBDT)ID3、C4.5、CART、随机森林、bagging、boosting、Adaboost、GBDT、xgboost算法总结  西瓜书详细讲解不同集成方法">
@@ -347,14 +347,15 @@
 <li>请问（决策树、Random Forest、Booting、Adaboot）GBDT和XGBoost的区别是什么？<br><a href="https://zhuanlan.zhihu.com/p/34325706" target="_blank" rel="noopener">机器学习复习笔记之集成学习</a><br><a href="https://zhuanlan.zhihu.com/p/36339161" target="_blank" rel="noopener">机器学习之梯度提升决策树(GBDT)</a><br><a href="https://zhuanlan.zhihu.com/p/34534004" target="_blank" rel="noopener">ID3、C4.5、CART、随机森林、bagging、boosting、Adaboost、GBDT、xgboost算法总结</a></li>
 </ol>
 <p>西瓜书详细讲解不同集成方法</p>
-<h3 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h3><p>定义：是一种迭代算法，是含有隐变量的概率模型参数估计的极大似然估计法，或极大后验概率估计法</p>
-<p>简述：EM<br>算法是不断求解下界的极大化逼近求解不完全数据对数似然函数$\log P(Y|\theta)$极大化的算法</p>
-<p>算法：<br>对于一个含有隐变量的概率模型，其目标是极大化观测数据（不完全数据）关于参数的对数似然函数</p>
+<h3 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>是一种迭代算法，是含有隐变量的概率模型参数估计的极大似然估计法，或极大后验概率估计法</p>
+<h4 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h4><p>EM算法是不断求解下界的极大化逼近求解不完全数据对数似然函数$\log P(Y|\theta)$极大化的算法</p>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>对于一个含有隐变量的概率模型，其目标是极大化观测数据（不完全数据）关于参数的对数似然函数</p>
 <p>EM算法是通过迭代逐步逼近极大化似然函数$L(\theta)$</p>
 <p>不断求解似然函数的下界的极大化，逼近求解似然函数的极大化（省去对$\theta$而言是是常数的项）</p>
 <p>EM算法的一次迭代，就是求解Q函数及其极大化</p>
-<p>推导：<br>收敛性证明：<br>应用及推广：<br>关键词：概率模型参数估计、隐变量、</p>
-<ul>
+<h4 id="优点及缺点："><a href="#优点及缺点：" class="headerlink" title="优点及缺点："></a>优点及缺点：</h4><ul>
+<li>优点：算法的简单性和普适性</li>
+<li>缺点：EM算法不能保证收敛到全局最优；对初值是敏感的<h4 id="推导："><a href="#推导：" class="headerlink" title="推导："></a>推导：</h4>收敛性证明：$P(Y|\theta^(i))$对数似然函数序列是单调递增的。<br>应用及推广：混合高斯模型的参数估计、隐马尔可夫模型的非监督学习<br>关键词：概率模型参数估计、隐变量、</li>
 <li><a href="https://blog.csdn.net/liu1194397014/article/details/52766760" target="_blank" rel="noopener">博客：极大似然函数估计和贝叶斯估计详解</a></li>
 </ul>
 <h3 id="集锦"><a href="#集锦" class="headerlink" title="集锦"></a>集锦</h3><ul>
@@ -531,7 +532,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习相关问题"><span class="nav-number">1.</span> <span class="nav-text">机器学习相关问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数学基础"><span class="nav-number">1.1.</span> <span class="nav-text">数学基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树"><span class="nav-number">1.2.</span> <span class="nav-text">决策树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EM算法"><span class="nav-number">1.3.</span> <span class="nav-text">EM算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集锦"><span class="nav-number">1.4.</span> <span class="nav-text">集锦</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#专业名词"><span class="nav-number">1.5.</span> <span class="nav-text">专业名词</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习相关问题"><span class="nav-number">1.</span> <span class="nav-text">机器学习相关问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数学基础"><span class="nav-number">1.1.</span> <span class="nav-text">数学基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树"><span class="nav-number">1.2.</span> <span class="nav-text">决策树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EM算法"><span class="nav-number">1.3.</span> <span class="nav-text">EM算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义"><span class="nav-number">1.3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简述"><span class="nav-number">1.3.2.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.3.3.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优点及缺点："><span class="nav-number">1.3.4.</span> <span class="nav-text">优点及缺点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推导："><span class="nav-number">1.3.5.</span> <span class="nav-text">推导：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集锦"><span class="nav-number">1.4.</span> <span class="nav-text">集锦</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#专业名词"><span class="nav-number">1.5.</span> <span class="nav-text">专业名词</span></a></li></ol></li></ol></div>
             
 
           </div>
