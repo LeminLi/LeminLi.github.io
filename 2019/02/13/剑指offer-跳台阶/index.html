@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="题目描述一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。 方法12345678910111213# -*- coding:utf-8 -*-class Solution:    def jumpFloor(self, number):        # write code here        if number==1:">
+<meta name="description" content="题目描述一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。 方法最简单的情况如果只有一级台阶，只有一种跳法。如果有两级台阶，有两种跳法：一种分两次跳，每次跳1级；一种一次跳2级。 一般情况把n级台阶时的跳法看作n的函数，记作f(n)当n&amp;gt;=2时，第一次跳的时候就有两种选择：  一是第一次只跳1级，此时跳法数目等于后面剩下的n">
 <meta name="keywords" content="动态规划,剑指offer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="剑指offer 跳台阶">
 <meta property="og:url" content="http://yoursite.com/2019/02/13/剑指offer-跳台阶/index.html">
 <meta property="og:site_name" content="Lmin">
-<meta property="og:description" content="题目描述一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。 方法12345678910111213# -*- coding:utf-8 -*-class Solution:    def jumpFloor(self, number):        # write code here        if number==1:">
+<meta property="og:description" content="题目描述一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。 方法最简单的情况如果只有一级台阶，只有一种跳法。如果有两级台阶，有两种跳法：一种分两次跳，每次跳1级；一种一次跳2级。 一般情况把n级台阶时的跳法看作n的函数，记作f(n)当n&amp;gt;=2时，第一次跳的时候就有两种选择：  一是第一次只跳1级，此时跳法数目等于后面剩下的n">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-13T11:32:47.472Z">
+<meta property="og:updated_time" content="2019-03-04T09:50:02.190Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指offer 跳台阶">
-<meta name="twitter:description" content="题目描述一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。 方法12345678910111213# -*- coding:utf-8 -*-class Solution:    def jumpFloor(self, number):        # write code here        if number==1:">
+<meta name="twitter:description" content="题目描述一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。 方法最简单的情况如果只有一级台阶，只有一种跳法。如果有两级台阶，有两种跳法：一种分两次跳，每次跳1级；一种一次跳2级。 一般情况把n级台阶时的跳法看作n的函数，记作f(n)当n&amp;gt;=2时，第一次跳的时候就有两种选择：  一是第一次只跳1级，此时跳法数目等于后面剩下的n">
 
 
 
@@ -341,7 +341,13 @@
 
       
         <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">jumpFloor</span><span class="params">(self, number)</span>:</span></span><br><span class="line">        <span class="comment"># write code here</span></span><br><span class="line">        <span class="keyword">if</span> number==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        dp=[<span class="number">0</span>]*number</span><br><span class="line">        dp[<span class="number">0</span>],dp[<span class="number">1</span>]=<span class="number">1</span>,<span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,number):</span><br><span class="line">            dp[i]=dp[i<span class="number">-1</span>]+dp[i<span class="number">-2</span>]</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p><strong>最简单的情况</strong><br>如果只有一级台阶，只有一种跳法。<br>如果有两级台阶，有两种跳法：一种分两次跳，每次跳1级；一种一次跳2级。</p>
+<p><strong>一般情况</strong><br>把n级台阶时的跳法看作n的函数，记作f(n)<br>当n&gt;=2时，第一次跳的时候就有两种选择：</p>
+<ul>
+<li>一是第一次只跳1级，此时跳法数目等于后面剩下的n-1级台阶的跳法数目f(n-1)；</li>
+<li>二是第一次跳2级，此时跳法数目等于后面剩下的n-2级台阶的跳法数目f(n-2)<br>因此，n阶台阶的跳法数目f(n)=f(n-1)+f(n-2)<br>这就是斐波那契数列</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">jumpFloor</span><span class="params">(self, number)</span>:</span></span><br><span class="line">        <span class="comment"># write code here</span></span><br><span class="line">        <span class="keyword">if</span> number==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        dp=[<span class="number">0</span>]*number</span><br><span class="line">        dp[<span class="number">0</span>],dp[<span class="number">1</span>]=<span class="number">1</span>,<span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,number):</span><br><span class="line">            dp[i]=dp[i<span class="number">-1</span>]+dp[i<span class="number">-2</span>]</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -469,7 +475,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">193</span>
+                  <span class="site-state-item-count">195</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -482,7 +488,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
