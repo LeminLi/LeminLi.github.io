@@ -87,7 +87,10 @@
 <meta property="og:description" content="机器学习原理简述隐马尔可夫模型概述隐马尔科夫模型是关于时序的概率模型，描述一个由隐藏的马尔可夫链随机生成不可观测的状态的序列，再由各个状态随机生成一个观测而产生观测的序列的过程。 三要素： 隐马尔科夫模型由初始状态概率向量$\pi$，状态转移概率矩阵A和观测概率矩阵B决定。因此，隐马尔科夫模型可以写成$\lambda = (\pi,A,B)$ 隐马尔科夫模型是一个生成模型，表示状态序列和观测序列的">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/03/05/机器学习笔记-资料总结/markdown-img-paste-20190305105755536.png">
-<meta property="og:updated_time" content="2019-03-05T02:58:33.098Z">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/机器学习笔记-资料总结/markdown-img-paste-2019030511165536.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/机器学习笔记-资料总结/markdown-img-paste-20190305111717811.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/机器学习笔记-资料总结/markdown-img-paste-20190305111737208.png">
+<meta property="og:updated_time" content="2019-03-05T05:03:18.931Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记 资料总结">
 <meta name="twitter:description" content="机器学习原理简述隐马尔可夫模型概述隐马尔科夫模型是关于时序的概率模型，描述一个由隐藏的马尔可夫链随机生成不可观测的状态的序列，再由各个状态随机生成一个观测而产生观测的序列的过程。 三要素： 隐马尔科夫模型由初始状态概率向量$\pi$，状态转移概率矩阵A和观测概率矩阵B决定。因此，隐马尔科夫模型可以写成$\lambda = (\pi,A,B)$ 隐马尔科夫模型是一个生成模型，表示状态序列和观测序列的">
@@ -350,6 +353,22 @@
 <li>观测独立性假设$b_j(k)$：假设任意时刻的观测只依赖于该时刻的马尔可夫链的状态，与其他观测和状态无关</li>
 </ul>
 <p><img src="markdown-img-paste-20190305105755536.png" alt=""></p>
+<h4 id="概率计算问题"><a href="#概率计算问题" class="headerlink" title="概率计算问题"></a>概率计算问题</h4><h5 id="直接法"><a href="#直接法" class="headerlink" title="直接法"></a>直接法</h5><p>$P(O,I|\lambda)=P(O|I,\lambda)P(I|\lambda)$</p>
+<h5 id="前向算法"><a href="#前向算法" class="headerlink" title="前向算法"></a>前向算法</h5><p>$P(O,I|\lambda)=P(O|I,\lambda)P(I|\lambda)$<br><img src="markdown-img-paste-2019030511165536.png" alt=""><br><img src="markdown-img-paste-20190305111717811.png" alt=""></p>
+<h5 id="后向算法"><a href="#后向算法" class="headerlink" title="后向算法"></a>后向算法</h5><p>$P(O|I,lambda)$<br><img src="markdown-img-paste-20190305111737208.png" alt=""></p>
+<h4 id="学习算法"><a href="#学习算法" class="headerlink" title="学习算法"></a>学习算法</h4><p>隐马尔科夫模型的学习$\lambda=(\pi,A,B)$，根据训练数据集分为监督学习和无监督学习</p>
+<ul>
+<li>训练数据包含观测序列和状态序列，属于监督学习，极大似然估计参数</li>
+<li>训练数据只包含观测序列，属于非监督学习，学习算法为Baum-Welch算法(EM算法)</li>
+</ul>
+<h5 id="Baum-Welch算法"><a href="#Baum-Welch算法" class="headerlink" title="Baum-Welch算法"></a>Baum-Welch算法</h5><p>隐马尔科夫模型实际上是一个包含隐变量的概率模型<br>$P(O|\lambda)=\sum_I P(O|I,\lambda)P(I|\lambda)$</p>
+<h4 id="预测算法"><a href="#预测算法" class="headerlink" title="预测算法"></a>预测算法</h4><p>隐马尔科夫模型的预测算法：近似算法、维特比算法</p>
+<p><strong>近似算法</strong><br>思想：在每个时刻t选择再该时刻最有可能出现的状态$i_t^* $，从而得到一个状态序列，将其作为预测结果<br>$P(I|O,\lambda)=\frac P(I,O|\lambda) P(O|\lambda)$</p>
+<p>优点：计算简单<br>缺点：不能保证预测的状态序列整体是最有可能的序列，因为预测恶的状态序列可能有实际不发生的部分</p>
+<p><strong>维特比算法</strong></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/30884603" target="_blank" rel="noopener">《机器学习实战》学习总结（十一）——隐马尔可夫模型（HMM）</a></li>
+</ul>
 
       
     </div>
@@ -383,6 +402,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/05/机器学习笔记/" rel="prev" title="机器学习笔记">
+                机器学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -465,7 +488,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">201</span>
+                  <span class="site-state-item-count">203</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -511,7 +534,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习原理简述"><span class="nav-number">1.</span> <span class="nav-text">机器学习原理简述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#隐马尔可夫模型"><span class="nav-number">1.1.</span> <span class="nav-text">隐马尔可夫模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-number">1.1.1.</span> <span class="nav-text">概述</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习原理简述"><span class="nav-number">1.</span> <span class="nav-text">机器学习原理简述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#隐马尔可夫模型"><span class="nav-number">1.1.</span> <span class="nav-text">隐马尔可夫模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-number">1.1.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#概率计算问题"><span class="nav-number">1.1.2.</span> <span class="nav-text">概率计算问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#直接法"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">直接法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#前向算法"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">前向算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#后向算法"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">后向算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#学习算法"><span class="nav-number">1.1.3.</span> <span class="nav-text">学习算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Baum-Welch算法"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Baum-Welch算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#预测算法"><span class="nav-number">1.1.4.</span> <span class="nav-text">预测算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">2.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
