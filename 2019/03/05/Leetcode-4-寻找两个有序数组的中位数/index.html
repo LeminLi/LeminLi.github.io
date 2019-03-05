@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Leetcode,动态规划,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="53. 最大子序和题目给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。12345示例:输入: [-2,1,-3,4,-1,2,1,-5,4],输出: 6解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。 进阶:如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的分治法求解。 方法方法1：动态规划DP的思路是比对dp[i-1]+">
-<meta name="keywords" content="Leetcode,动态规划">
+<meta name="description" content="方法12      left_A             |        right_AA[0], A[1], ..., A[i-1]  |  A[i], A[i+1], ..., A[m-1]">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode 53.最大子序和">
-<meta property="og:url" content="http://yoursite.com/2019/02/13/Leetcode-53-最大子序和/index.html">
+<meta property="og:title" content="Leetcode 4.寻找两个有序数组的中位数">
+<meta property="og:url" content="http://yoursite.com/2019/03/05/Leetcode-4-寻找两个有序数组的中位数/index.html">
 <meta property="og:site_name" content="Lmin">
-<meta property="og:description" content="53. 最大子序和题目给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。12345示例:输入: [-2,1,-3,4,-1,2,1,-5,4],输出: 6解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。 进阶:如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的分治法求解。 方法方法1：动态规划DP的思路是比对dp[i-1]+">
+<meta property="og:description" content="方法12      left_A             |        right_AA[0], A[1], ..., A[i-1]  |  A[i], A[i+1], ..., A[m-1]">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-13T11:32:36.671Z">
+<meta property="og:updated_time" content="2019-03-05T14:33:37.699Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode 53.最大子序和">
-<meta name="twitter:description" content="53. 最大子序和题目给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。12345示例:输入: [-2,1,-3,4,-1,2,1,-5,4],输出: 6解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。 进阶:如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的分治法求解。 方法方法1：动态规划DP的思路是比对dp[i-1]+">
+<meta name="twitter:title" content="Leetcode 4.寻找两个有序数组的中位数">
+<meta name="twitter:description" content="方法12      left_A             |        right_AA[0], A[1], ..., A[i-1]  |  A[i], A[i+1], ..., A[m-1]">
 
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/13/Leetcode-53-最大子序和/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/05/Leetcode-4-寻找两个有序数组的中位数/">
 
 
 
 
 
-  <title>Leetcode 53.最大子序和 | Lmin</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Leetcode 4.寻找两个有序数组的中位数 | Lmin</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -263,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/13/Leetcode-53-最大子序和/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/Leetcode-4-寻找两个有序数组的中位数/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lmin">
@@ -280,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode 53.最大子序和</h1>
+          <h1 class="post-title" itemprop="name headline">Leetcode 4.寻找两个有序数组的中位数</h1>
         
 
         <div class="post-meta">
@@ -292,8 +291,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-13T15:13:15+08:00">
-                2019-02-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T22:31:14+08:00">
+                2019-03-05
               </time>
             
 
@@ -311,8 +310,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/13/Leetcode-53-最大子序和/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/13/Leetcode-53-最大子序和/" itemprop="commentCount"></span>
+                <a href="/2019/03/05/Leetcode-4-寻找两个有序数组的中位数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/03/05/Leetcode-4-寻找两个有序数组的中位数/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -340,12 +339,7 @@
       
 
       
-        <h2 id="53-最大子序和"><a href="#53-最大子序和" class="headerlink" title="53. 最大子序和"></a><a href="https://leetcode-cn.com/problems/maximum-subarray/submissions/" target="_blank" rel="noopener">53. 最大子序和</a></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">示例:</span><br><span class="line"></span><br><span class="line">输入: [-2,1,-3,4,-1,2,1,-5,4],</span><br><span class="line">输出: 6</span><br><span class="line">解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。</span><br></pre></td></tr></table></figure></p>
-<p>进阶:<br>如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的分治法求解。</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="方法1：动态规划"><a href="#方法1：动态规划" class="headerlink" title="方法1：动态规划"></a>方法1：动态规划</h4><p>DP的思路是比对dp[i-1]+nums[i] 和nums[i]本身的值<br>状态：从之前一个节点到现在节点的最大值<br>DP:O(N)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        dp=[float(<span class="string">'-inf'</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums))]</span><br><span class="line">        dp[<span class="number">0</span>]=nums[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(nums)):</span><br><span class="line">            dp[i]=max(nums[i]+dp[i<span class="number">-1</span>],nums[i])</span><br><span class="line">        <span class="keyword">return</span> max(dp)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        dp=[float(<span class="string">'-inf'</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums))]</span><br><span class="line">        res=dp[<span class="number">0</span>]=nums[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(nums)):</span><br><span class="line">            dp[i]=max(nums[i]+dp[i<span class="number">-1</span>],nums[i])</span><br><span class="line">            res=max(res,dp[i])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-<h4 id="方法2：分治"><a href="#方法2：分治" class="headerlink" title="方法2：分治"></a>方法2：分治</h4><h4 id="方法3"><a href="#方法3" class="headerlink" title="方法3"></a>方法3</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        sum=<span class="number">0</span></span><br><span class="line">        res=nums[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">            sum+=num</span><br><span class="line">            <span class="keyword">if</span> sum&gt;res:</span><br><span class="line">                res=sum</span><br><span class="line">            <span class="keyword">if</span> sum&lt;<span class="number">0</span>:</span><br><span class="line">                sum=<span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+        <h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">      left_A             |        right_A</span><br><span class="line">A[0], A[1], ..., A[i-1]  |  A[i], A[i+1], ..., A[m-1]</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -361,14 +355,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
-          
-            <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
-          
-        </div>
-      
 
       
       
@@ -378,8 +364,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/13/Leetcode-300-最长上升子序列/" rel="next" title="Leetcode 300.最长上升子序列">
-                <i class="fa fa-chevron-left"></i> Leetcode 300.最长上升子序列
+              <a href="/2019/03/05/Leetcode-295-数据流的中位数/" rel="next" title="Leetcode 295.数据流的中位数">
+                <i class="fa fa-chevron-left"></i> Leetcode 295.数据流的中位数
               </a>
             
           </div>
@@ -387,10 +373,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/13/Leetcode-62-不同路径/" rel="prev" title="Leetcode 62.不同路径">
-                Leetcode 62.不同路径 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -421,7 +403,7 @@
 
   
     <div class="comments" id="comments">
-      <div class="ds-thread" data-thread-key="2019/02/13/Leetcode-53-最大子序和/" data-title="Leetcode 53.最大子序和" data-url="http://yoursite.com/2019/02/13/Leetcode-53-最大子序和/">
+      <div class="ds-thread" data-thread-key="2019/03/05/Leetcode-4-寻找两个有序数组的中位数/" data-title="Leetcode 4.寻找两个有序数组的中位数" data-url="http://yoursite.com/2019/03/05/Leetcode-4-寻找两个有序数组的中位数/">
       </div>
     </div>
 
@@ -519,7 +501,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#53-最大子序和"><span class="nav-number">1.</span> <span class="nav-text">53. 最大子序和</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">1.2.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法1：动态规划"><span class="nav-number">1.2.1.</span> <span class="nav-text">方法1：动态规划</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法2：分治"><span class="nav-number">1.2.2.</span> <span class="nav-text">方法2：分治</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法3"><span class="nav-number">1.2.3.</span> <span class="nav-text">方法3</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">1.</span> <span class="nav-text">方法</span></a></li></ol></div>
             
 
           </div>
