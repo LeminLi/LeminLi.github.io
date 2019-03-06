@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Leetcode,二分查找,堆排序,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="480.滑动窗口中位数题目中位数是有序序列最中间的那个数。如果序列的大小是偶数，则没有最中间的数；此时中位数是最中间的两个数的平均数。 例如： [2,3,4]，中位数是 3 [2,3]，中位数是 (2 + 3) / 2 = 2.5 给出一个数组 nums，有一个大小为 k 的窗口从最左端滑动到最右端。窗口中有 k 个数，每次窗口移动 1 位。你的任务是找出每次窗口移动后得到的新窗口中元素的中位数，">
+<meta name="keywords" content="Leetcode,二分查找,堆排序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 480.滑动窗口中位数">
+<meta property="og:url" content="http://yoursite.com/2019/03/06/Leetcode-480-滑动窗口中位数/index.html">
+<meta property="og:site_name" content="Lmin">
+<meta property="og:description" content="480.滑动窗口中位数题目中位数是有序序列最中间的那个数。如果序列的大小是偶数，则没有最中间的数；此时中位数是最中间的两个数的平均数。 例如： [2,3,4]，中位数是 3 [2,3]，中位数是 (2 + 3) / 2 = 2.5 给出一个数组 nums，有一个大小为 k 的窗口从最左端滑动到最右端。窗口中有 k 个数，每次窗口移动 1 位。你的任务是找出每次窗口移动后得到的新窗口中元素的中位数，">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-06T04:24:49.028Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leetcode 480.滑动窗口中位数">
+<meta name="twitter:description" content="480.滑动窗口中位数题目中位数是有序序列最中间的那个数。如果序列的大小是偶数，则没有最中间的数；此时中位数是最中间的两个数的平均数。 例如： [2,3,4]，中位数是 3 [2,3]，中位数是 (2 + 3) / 2 = 2.5 给出一个数组 nums，有一个大小为 k 的窗口从最左端滑动到最右端。窗口中有 k 个数，每次窗口移动 1 位。你的任务是找出每次窗口移动后得到的新窗口中元素的中位数，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/06/Leetcode-480-滑动窗口中位数/">
+
+
+
+
+
+  <title>Leetcode 480.滑动窗口中位数 | Lmin</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lmin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/06/Leetcode-480-滑动窗口中位数/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lmin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lmin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Leetcode 480.滑动窗口中位数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-06T09:27:49+08:00">
+                2019-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/06/Leetcode-480-滑动窗口中位数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/03/06/Leetcode-480-滑动窗口中位数/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="480-滑动窗口中位数"><a href="#480-滑动窗口中位数" class="headerlink" title="480.滑动窗口中位数"></a><a href="https://leetcode-cn.com/problems/sliding-window-median/submissions/" target="_blank" rel="noopener">480.滑动窗口中位数</a></h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>中位数是有序序列最中间的那个数。如果序列的大小是偶数，则没有最中间的数；此时中位数是最中间的两个数的平均数。</p>
+<p>例如：</p>
+<p>[2,3,4]，中位数是 3</p>
+<p>[2,3]，中位数是 (2 + 3) / 2 = 2.5</p>
+<p>给出一个数组 nums，有一个大小为 k 的窗口从最左端滑动到最右端。窗口中有 k 个数，每次窗口移动 1 位。你的任务是找出每次窗口移动后得到的新窗口中元素的中位数，并输出由它们组成的数组。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">例如：</span><br><span class="line"></span><br><span class="line">给出 nums = [1,3,-1,-3,5,3,6,7]，以及 k = 3。</span><br><span class="line"></span><br><span class="line">窗口位置                      中位数</span><br><span class="line">---------------               -----</span><br><span class="line">[1  3  -1] -3  5  3  6  7       1</span><br><span class="line"> 1 [3  -1  -3] 5  3  6  7       -1</span><br><span class="line"> 1  3 [-1  -3  5] 3  6  7       -1</span><br><span class="line"> 1  3  -1 [-3  5  3] 6  7       3</span><br><span class="line"> 1  3  -1  -3 [5  3  6] 7       5</span><br><span class="line"> 1  3  -1  -3  5 [3  6  7]      6</span><br><span class="line"> 因此，返回该滑动窗口的中位数数组 [1,-1,-1,3,5,6]。</span><br></pre></td></tr></table></figure></p>
+<p>提示：<br>假设k是合法的，即：k 始终小于输入的非空数组的元素个数.</p>
+<h4 id="方法1-Python-二分查找和插入模块bisect"><a href="#方法1-Python-二分查找和插入模块bisect" class="headerlink" title="方法1:Python 二分查找和插入模块bisect"></a>方法1:Python 二分查找和插入模块bisect</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">medianSlidingWindow</span><span class="params">(self, nums, k)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type k: int</span></span><br><span class="line"><span class="string">        :rtype: List[float]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">import</span> bisect</span><br><span class="line">        <span class="keyword">if</span> k == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> map(float,nums)</span><br><span class="line"></span><br><span class="line">        self.window = nums[<span class="number">0</span>:k]</span><br><span class="line">        self.window.sort()</span><br><span class="line">        ret = []</span><br><span class="line">        ret.append(self.getCenter(k))</span><br><span class="line"></span><br><span class="line">        i = <span class="number">1</span></span><br><span class="line">        j = k</span><br><span class="line">        <span class="keyword">while</span> j &lt; len(nums):</span><br><span class="line">            self.window.remove(nums[i<span class="number">-1</span>])</span><br><span class="line">            bisect.insort_left(self.window, nums[j])</span><br><span class="line">            ret.append(self.getCenter(k))</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getCenter</span><span class="params">(self, k)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> k % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> float((self.window[k//<span class="number">2</span>] + self.window[k//<span class="number">2</span><span class="number">-1</span>]) / <span class="number">2.0</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> float(self.window[k//<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">medianSlidingWindow</span><span class="params">(self, nums, k)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type k: int</span></span><br><span class="line"><span class="string">        :rtype: List[float]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        median=[]</span><br><span class="line">        window=sorted(nums[:k])</span><br><span class="line">        median.append((window[k/<span class="number">2</span>]+window[k/<span class="number">2</span>-(k&amp;<span class="number">1</span>==<span class="number">0</span>)])/<span class="number">2.</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)-k):</span><br><span class="line">            window.remove(nums[i])</span><br><span class="line">            bisect.insort(window,nums[i+k])</span><br><span class="line">            median.append((window[k/<span class="number">2</span>]+window[k/<span class="number">2</span>-(k&amp;<span class="number">1</span>==<span class="number">0</span>)])/<span class="number">2.</span>)</span><br><span class="line">        <span class="keyword">return</span> median</span><br></pre></td></tr></table></figure>
+<h4 id="方法二：两个堆"><a href="#方法二：两个堆" class="headerlink" title="方法二：两个堆"></a>方法二：两个堆</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2-heap (min, max) based solution:</span><br><span class="line">uses 2 heaps left-(max)heap lh and right-(min)heap rh. The key idea is the maintain the size invariance of the heaps as we add and remove elements. The top of both the heaps can be used to calculate the median.</span><br><span class="line">- We use lazy-deletion from the heap</span><br><span class="line">- using the first k elements construct a min heap lh. Then pop k-k/2 and add it to the rh. Now the heap sized are set at k/2 and k-k/2</span><br><span class="line">- Iterate over rest of the numbers and add it to the appropriate heap and maintain heap size invariance by moving the top number from one heap to another as needed.</span><br><span class="line">O(N logK) beats 90%</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">medianSlidingWindow</span><span class="params">(self, nums, k)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type k: int</span></span><br><span class="line"><span class="string">        :rtype: List[float]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">from</span> heapq <span class="keyword">import</span> *</span><br><span class="line">        lh,rh,res=[],[],[]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 初始化</span></span><br><span class="line">        <span class="keyword">for</span> i,n <span class="keyword">in</span> enumerate(nums[:k]):</span><br><span class="line">            heappush(lh,(-n,i))</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(k-k//<span class="number">2</span>):</span><br><span class="line">            heappush(rh,(-lh[<span class="number">0</span>][<span class="number">0</span>],lh[<span class="number">0</span>][<span class="number">1</span>]))</span><br><span class="line">            heappop(lh)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i,n <span class="keyword">in</span> enumerate(nums[k:]):</span><br><span class="line">            res.append(rh[<span class="number">0</span>][<span class="number">0</span>]/<span class="number">1.</span> <span class="keyword">if</span> k&amp;<span class="number">1</span> <span class="keyword">else</span> (rh[<span class="number">0</span>][<span class="number">0</span>]-lh[<span class="number">0</span>][<span class="number">0</span>])/<span class="number">2.</span>)</span><br><span class="line">            <span class="comment"># 新增加元素nums[i+k]==n，删除元素nums[i]，保持两个堆长度一致</span></span><br><span class="line">            <span class="keyword">if</span> n&gt;=rh[<span class="number">0</span>][<span class="number">0</span>]:</span><br><span class="line">                heappush(rh,(n,i+k))</span><br><span class="line">                <span class="keyword">if</span> nums[i]&lt;=rh[<span class="number">0</span>][<span class="number">0</span>]:</span><br><span class="line">                    heappush(lh,(-rh[<span class="number">0</span>][<span class="number">0</span>],rh[<span class="number">0</span>][<span class="number">1</span>]))</span><br><span class="line">                    heappop(rh)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                heappush(lh,(-n,i+k))</span><br><span class="line">                <span class="keyword">if</span> nums[i]&gt;=rh[<span class="number">0</span>][<span class="number">0</span>]:</span><br><span class="line">                    heappush(rh,(-lh[<span class="number">0</span>][<span class="number">0</span>],lh[<span class="number">0</span>][<span class="number">1</span>]))</span><br><span class="line">                    heappop(lh)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (lh <span class="keyword">and</span> lh[<span class="number">0</span>][<span class="number">1</span>]&lt;=i):heappop(lh)</span><br><span class="line">            <span class="keyword">while</span> (rh <span class="keyword">and</span> rh[<span class="number">0</span>][<span class="number">1</span>]&lt;=i):heappop(rh)</span><br><span class="line">        res.append(rh[<span class="number">0</span>][<span class="number">0</span>]/<span class="number">1.</span> <span class="keyword">if</span> k&amp;<span class="number">1</span> <span class="keyword">else</span> (rh[<span class="number">0</span>][<span class="number">0</span>]-lh[<span class="number">0</span>][<span class="number">0</span>])/<span class="number">2.</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>较繁琐的代码，但容易理解<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">medianSlidingWindow</span><span class="params">(self, nums, k)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">from</span> heapq <span class="keyword">import</span> heappush, heappop, heapify</span><br><span class="line"></span><br><span class="line">    lMaxHeap = []</span><br><span class="line">    <span class="comment"># for every pair in heap, not only record the key, but also its position in nums</span></span><br><span class="line">    firstList = [(nums[i], i) <span class="keyword">for</span> i <span class="keyword">in</span> range(k)]</span><br><span class="line">    heapify(firstList)</span><br><span class="line">    rMinHeap = firstList</span><br><span class="line">    <span class="keyword">if</span> k == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> [float(i) <span class="keyword">for</span> i <span class="keyword">in</span> nums]</span><br><span class="line">    <span class="comment"># initialize two heap: size of Right min heap  - size of Left max heap &gt;= 1</span></span><br><span class="line">    <span class="comment"># in the following, abbreviate right min heap as right; left max heap as left</span></span><br><span class="line">    <span class="comment"># when k is odd, left size == right size - 1;</span></span><br><span class="line">    <span class="comment"># when k is even, left size == right size</span></span><br><span class="line">    <span class="keyword">while</span> len(rMinHeap) - len(lMaxHeap) &gt;= <span class="number">2</span>:</span><br><span class="line">        pop = heappop(rMinHeap)</span><br><span class="line">        <span class="comment"># implement max heap by key * (-1) in min heap</span></span><br><span class="line">        heappush(lMaxHeap, ( <span class="number">-1</span> * pop[<span class="number">0</span>], pop[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">    medianList = [float(rMinHeap[<span class="number">0</span>][<span class="number">0</span>]) <span class="keyword">if</span> k%<span class="number">2</span> == <span class="number">1</span> <span class="keyword">else</span> float(rMinHeap[<span class="number">0</span>][<span class="number">0</span>] - lMaxHeap[<span class="number">0</span>][<span class="number">0</span>])/<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(k, len(nums)):</span><br><span class="line">        <span class="comment"># if balance &gt;= 2 -&gt; push(left , pop(right))</span></span><br><span class="line">        <span class="comment"># elif balance &lt;= 2 -&gt; push(left, pop(right))</span></span><br><span class="line">        balance = <span class="number">0</span></span><br><span class="line">        <span class="comment"># add cases: when added num greater or equal to right top of min heap, add it to right. \</span></span><br><span class="line">        <span class="comment"># Otherwise, add it to left</span></span><br><span class="line">        <span class="keyword">if</span> nums[i] &gt;= rMinHeap[<span class="number">0</span>][<span class="number">0</span>]:</span><br><span class="line">            balance += <span class="number">1</span></span><br><span class="line">            heappush(rMinHeap, (nums[i], i))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            balance -= <span class="number">1</span></span><br><span class="line">            heappush(lMaxHeap, (-nums[i], i))</span><br><span class="line">        <span class="comment"># remove case:</span></span><br><span class="line">        <span class="comment"># (1) the removing element is in top of either list -&gt; remove until top is in current list</span></span><br><span class="line">        <span class="comment"># at the same time, change balance</span></span><br><span class="line">        <span class="comment"># (2) the removing element is not in both top of heap -&gt; just change balance</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> lMaxHeap[<span class="number">0</span>][<span class="number">1</span>] == i-k:</span><br><span class="line">            heappop(lMaxHeap)</span><br><span class="line">            <span class="keyword">while</span> (lMaxHeap) <span class="keyword">and</span> (lMaxHeap[<span class="number">0</span>][<span class="number">1</span>] &lt;= i - k):</span><br><span class="line">                heappop(lMaxHeap)</span><br><span class="line">            balance += <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> rMinHeap[<span class="number">0</span>][<span class="number">1</span>] == i - k:</span><br><span class="line">            heappop(rMinHeap)</span><br><span class="line">            <span class="keyword">while</span> (rMinHeap) <span class="keyword">and</span> (rMinHeap[<span class="number">0</span>][<span class="number">1</span>] &lt;= i - k):</span><br><span class="line">                heappop(rMinHeap)</span><br><span class="line">            balance -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> rMinHeap[<span class="number">0</span>][<span class="number">0</span>] &gt;= nums[i - k]:</span><br><span class="line">            balance += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            balance -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#balance num in both heap</span></span><br><span class="line">        <span class="keyword">if</span> balance &gt; <span class="number">0</span>:</span><br><span class="line">            popElement = heappop(rMinHeap)</span><br><span class="line">            heappush(lMaxHeap, (-popElement[<span class="number">0</span>], popElement[<span class="number">1</span>]))</span><br><span class="line">            <span class="keyword">while</span> (rMinHeap) <span class="keyword">and</span> (rMinHeap[<span class="number">0</span>][<span class="number">1</span>] &lt;= i - k):</span><br><span class="line">                heappop(rMinHeap)</span><br><span class="line">        <span class="keyword">elif</span> balance &lt; <span class="number">0</span>:</span><br><span class="line">            popElement = heappop(lMaxHeap)</span><br><span class="line">            heappush(rMinHeap,(-popElement[<span class="number">0</span>], popElement[<span class="number">1</span>]))</span><br><span class="line">            <span class="keyword">while</span> (lMaxHeap) <span class="keyword">and</span> (lMaxHeap[<span class="number">0</span>][<span class="number">1</span>] &lt;= i - k):</span><br><span class="line">                heappop(lMaxHeap)  </span><br><span class="line"></span><br><span class="line">        medianList.append(float(rMinHeap[<span class="number">0</span>][<span class="number">0</span>]) <span class="keyword">if</span> k%<span class="number">2</span> == <span class="number">1</span> <span class="keyword">else</span> float(rMinHeap[<span class="number">0</span>][<span class="number">0</span>] - lMaxHeap[<span class="number">0</span>][<span class="number">0</span>])/<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> medianList</span><br></pre></td></tr></table></figure></p>
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><p>Python 有一个 bisect 模块，用于维护有序列表。bisect 模块实现了一个算法用于插入元素到有序列表。在一些情况下，这比反复排序列表或构造一个大的列表再排序的效率更高。Bisect 是二分法的意思，这里使用二分法来排序，它会将一个元素插入到一个有序列表的合适位置，这使得不需要每次调用 sort 的方式维护有序列表。</p>
+<p>bisect模块采用经典的二分算法查找元素。模块提供下面几个方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bisect.bisect_left(a, x, lo=0, hi=len(a))</span><br></pre></td></tr></table></figure>
+<p>定位x在序列a中的插入点，并保持原来的有序状态不变。参数lo和hi用于指定查找区间。如果x已经存在于a中，那么插入点在已存在元素的左边。函数的返回值是列表的整数下标。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bisect.bisect_right(a, x, lo=0, hi=len(a))</span><br></pre></td></tr></table></figure></p>
+<p>和上面的区别是插入点在右边。函数的返回值依然是一个列表下标整数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bisect.bisect(a, x, lo=0, hi=len(a))</span><br></pre></td></tr></table></figure></p>
+<p>等同于<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">注意，前面这三个方法都是获取插入位置，也就是列表的某个下标的，并不实际插入。但下面三个方法实际插入元素，没有返回值。</span><br></pre></td></tr></table></figure></p>
+<p>bisect.insort_left(a, x, lo=0, hi=len(a))<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">将x插入有序序列a内，并保持有序状态。相当于```a.insert(bisect.bisect_left(a, x, lo, hi), x)```。碰到相同的元素则插入到元素的左边。这个操作通常是 O(log n) 的时间复杂度。</span><br></pre></td></tr></table></figure></p>
+<p>bisect.insort_right(a, x, lo=0, hi=len(a))<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">同上，只不过碰到相同的元素则插入到元素的右边。</span><br></pre></td></tr></table></figure></p>
+<p>bisect.insort(a, x, lo=0, hi=len(a))<br><code>等同于</code>insort_right()```。</p>
+<ul>
+<li><a href="http://www.liujiangblog.com/course/python/57" target="_blank" rel="noopener">Python bisect</a></li>
+<li><a href="https://leetcode.com/problems/sliding-window-median/discuss/167298/O(n-log-k" target="_blank" rel="noopener">Leetcode Discussion</a>-Python-using-2-heap-and-a-has-map)</li>
+<li><a href="https://leetcode.com/problems/sliding-window-median/discuss/96361/Python-O(n*log(k" target="_blank" rel="noopener">Leetcode Discussion:Python O(n*log(k)) using 2 heaps and a set with explanation (AC: 462 ms)</a>)-using-2-heaps-and-a-set-with-explanation-(AC%3A-462-ms))</li>
+<li><a href="https://leetcode.com/problems/sliding-window-median/discuss/96343/Python-O(nlogK" target="_blank" rel="noopener">Leetcode Discussion:Python O(nlogK) solution using two heaps</a>-solution-using-two-heaps)</li>
+<li><a href="https://leetcode.com/problems/sliding-window-median/discuss/96337/Python-SortedArray-(beats-100" target="_blank" rel="noopener">Leetcode Discussion:Python SortedArray (beats 100%) and 2-Heap(beats 90%) solution</a>-and-2-Heap(beats-90)-solution)</li>
+<li><a href="https://leetcode.com/problems/sliding-window-median/discuss/215187/Python-Two-Heaps-O(N-log-K" target="_blank" rel="noopener">Leetcode Discussion:Python Two Heaps O(N log K)</a>)</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+          
+            <a href="/tags/二分查找/" rel="tag"># 二分查找</a>
+          
+            <a href="/tags/堆排序/" rel="tag"># 堆排序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/05/Leetcode-4-寻找两个有序数组的中位数/" rel="next" title="Leetcode 4.寻找两个有序数组的中位数">
+                <i class="fa fa-chevron-left"></i> Leetcode 4.寻找两个有序数组的中位数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/06/剑指offer-滑动窗口的最大值/" rel="prev" title="剑指offer 滑动窗口的最大值">
+                剑指offer 滑动窗口的最大值 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2019/03/06/Leetcode-480-滑动窗口中位数/" data-title="Leetcode 480.滑动窗口中位数" data-url="http://yoursite.com/2019/03/06/Leetcode-480-滑动窗口中位数/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Lmin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">210</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#480-滑动窗口中位数"><span class="nav-number">1.</span> <span class="nav-text">480.滑动窗口中位数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法1-Python-二分查找和插入模块bisect"><span class="nav-number">1.1.1.</span> <span class="nav-text">方法1:Python 二分查找和插入模块bisect</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二：两个堆"><span class="nav-number">1.1.2.</span> <span class="nav-text">方法二：两个堆</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python"><span class="nav-number">1.2.</span> <span class="nav-text">Python</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lmin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"Lmin"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
