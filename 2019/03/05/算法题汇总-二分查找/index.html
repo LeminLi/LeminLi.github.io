@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="二分查找,汇总,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="二分查找二分查找总结二分搜索的注意：编写二分查找的程序时如果令 left &amp;lt;= right，则right = middle - 1;如果令left &amp;lt; right，则 right = middle; 标准二分查找循环条件包含left==right，循环的终止条件包含：  找到目标值 left&amp;gt;right，这种情况发生于当left, mid, right指向同一个数时，这个数还不是">
+<meta name="keywords" content="二分查找,汇总">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法题汇总 二分查找">
+<meta property="og:url" content="http://yoursite.com/2019/03/05/算法题汇总-二分查找/index.html">
+<meta property="og:site_name" content="Lmin">
+<meta property="og:description" content="二分查找二分查找总结二分搜索的注意：编写二分查找的程序时如果令 left &amp;lt;= right，则right = middle - 1;如果令left &amp;lt; right，则 right = middle; 标准二分查找循环条件包含left==right，循环的终止条件包含：  找到目标值 left&amp;gt;right，这种情况发生于当left, mid, right指向同一个数时，这个数还不是">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/算法题汇总-二分查找/markdown-img-paste-20190306224421415.png">
+<meta property="og:updated_time" content="2019-03-07T02:36:33.621Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法题汇总 二分查找">
+<meta name="twitter:description" content="二分查找二分查找总结二分搜索的注意：编写二分查找的程序时如果令 left &amp;lt;= right，则right = middle - 1;如果令left &amp;lt; right，则 right = middle; 标准二分查找循环条件包含left==right，循环的终止条件包含：  找到目标值 left&amp;gt;right，这种情况发生于当left, mid, right指向同一个数时，这个数还不是">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/05/算法题汇总-二分查找/markdown-img-paste-20190306224421415.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/05/算法题汇总-二分查找/">
+
+
+
+
+
+  <title>算法题汇总 二分查找 | Lmin</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lmin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/算法题汇总-二分查找/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lmin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lmin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">算法题汇总 二分查找</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T19:18:28+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/05/算法题汇总-二分查找/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/03/05/算法题汇总-二分查找/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><p><a href="https://segmentfault.com/a/1190000016825704" target="_blank" rel="noopener">二分查找总结</a><br><img src="markdown-img-paste-20190306224421415.png" alt=""><br>二分搜索的注意：<br>编写二分查找的程序时<br>如果令 left &lt;= right，则right = middle - 1;<br>如果令left &lt; right，则 right = middle;</p>
+<h2 id="标准二分查找"><a href="#标准二分查找" class="headerlink" title="标准二分查找"></a>标准二分查找</h2><p>循环条件包含left==right，循环的终止条件包含：</p>
+<ul>
+<li>找到目标值</li>
+<li>left&gt;right，这种情况发生于当left, mid, right指向同一个数时，这个数还不是目标值，则整个查找结束。</li>
+<li>left + ((right -left) &gt;&gt; 1)，其实和 (left + right) / 2是等价的，这样写的目的一个是为了防止 (left + right)出现溢出，一个是用右移操作替代除法提升性能。</li>
+<li>left + ((right -left) &gt;&gt; 1) 对于目标区域长度为奇数而言，是处于正中间的，对于长度为偶数而言，是中间偏左的。因此左右边界相遇时，只会是以下两种情况：<ul>
+<li>left/mid , right (left, mid 指向同一个数，right指向它的下一个数)</li>
+<li>left/mid/right （left, mid, right 指向同一个数）<br>即因为mid对于长度为偶数的区间总是偏左的，所以当区间长度小于等于2时，mid 总是和 left在同一侧。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">循环条件： left &lt;= right</span><br><span class="line">中间位置计算： mid = left + ((right -left) &gt;&gt; 1)</span><br><span class="line">左边界更新：left = mid + 1</span><br><span class="line">右边界更新：right = mid - 1</span><br><span class="line">返回值： mid / -1</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        left,right=<span class="number">0</span>,len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> left&lt;=right:</span><br><span class="line">            mid=left+((right-left)&gt;&gt;<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">if</span> nums[mid]==target:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="keyword">elif</span> nums[mid]&gt;target:</span><br><span class="line">                right=mid<span class="number">-1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                left=mid+<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
+<h3 id="35-搜索插入位置"><a href="#35-搜索插入位置" class="headerlink" title="35. 搜索插入位置"></a><a href="https://leetcode-cn.com/problems/search-insert-position/" target="_blank" rel="noopener">35. 搜索插入位置</a></h3><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
+<p>你可以假设数组中无重复元素。</p>
+<h4 id="思路1：标准二分查找"><a href="#思路1：标准二分查找" class="headerlink" title="思路1：标准二分查找"></a>思路1：标准二分查找</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchInsert</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        left,right=<span class="number">0</span>,len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> left&lt;=right:</span><br><span class="line"></span><br><span class="line">            mid=(left+right)/<span class="number">2</span></span><br><span class="line">            print(left,mid,right)</span><br><span class="line">            <span class="keyword">if</span> nums[mid]==target:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="keyword">elif</span> nums[mid]&lt;target:</span><br><span class="line">                left=mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[mid]&gt;target:</span><br><span class="line">                right=mid<span class="number">-1</span></span><br><span class="line">        <span class="keyword">return</span> left</span><br><span class="line">        <span class="comment"># if nums[left]&lt;target:</span></span><br><span class="line">        <span class="comment">#     return left+1</span></span><br><span class="line">        <span class="comment"># else:</span></span><br><span class="line">        <span class="comment">#     return left</span></span><br></pre></td></tr></table></figure>
+<h4 id="思路2：二分查找左边界"><a href="#思路2：二分查找左边界" class="headerlink" title="思路2：二分查找左边界"></a>思路2：二分查找左边界</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchInsert</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        left,right=<span class="number">0</span>,len(nums)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> left&lt;right:</span><br><span class="line">            mid=left+(right-left)/<span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &gt;=target:</span><br><span class="line">                right=mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                left=mid+<span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> left</span><br></pre></td></tr></table></figure>
+<h4 id="思路3：bisect模块"><a href="#思路3：bisect模块" class="headerlink" title="思路3：bisect模块"></a>思路3：bisect模块</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchInsert</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> bisect.bisect_left(nums, target)</span><br></pre></td></tr></table></figure>
+<h3 id="74-搜索二维矩阵"><a href="#74-搜索二维矩阵" class="headerlink" title="74. 搜索二维矩阵"></a><a href="https://leetcode-cn.com/problems/search-a-2d-matrix/" target="_blank" rel="noopener">74. 搜索二维矩阵</a></h3><p>编写一个高效的算法来判断 m x n 矩阵中，是否存在一个目标值。该矩阵具有如下特性：</p>
+<p>每行中的整数从左到右按升序排列。<br>每行的第一个整数大于前一行的最后一个整数。</p>
+<h4 id="思路1：标准二分查找-amp-二维矩阵"><a href="#思路1：标准二分查找-amp-二维矩阵" class="headerlink" title="思路1：标准二分查找 &amp; 二维矩阵"></a>思路1：标准二分查找 &amp; 二维矩阵</h4><p>第一次二分搜索出在哪一行，第二次二分搜索直接确定存在<br>从左下角或右上角出发。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""从右上角出发"""</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchMatrix</span><span class="params">(self, matrix, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> matrix:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        i,j=<span class="number">0</span>,len(matrix[<span class="number">0</span>])<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> i&lt;len(matrix) <span class="keyword">and</span> j&gt;=<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> matrix[i][j]==target:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">elif</span> matrix[i][j]&gt;target:</span><br><span class="line">                j-=<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                i+=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""从左下角出发"""</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchMatrix</span><span class="params">(self, matrix, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> matrix <span class="keyword">or</span> <span class="keyword">not</span> len(matrix[<span class="number">0</span>]):</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        i,j=len(matrix)<span class="number">-1</span>,<span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i&gt;=<span class="number">0</span> <span class="keyword">and</span> j&lt;len(matrix[<span class="number">0</span>]):</span><br><span class="line">            <span class="keyword">if</span> matrix[i][j]==target:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">elif</span> matrix[i][j]&lt;target:</span><br><span class="line">                j+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                i-=<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h4 id="思路2：标准二分查找-amp-一维数组"><a href="#思路2：标准二分查找-amp-一维数组" class="headerlink" title="思路2：标准二分查找 &amp; 一维数组"></a>思路2：标准二分查找 &amp; 一维数组</h4><p>把矩阵从左到右、从上到下连起来就是一个递增的数组，可以用二分搜索来查找。现在只要找出数组下标到矩阵的映射关系就可以了：i -&gt; [i // n][i % n]，其中i是数组中的下标，n是矩阵的宽。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchMatrix</span><span class="params">(self, matrix, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> matrix <span class="keyword">or</span> <span class="keyword">not</span> len(matrix[<span class="number">0</span>]):</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        m,n=len(matrix),len(matrix[<span class="number">0</span>])</span><br><span class="line">        low,high=<span class="number">0</span>,m*n<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> low&lt;=high:</span><br><span class="line">            mid=(low+high)//<span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> matrix[mid//n][mid%n]==target:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">elif</span> matrix[mid//n][mid%n]&lt;target:</span><br><span class="line">                low=mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                high=mid<span class="number">-1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="69-x-的平方根"><a href="#69-x-的平方根" class="headerlink" title="69. x 的平方根"></a><a href="https://leetcode-cn.com/problems/sqrtx/" target="_blank" rel="noopener">69. x 的平方根</a></h3><p>实现 int sqrt(int x) 函数。<br>计算并返回 x 的平方根，其中 x 是非负整数。<br>由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。</p>
+<h4 id="思路1：math模块"><a href="#思路1：math模块" class="headerlink" title="思路1：math模块"></a>思路1：math模块</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mySqrt</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type x: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> int(math.sqrt(x))</span><br></pre></td></tr></table></figure>
+<h4 id="思路2：标准二分查找"><a href="#思路2：标准二分查找" class="headerlink" title="思路2：标准二分查找"></a>思路2：标准二分查找</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mySqrt</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type x: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> x&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line">        left,right=<span class="number">1</span>,x<span class="number">-1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> left&lt;=right:</span><br><span class="line">            mid=left+((right-left)&gt;&gt;<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> mid&gt;(x/mid):</span><br><span class="line">                right=mid<span class="number">-1</span></span><br><span class="line">            <span class="keyword">elif</span> mid&lt;(x/mid):</span><br><span class="line">                <span class="keyword">if</span> (mid+<span class="number">1</span>)&gt;(x/(mid+<span class="number">1</span>)):</span><br><span class="line">                    <span class="keyword">return</span> mid</span><br><span class="line">                left=mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mySqrt</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type x: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        left,right=<span class="number">0</span>,x</span><br><span class="line">        <span class="keyword">while</span> left&lt;=right:</span><br><span class="line">            mid=left+((right-left)&gt;&gt;<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">if</span> mid**<span class="number">2</span>&lt;=x&lt;(mid+<span class="number">1</span>)**<span class="number">2</span>:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="keyword">elif</span> x&lt;mid**<span class="number">2</span>:</span><br><span class="line">                right=mid<span class="number">-1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                left=mid+<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h3 id="33-搜索旋转排序数组"><a href="#33-搜索旋转排序数组" class="headerlink" title="33. 搜索旋转排序数组"></a><a href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="noopener">33. 搜索旋转排序数组</a></h3><p>设按照升序排序的数组在预先未知的某个点上进行了旋转。<br>( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。<br>搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回 -1 。<br>你可以假设数组中不存在重复的元素。<br>你的算法时间复杂度必须是 O(log n) 级别。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment">#O(log(n))复杂度 二分法</span></span><br><span class="line">        <span class="comment">#关键在于定位到正确排序的一半。</span></span><br><span class="line">        <span class="comment">#如果 left。mid。right 一遍不符合右大于左。怎另一边正确排序</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        right = len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> left&lt;=right:</span><br><span class="line">            mid = (left+right)/<span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid]==target:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="comment"># 左边是排序的</span></span><br><span class="line">            <span class="keyword">if</span> nums[left] &lt;=nums[mid]:</span><br><span class="line">                <span class="comment"># target在左区间</span></span><br><span class="line">                <span class="keyword">if</span> nums[left]&lt;=target&lt;=nums[mid]:</span><br><span class="line">                    right = mid<span class="number">-1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    left = mid+<span class="number">1</span></span><br><span class="line">            <span class="comment">#右边是排序的</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> nums[mid]&lt;=target&lt;=nums[right]:</span><br><span class="line">                    left = mid+<span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    right = mid<span class="number">-1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="81-搜索旋转排序数组-II"><a href="#81-搜索旋转排序数组-II" class="headerlink" title="81. 搜索旋转排序数组 II"></a><a href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii/" target="_blank" rel="noopener">81. 搜索旋转排序数组 II</a></h3><p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。<br>( 例如，数组 [0,0,1,2,2,5,6] 可能变为 [2,5,6,0,0,1,2] )。<br>编写一个函数来判断给定的目标值是否存在于数组中。若存在返回 true，否则返回 false。<br>这是 搜索旋转排序数组 的延伸题目，本题中的 nums  可能包含重复元素。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        left,right=<span class="number">0</span>,len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> left&lt;=right:</span><br><span class="line">            mid=(left+right)/<span class="number">2</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> nums[mid]==target:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">if</span> nums[left]&lt;nums[mid]:</span><br><span class="line">                <span class="keyword">if</span> nums[left]&lt;=target&lt;nums[mid]:</span><br><span class="line">                    right=mid<span class="number">-1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    left=mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[mid]&lt;nums[right]:</span><br><span class="line">                <span class="keyword">if</span> nums[mid]&lt;target&lt;=nums[right]:</span><br><span class="line">                    left=mid+<span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    right=mid<span class="number">-1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[left]==nums[mid] <span class="keyword">or</span> nums[mid]==nums[right]:</span><br><span class="line">                <span class="keyword">if</span> nums[mid]==nums[left]:</span><br><span class="line">                    left+=<span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> nums[mid]==nums[right]:</span><br><span class="line">                    right-=<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        left,right=<span class="number">0</span>,len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> left&lt;=right:</span><br><span class="line">            mid=(left+right)/<span class="number">2</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> nums[mid]==target:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">if</span> nums[left]==nums[mid]==nums[right]:</span><br><span class="line">                left+=<span class="number">1</span></span><br><span class="line">                right-=<span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[left]&lt;=nums[mid]:</span><br><span class="line">                <span class="keyword">if</span> nums[left]&lt;=target&lt;=nums[mid]:</span><br><span class="line">                    right=mid<span class="number">-1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    left=mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> nums[mid]&lt;=target&lt;=nums[right]:</span><br><span class="line">                    left=mid+<span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    right=mid<span class="number">-1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        nums.sort()</span><br><span class="line">        start = <span class="number">0</span></span><br><span class="line">        end = len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> start&lt;=end:</span><br><span class="line">            mid = (start + end)/<span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[end] &lt; target &lt; nums[start]:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">            <span class="keyword">if</span> target &gt; nums[mid]:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> target &lt; nums[mid]:</span><br><span class="line">                end = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-寻找两个有序数组的中位数"><a href="#4-寻找两个有序数组的中位数" class="headerlink" title="4. 寻找两个有序数组的中位数"></a><a href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">4. 寻找两个有序数组的中位数</a></h3><p>给定两个大小为 m 和 n 的有序数组 nums1 和 nums2。</p>
+<p>请你找出这两个有序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。</p>
+<p>你可以假设 nums1 和 nums2 不会同时为空。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMedianSortedArrays</span><span class="params">(self, nums1, nums2)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums1: List[int]</span></span><br><span class="line"><span class="string">        :type nums2: List[int]</span></span><br><span class="line"><span class="string">        :rtype: float</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        length=len(nums1)+len(nums2)</span><br><span class="line">        <span class="keyword">if</span> length&amp;<span class="number">1</span>==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> self.findKth(nums1,nums2,length//<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> (self.findKth(nums1,nums2,length//<span class="number">2</span>)+self.findKth(nums1,nums2,length//<span class="number">2</span><span class="number">-1</span>))/<span class="number">2.</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findKth</span><span class="params">(self, A, B, k)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> A:</span><br><span class="line">            <span class="keyword">return</span> B[k]</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> B:</span><br><span class="line">            <span class="keyword">return</span> A[k]</span><br><span class="line"></span><br><span class="line">        mid_a,mid_b=len(A)//<span class="number">2</span>,len(B)//<span class="number">2</span></span><br><span class="line">        median_a,median_b=A[mid_a],B[mid_b]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> mid_a+mid_b&lt;k:</span><br><span class="line">            <span class="keyword">if</span> median_a&gt;median_b:</span><br><span class="line">                <span class="keyword">return</span> self.findKth(A, B[mid_b+<span class="number">1</span>:],k-mid_b<span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> self.findKth(A[mid_a+<span class="number">1</span>:],B,k-mid_a<span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> median_a&gt;median_b:</span><br><span class="line">                <span class="keyword">return</span> self.findKth(A[:mid_a],B,k)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> self.findKth(A,B[:mid_b],k)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMedianSortedArrays</span><span class="params">(self, nums1, nums2)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums1: List[int]</span></span><br><span class="line"><span class="string">        :type nums2: List[int]</span></span><br><span class="line"><span class="string">        :rtype: float</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        nums1.extend(nums2)</span><br><span class="line">        res = nums1</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> res:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">        res.sort()</span><br><span class="line">        len_res = len(res)</span><br><span class="line">        <span class="keyword">if</span> len_res % <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> res[len_res//<span class="number">2</span>] / <span class="number">1.0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> (res[len_res//<span class="number">2</span>] + res[(len_res//<span class="number">2</span>)<span class="number">-1</span>]) / <span class="number">2.0</span></span><br></pre></td></tr></table></figure>
+<h2 id="二分查找左边界"><a href="#二分查找左边界" class="headerlink" title="二分查找左边界"></a>二分查找左边界</h2><p>利用二分法寻找左边界是二分查找的一个变体，应用它的题目常常有以下几种特性之一：</p>
+<ul>
+<li>数组有序，但包含重复元素</li>
+<li>数组部分有序，且不包含重复元素</li>
+<li>数组部分有序，且包含重复元素</li>
+</ul>
+<h3 id="左边界查找类型1：-数组有序-amp-包含重复元素-or-部分有序-amp-不包含重复元素）"><a href="#左边界查找类型1：-数组有序-amp-包含重复元素-or-部分有序-amp-不包含重复元素）" class="headerlink" title="左边界查找类型1：(数组有序&amp;包含重复元素) or (部分有序&amp;不包含重复元素）"></a>左边界查找类型1：(数组有序&amp;包含重复元素) or (部分有序&amp;不包含重复元素）</h3><p>循环条件：left<right 中间位置计算：left+((right-left)="">&gt;1)，等价于(left+right)/2<br>左边界更新：left=mid+1<br>有边界更新：right=mid<br>返回值：nums[left]==target?left:-1</right></p>
+<p>最后left与right相邻，mid和left处于相同位置（mid处于中间偏左的位置），则下一步，无论怎样，left，mid，right都将处于相同位置，如果此时循环条件是left&lt;=right，则需要再次进入循环，如果此时nums[mid]&lt;target，循环正常终止；否则，会令right=mid，这样并没有改变left,mid,right的位置，将进入死循环。</p>
+<p>所以，<strong>只需要遍历到left和right相邻就行</strong>，因为这一轮循环后，无论如何，<strong>left，mid，right都会指向相同位置</strong>，而且如果这个位置的值等于目标值，则它就一定是最左侧的目标值；如果不等于目标值，则说明没有找到目标值，这就是返回值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```Python</span><br><span class="line">class Solution(object):</span><br><span class="line">    def search(self, nums, target):</span><br><span class="line">        left,right=0,len(nums)-1</span><br><span class="line">        while left&lt;right:</span><br><span class="line">            mid=left+((right-left)&gt;&gt;1)</span><br><span class="line">            if nums[mid]&lt;target:</span><br><span class="line">                left=mid+1</span><br><span class="line">            else:</span><br><span class="line">                right=mid</span><br><span class="line">        if nums[left]==target:</span><br><span class="line">            return left</span><br><span class="line">        return -1</span><br></pre></td></tr></table></figure></p>
+<h3 id="左边界查找类型2：数组部分有序且包含重复元素"><a href="#左边界查找类型2：数组部分有序且包含重复元素" class="headerlink" title="左边界查找类型2：数组部分有序且包含重复元素"></a>左边界查找类型2：数组部分有序且包含重复元素</h3><p>这种条件下在我们向左收缩的时候，不能简单的令 right = mid，因为有重复元素的存在，这会导致我们有可能遗漏掉一部分区域，此时向左收缩只能采用比较保守的方式</p>
+<p>它与类型1的唯一区别就在于对右侧值的收缩更加保守。这种收缩方式可以有效地防止我们一下子跳过了目标边界从而导致了搜索区域的遗漏。</p>
+<ul>
+<li>循环条件： left &lt; right</li>
+<li>中间位置计算： mid = left + ((right -left) &gt;&gt; 1)</li>
+<li>左边界更新：left = mid + 1</li>
+<li>右边界更新：right = mid | right-=1</li>
+<li>返回值： nums[left] == target ? left : -1</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        left,right=<span class="number">0</span>,len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> left&lt;right:</span><br><span class="line">            mid=(left+right)/<span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid]&lt;target:</span><br><span class="line">                left=mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[mid]&gt;target:</span><br><span class="line">                right=mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                right-=<span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> nums[left]==target:</span><br><span class="line">            <span class="keyword">return</span> left</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
+<h3 id="278-第一个错误的版本"><a href="#278-第一个错误的版本" class="headerlink" title="278. 第一个错误的版本"></a><a href="https://leetcode-cn.com/problems/first-bad-version/" target="_blank" rel="noopener">278. 第一个错误的版本</a></h3><p>假设你有 n 个版本 [1, 2, …, n]，你想找出导致之后所有版本出错的第一个错误的版本。</p>
+<p>你可以通过调用 bool isBadVersion(version) 接口来判断版本号 version 是否在单元测试中出错。实现一个函数来查找第一个错误的版本。你应该尽量减少对调用 API 的次数。</p>
+<blockquote>
+<p>[left,right]表示搜索范围</p>
+<ul>
+<li>如果$isBadVersion(mid) \Rightarrow false$，下次迭代搜索范围应该是[mid+1,right],left=mid+1</li>
+<li>如果$isBadVersion(mid) \Rightarrow true$，不能保证mid是不是第一个错误版本，但可以确保mid之后的所有版本都是错误的，所以下次迭代搜索范围应该是[left,mid],right=mid</li>
+</ul>
+</blockquote>
+<p><strong>左边界查找类型1</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The isBadVersion API is already defined for you.</span></span><br><span class="line"><span class="comment"># @param version, an integer</span></span><br><span class="line"><span class="comment"># @return a bool</span></span><br><span class="line"><span class="comment"># def isBadVersion(version):</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">firstBadVersion</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        left,right=<span class="number">1</span>,n</span><br><span class="line">        <span class="keyword">while</span> left&lt;right:</span><br><span class="line">            mid=left+((right-left)&gt;&gt;<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> isBadVersion(mid):</span><br><span class="line">                left=mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                right=mid</span><br><span class="line">        <span class="keyword">return</span> left</span><br></pre></td></tr></table></figure></p>
+<h3 id="744-寻找比目标字母大的最小字母"><a href="#744-寻找比目标字母大的最小字母" class="headerlink" title="744. 寻找比目标字母大的最小字母"></a><a href="https://leetcode-cn.com/problems/find-smallest-letter-greater-than-target/" target="_blank" rel="noopener">744. 寻找比目标字母大的最小字母</a></h3><p>给定一个只包含小写字母的有序数组letters 和一个目标字母 target，寻找有序数组里面比目标字母大的最小字母。</p>
+<p>数组里字母的顺序是循环的。举个例子，如果目标字母target = ‘z’ 并且有序数组为 letters = [‘a’, ‘b’]，则答案返回 ‘a’。</p>
+<h4 id="思路1：二分查找左边界"><a href="#思路1：二分查找左边界" class="headerlink" title="思路1：二分查找左边界"></a>思路1：二分查找左边界</h4><p>题目比较特殊，数组里字母的顺序是循环的且有序的（升序），搜索范围是[left,right]</p>
+<ul>
+<li>letters[mid]&lt;=target,[mid+1,right],left=mid+1</li>
+<li>letters[mid]&gt;target,[left,mid],right=mid</li>
+</ul>
+<p><strong>如果最后插入位置是letters.length，返回letters[0]</strong></p>
+<p><strong>左边界查找类型1</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">nextGreatestLetter</span><span class="params">(self, letters, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type letters: List[str]</span></span><br><span class="line"><span class="string">        :type target: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        left,right=<span class="number">0</span>,len(letters)</span><br><span class="line">        <span class="keyword">while</span> left&lt;right:</span><br><span class="line">            mid=(left+right)/<span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> letters[mid]&lt;=target:</span><br><span class="line">                left=mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                right=mid</span><br><span class="line">        <span class="keyword">return</span> letters[left%len(letters)]</span><br></pre></td></tr></table></figure></p>
+<h4 id="思路2：二分查找-amp-bisect模块"><a href="#思路2：二分查找-amp-bisect模块" class="headerlink" title="思路2：二分查找 &amp; bisect模块"></a>思路2：二分查找 &amp; bisect模块</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">nextGreatestLetter</span><span class="params">(self, letters, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type letters: List[str]</span></span><br><span class="line"><span class="string">        :type target: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        index=bisect.bisect(letters,target)</span><br><span class="line">        <span class="keyword">return</span> letters[index%len(letters)]</span><br></pre></td></tr></table></figure>
+<h4 id="思路2：线性扫描"><a href="#思路2：线性扫描" class="headerlink" title="思路2：线性扫描"></a>思路2：线性扫描</h4><p>时间复杂度：O(n)<br>空间复杂度：O(1)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">nextGreatestLetter</span><span class="params">(self, letters, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type letters: List[str]</span></span><br><span class="line"><span class="string">        :type target: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> letters:</span><br><span class="line">            <span class="keyword">if</span> c&gt;target:</span><br><span class="line">                <span class="keyword">return</span> c</span><br><span class="line">        <span class="keyword">return</span> letters[<span class="number">0</span>]</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">nextGreatestLetter</span><span class="params">(self, letters, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type letters: List[str]</span></span><br><span class="line"><span class="string">        :type target: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(letters)):</span><br><span class="line">            <span class="keyword">if</span> target &lt; letters[i]:</span><br><span class="line">                <span class="keyword">return</span> letters[i]</span><br><span class="line">            <span class="keyword">if</span> target &gt;= letters[<span class="number">-1</span>]:</span><br><span class="line">                <span class="keyword">return</span> letters[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="153-寻找旋转排序数组中的最小值"><a href="#153-寻找旋转排序数组中的最小值" class="headerlink" title="153. 寻找旋转排序数组中的最小值"></a><a href="https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/submissions/" target="_blank" rel="noopener">153. 寻找旋转排序数组中的最小值</a></h3><p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。<br>( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。</p>
+<p>请找出其中最小的元素。你可以假设数组中不存在重复元素。</p>
+<blockquote>
+<p>这一题看上去没有重复元素，但是它也是查找左边界的一种形式，即可以看做是查找旋转到右侧的部分的左边界，有了这个思想，直接用二分查找左边界的模板就行了</p>
+</blockquote>
+<p><strong>左边界查找类型1</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMin</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        left,right=<span class="number">0</span>,len(nums)<span class="number">-1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> left&lt;right:</span><br><span class="line">            mid=(left+right)/<span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid]&gt;nums[right]:</span><br><span class="line">                left=mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                right=mid</span><br><span class="line">        <span class="keyword">return</span> nums[left]</span><br></pre></td></tr></table></figure></p>
+<h3 id="154-寻找旋转排序数组中的最小值-II"><a href="#154-寻找旋转排序数组中的最小值-II" class="headerlink" title="154. 寻找旋转排序数组中的最小值 II"></a><a href="https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/submissions/" target="_blank" rel="noopener">154. 寻找旋转排序数组中的最小值 II</a></h3><p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。<br>( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。</p>
+<p>请找出其中最小的元素。注意数组中可能存在重复的元素。</p>
+<blockquote>
+<p>这道题目和上面153类似，只是多了一个条件——数组中可能包含重复元素，这就是我们之前说的二分查找左边界的第二种类型，在这种情况下，我们只能采用保守收缩的方式，以规避重复元素带来的对于单调性的破坏</p>
+</blockquote>
+<p><strong>左边界查找类型2</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMin</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        left,right=<span class="number">0</span>,len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> left&lt;right:</span><br><span class="line">            mid=(left+right)/<span class="number">2</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> nums[mid]&gt;nums[right]:</span><br><span class="line">                left=mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[mid]&lt;nums[right]:</span><br><span class="line">                right=mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                right-=<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> nums[left]</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMin</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> min(nums)</span><br></pre></td></tr></table></figure>
+<h2 id="二分查找右边界"><a href="#二分查找右边界" class="headerlink" title="二分查找右边界"></a>二分查找右边界</h2><p>与二分查找左边界相比，中间位置计算遍历，在末尾加1，这样无论对于奇数或偶数，这个中间位置都是偏右的。</p>
+<p>最后left和right相邻时，如果mid偏左，则left，mid指向同一个位置，right指向他们的下一个位置，在nums[left]已经等于目标值的情况下，这三个位置的值都不会更新，从而进入了死循环。所以让mid偏右，这样left就能向右移动。<br><strong>判断条件和左右边界条件的更新方式三者之间必须配合使用</strong><br>右边界的查找一般来说不会单独使用，如有需要，一般是需要同时查找左右边界。</p>
+<p>循环条件： left &lt; right<br>中间位置计算： mid = left + ((right -left) &gt;&gt; 1) + 1<br>左边界更新：left = mid<br>右边界更新：right = mid - 1<br>返回值： nums[right] == target ? right : -1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        left,right=<span class="number">0</span>,len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> left&lt;right:</span><br><span class="line">            mid=left+((right-left)&gt;&gt;<span class="number">1</span>)+<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid]&gt;target:</span><br><span class="line">                right=mid<span class="number">-1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                left=mid</span><br><span class="line">        <span class="keyword">if</span> nums[right]==target:</span><br><span class="line">            <span class="keyword">return</span> right</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
+<h2 id="二分查找左右边界"><a href="#二分查找左右边界" class="headerlink" title="二分查找左右边界"></a>二分查找左右边界</h2><h3 id="34-在排序数组中查找元素的第一个和最后一个位置"><a href="#34-在排序数组中查找元素的第一个和最后一个位置" class="headerlink" title="34. 在排序数组中查找元素的第一个和最后一个位置"></a><a href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/" target="_blank" rel="noopener">34. 在排序数组中查找元素的第一个和最后一个位置</a></h3><p>首先定位等于target的最左和最右元素的索引（并不仅仅是找到目标，返回true or false）。当找到一个匹配时，并不会终止，会继续查找直到left=right。</p>
+<p>布尔值left，表示在target=nums[mid]时应该做什么。如果left=True，会在左边子数组递归，否者移动到右边。比如，当在i找到target，最左索引就不会出现在比i大的地方，就不用考虑右边子数组。这同样适用于最右索引。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="comment"># returns leftmost (or rightmost) index at which `target` should be inserted in sorted</span></span><br><span class="line">    <span class="comment"># array `nums` via binary search.</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">extreme_insertion_index</span><span class="params">(self, nums, target, left)</span>:</span></span><br><span class="line">        lo = <span class="number">0</span></span><br><span class="line">        hi = len(nums)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> lo &lt; hi:</span><br><span class="line">            mid = (lo + hi) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &gt; target <span class="keyword">or</span> (left <span class="keyword">and</span> target == nums[mid]):</span><br><span class="line">                hi = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                lo = mid+<span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> lo</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchRange</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        left_idx = self.extreme_insertion_index(nums, target, <span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># assert that `left_idx` is within the array bounds and that `target`</span></span><br><span class="line">        <span class="comment"># is actually in `nums`.</span></span><br><span class="line">        <span class="keyword">if</span> left_idx == len(nums) <span class="keyword">or</span> nums[left_idx] != target:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">-1</span>, <span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> [left_idx, self.extreme_insertion_index(nums, target, <span class="keyword">False</span>)<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchRange</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        n = len(nums)</span><br><span class="line">        <span class="keyword">if</span> n &lt; <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">-1</span>,<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        right = n - <span class="number">1</span></span><br><span class="line">        <span class="comment"># 找第一个位置</span></span><br><span class="line">        <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">            mid = (left+right)//<span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &gt;= target:</span><br><span class="line">                right = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                left = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> left &gt;= n <span class="keyword">or</span> nums[left] != target:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">-1</span>, <span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">        start = left</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 找最后一个位置</span></span><br><span class="line">        right = len(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">            mid = (left+right)//<span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &gt; target:</span><br><span class="line">                right = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                left = mid + <span class="number">1</span></span><br><span class="line">        end = right</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> [start, end]</span><br></pre></td></tr></table></figure>
+<h4 id="思路2：线性扫描-1"><a href="#思路2：线性扫描-1" class="headerlink" title="思路2：线性扫描"></a>思路2：线性扫描</h4><p>时间复杂度：O(n)<br>空间复杂度：O(1)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchRange</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="comment"># find the index of the leftmost appearance of `target`. if it does not</span></span><br><span class="line">        <span class="comment"># appear, return [-1, -1] early.</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] == target:</span><br><span class="line">                left_idx = i</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">-1</span>, <span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># find the index of the rightmost appearance of `target` (by reverse</span></span><br><span class="line">        <span class="comment"># iteration). it is guaranteed to appear.</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(nums)<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> nums[j] == target:</span><br><span class="line">                right_idx = j</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> [left_idx, right_idx]</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchRange</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        l = [loc <span class="keyword">for</span> loc, val <span class="keyword">in</span> enumerate(nums) <span class="keyword">if</span> val == target]</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">return</span> [min(l), max(l)]</span><br><span class="line">        <span class="keyword">except</span> ValueError:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">-1</span>, <span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchRange</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        start, end = <span class="number">-1</span>, <span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> index, num <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">            <span class="keyword">if</span> num == target <span class="keyword">and</span> start == <span class="number">-1</span>:</span><br><span class="line">                start = index</span><br><span class="line">                end = index</span><br><span class="line">            <span class="keyword">if</span> start &gt;= <span class="number">0</span> <span class="keyword">and</span> num== target:</span><br><span class="line">                end = index</span><br><span class="line">        <span class="keyword">return</span> [start, end]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/solution/" target="_blank" rel="noopener">Leetcode Solution</a></li>
+</ul>
+<h2 id="二分查找极值"><a href="#二分查找极值" class="headerlink" title="二分查找极值"></a>二分查找极值</h2><h3 id="162-寻找峰值"><a href="#162-寻找峰值" class="headerlink" title="162. 寻找峰值"></a><a href="https://leetcode-cn.com/problems/find-peak-element/" target="_blank" rel="noopener">162. 寻找峰值</a></h3><p>峰值元素是指其值大于左右相邻值的元素。</p>
+<p>给定一个输入数组 nums，其中 nums[i] ≠ nums[i+1]，找到峰值元素并返回其索引。</p>
+<p>数组可能包含多个峰值，在这种情况下，返回任何一个峰值所在位置即可。</p>
+<p>你可以假设 nums[-1] = nums[n] = -∞。</p>
+<h4 id="思路：递归二分查找"><a href="#思路：递归二分查找" class="headerlink" title="思路：递归二分查找"></a>思路：递归二分查找</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findPeakElement</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.search(nums, <span class="number">0</span>, len(nums)<span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums, left, right)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> left==right:</span><br><span class="line">            <span class="keyword">return</span> left</span><br><span class="line">        mid=(left+right)/<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> nums[mid]&gt;nums[mid+<span class="number">1</span>]:</span><br><span class="line">            <span class="keyword">return</span> self.search(nums, left, mid)</span><br><span class="line">        <span class="keyword">return</span> self.search(nums, mid+<span class="number">1</span>, right)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>时间复杂度：O(lgn)，每一次递归，搜索空间减半，n是nums的长度</li>
+<li>空间复杂度：O(lgn)，每次递归，搜索空间减半，一共递归lg2次，因此递归树深lgn</li>
+</ul>
+<h4 id="思路2：迭代二分查找"><a href="#思路2：迭代二分查找" class="headerlink" title="思路2：迭代二分查找"></a>思路2：迭代二分查找</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findPeakElement</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        left,right=<span class="number">0</span>,len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> left&lt;right:</span><br><span class="line">            mid=(left+right)/<span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid]&gt;nums[mid+<span class="number">1</span>]:</span><br><span class="line">                right=mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                left=mid+<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> left</span><br></pre></td></tr></table></figure>
+<ul>
+<li>时间复杂度：O(lgn)</li>
+<li>空间复杂度：O(1)</li>
+</ul>
+<h2 id="Python-bisect"><a href="#Python-bisect" class="headerlink" title="Python bisect"></a>Python bisect</h2><h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><p>Python 有一个 bisect 模块，用于维护有序列表。bisect 模块实现了一个算法用于插入元素到有序列表。在一些情况下，这比反复排序列表或构造一个大的列表再排序的效率更高。Bisect 是二分法的意思，这里使用二分法来排序，它会将一个元素插入到一个有序列表的合适位置，这使得不需要每次调用 sort 的方式维护有序列表。</p>
+<p>bisect模块采用经典的二分算法查找元素。模块提供下面几个方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bisect.bisect_left(a, x, lo=0, hi=len(a))</span><br></pre></td></tr></table></figure>
+<p>定位x在序列a中的插入点，并保持原来的有序状态不变。参数lo和hi用于指定查找区间。如果x已经存在于a中，那么插入点在已存在元素的左边。函数的返回值是列表的整数下标。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bisect.bisect_right(a, x, lo=0, hi=len(a))</span><br></pre></td></tr></table></figure></p>
+<p>和上面的区别是插入点在右边。函数的返回值依然是一个列表下标整数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bisect.bisect(a, x, lo=0, hi=len(a))</span><br></pre></td></tr></table></figure></p>
+<p>等同于<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">注意，前面这三个方法都是获取插入位置，也就是列表的某个下标的，并不实际插入。但下面三个方法实际插入元素，没有返回值。</span><br></pre></td></tr></table></figure></p>
+<p>bisect.insort_left(a, x, lo=0, hi=len(a))<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">将x插入有序序列a内，并保持有序状态。相当于```a.insert(bisect.bisect_left(a, x, lo, hi), x)```。碰到相同的元素则插入到元素的左边。这个操作通常是 O(log n) 的时间复杂度。</span><br></pre></td></tr></table></figure></p>
+<p>bisect.insort_right(a, x, lo=0, hi=len(a))<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">同上，只不过碰到相同的元素则插入到元素的右边。</span><br></pre></td></tr></table></figure></p>
+<p>bisect.insort(a, x, lo=0, hi=len(a))<br><code>等同于</code>insort_right()```。</p>
+<ul>
+<li><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/discuss/2511/intuitive-python-olog-mn-solution-by-kth-smallest-in-the-two-sorted-arrays-252ms" target="_blank" rel="noopener">Leetcode Discussion:Intuitive Python O(log (m+n)) solution, by kth smallest in the two sorted arrays, 252ms</a></li>
+<li><a href="http://chen-tao.github.io/2017/01/26/about-dfs/" target="_blank" rel="noopener">http://chen-tao.github.io/2017/01/26/about-dfs/</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/二分查找/" rel="tag"># 二分查找</a>
+          
+            <a href="/tags/汇总/" rel="tag"># 汇总</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/05/深度学习笔记/" rel="next" title="深度学习笔记">
+                <i class="fa fa-chevron-left"></i> 深度学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/05/剑指offer-数据流中的中位数/" rel="prev" title="剑指offer 数据流中的中位数">
+                剑指offer 数据流中的中位数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2019/03/05/算法题汇总-二分查找/" data-title="算法题汇总 二分查找" data-url="http://yoursite.com/2019/03/05/算法题汇总-二分查找/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Lmin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">212</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#二分查找"><span class="nav-number">1.</span> <span class="nav-text">二分查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标准二分查找"><span class="nav-number">2.</span> <span class="nav-text">标准二分查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#35-搜索插入位置"><span class="nav-number">2.1.</span> <span class="nav-text">35. 搜索插入位置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路1：标准二分查找"><span class="nav-number">2.1.1.</span> <span class="nav-text">思路1：标准二分查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路2：二分查找左边界"><span class="nav-number">2.1.2.</span> <span class="nav-text">思路2：二分查找左边界</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路3：bisect模块"><span class="nav-number">2.1.3.</span> <span class="nav-text">思路3：bisect模块</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#74-搜索二维矩阵"><span class="nav-number">2.2.</span> <span class="nav-text">74. 搜索二维矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路1：标准二分查找-amp-二维矩阵"><span class="nav-number">2.2.1.</span> <span class="nav-text">思路1：标准二分查找 &amp; 二维矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路2：标准二分查找-amp-一维数组"><span class="nav-number">2.2.2.</span> <span class="nav-text">思路2：标准二分查找 &amp; 一维数组</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#69-x-的平方根"><span class="nav-number">2.3.</span> <span class="nav-text">69. x 的平方根</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路1：math模块"><span class="nav-number">2.3.1.</span> <span class="nav-text">思路1：math模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路2：标准二分查找"><span class="nav-number">2.3.2.</span> <span class="nav-text">思路2：标准二分查找</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#33-搜索旋转排序数组"><span class="nav-number">2.4.</span> <span class="nav-text">33. 搜索旋转排序数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#81-搜索旋转排序数组-II"><span class="nav-number">2.5.</span> <span class="nav-text">81. 搜索旋转排序数组 II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-寻找两个有序数组的中位数"><span class="nav-number">2.6.</span> <span class="nav-text">4. 寻找两个有序数组的中位数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分查找左边界"><span class="nav-number">3.</span> <span class="nav-text">二分查找左边界</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#左边界查找类型1：-数组有序-amp-包含重复元素-or-部分有序-amp-不包含重复元素）"><span class="nav-number">3.1.</span> <span class="nav-text">左边界查找类型1：(数组有序&amp;包含重复元素) or (部分有序&amp;不包含重复元素）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#左边界查找类型2：数组部分有序且包含重复元素"><span class="nav-number">3.2.</span> <span class="nav-text">左边界查找类型2：数组部分有序且包含重复元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#278-第一个错误的版本"><span class="nav-number">3.3.</span> <span class="nav-text">278. 第一个错误的版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#744-寻找比目标字母大的最小字母"><span class="nav-number">3.4.</span> <span class="nav-text">744. 寻找比目标字母大的最小字母</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路1：二分查找左边界"><span class="nav-number">3.4.1.</span> <span class="nav-text">思路1：二分查找左边界</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路2：二分查找-amp-bisect模块"><span class="nav-number">3.4.2.</span> <span class="nav-text">思路2：二分查找 &amp; bisect模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路2：线性扫描"><span class="nav-number">3.4.3.</span> <span class="nav-text">思路2：线性扫描</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#153-寻找旋转排序数组中的最小值"><span class="nav-number">3.5.</span> <span class="nav-text">153. 寻找旋转排序数组中的最小值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#154-寻找旋转排序数组中的最小值-II"><span class="nav-number">3.6.</span> <span class="nav-text">154. 寻找旋转排序数组中的最小值 II</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分查找右边界"><span class="nav-number">4.</span> <span class="nav-text">二分查找右边界</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分查找左右边界"><span class="nav-number">5.</span> <span class="nav-text">二分查找左右边界</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#34-在排序数组中查找元素的第一个和最后一个位置"><span class="nav-number">5.1.</span> <span class="nav-text">34. 在排序数组中查找元素的第一个和最后一个位置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路2：线性扫描-1"><span class="nav-number">5.1.1.</span> <span class="nav-text">思路2：线性扫描</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分查找极值"><span class="nav-number">6.</span> <span class="nav-text">二分查找极值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#162-寻找峰值"><span class="nav-number">6.1.</span> <span class="nav-text">162. 寻找峰值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：递归二分查找"><span class="nav-number">6.1.1.</span> <span class="nav-text">思路：递归二分查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路2：迭代二分查找"><span class="nav-number">6.1.2.</span> <span class="nav-text">思路2：迭代二分查找</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-bisect"><span class="nav-number">7.</span> <span class="nav-text">Python bisect</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python"><span class="nav-number">7.1.</span> <span class="nav-text">Python</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lmin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"Lmin"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
