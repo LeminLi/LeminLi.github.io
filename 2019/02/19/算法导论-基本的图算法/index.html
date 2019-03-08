@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法导论,图,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="图算法基本的图算法图的表示邻接链表对图$G=(V,E)$，其邻接链表表示有一个包含$|V|$条链表的数组Adj所构成，每个结点都有一条链表。对于每个结点$u \in V$，邻接链表Adj[u]包含所有与结点u之间右边相连的结点v，即Adj[u]包含图中与u邻接的结点  如果G是有向图，所有的邻接链表的长度之和为$|E|$；如果G是无向图，所有邻接链表的长度之和为$2|E|$ 空间复杂度有：不管是有">
+<meta name="keywords" content="算法导论,图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法导论 基本的图算法">
+<meta property="og:url" content="http://yoursite.com/2019/02/19/算法导论-基本的图算法/index.html">
+<meta property="og:site_name" content="Lmin">
+<meta property="og:description" content="图算法基本的图算法图的表示邻接链表对图$G=(V,E)$，其邻接链表表示有一个包含$|V|$条链表的数组Adj所构成，每个结点都有一条链表。对于每个结点$u \in V$，邻接链表Adj[u]包含所有与结点u之间右边相连的结点v，即Adj[u]包含图中与u邻接的结点  如果G是有向图，所有的邻接链表的长度之和为$|E|$；如果G是无向图，所有邻接链表的长度之和为$2|E|$ 空间复杂度有：不管是有">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/02/19/算法导论-基本的图算法/markdown-img-paste-20190307214509445.png">
+<meta property="og:updated_time" content="2019-03-07T14:03:04.082Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法导论 基本的图算法">
+<meta name="twitter:description" content="图算法基本的图算法图的表示邻接链表对图$G=(V,E)$，其邻接链表表示有一个包含$|V|$条链表的数组Adj所构成，每个结点都有一条链表。对于每个结点$u \in V$，邻接链表Adj[u]包含所有与结点u之间右边相连的结点v，即Adj[u]包含图中与u邻接的结点  如果G是有向图，所有的邻接链表的长度之和为$|E|$；如果G是无向图，所有邻接链表的长度之和为$2|E|$ 空间复杂度有：不管是有">
+<meta name="twitter:image" content="http://yoursite.com/2019/02/19/算法导论-基本的图算法/markdown-img-paste-20190307214509445.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/19/算法导论-基本的图算法/">
+
+
+
+
+
+  <title>算法导论 基本的图算法 | Lmin</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lmin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/19/算法导论-基本的图算法/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lmin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lmin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">算法导论 基本的图算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-19T08:35:31+08:00">
+                2019-02-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/19/算法导论-基本的图算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/19/算法导论-基本的图算法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="图算法"><a href="#图算法" class="headerlink" title="图算法"></a>图算法</h1><h2 id="基本的图算法"><a href="#基本的图算法" class="headerlink" title="基本的图算法"></a>基本的图算法</h2><h3 id="图的表示"><a href="#图的表示" class="headerlink" title="图的表示"></a>图的表示</h3><h4 id="邻接链表"><a href="#邻接链表" class="headerlink" title="邻接链表"></a>邻接链表</h4><p>对图$G=(V,E)$，其邻接链表表示有一个包含$|V|$条链表的数组Adj所构成，每个结点都有一条链表。对于每个结点$u \in V$，邻接链表Adj[u]包含所有与结点u之间右边相连的结点v，即Adj[u]包含图中与u邻接的结点</p>
+<ul>
+<li>如果G是有向图，所有的邻接链表的长度之和为$|E|$；如果G是无向图，所有邻接链表的长度之和为$2|E|$</li>
+<li>空间复杂度有：不管是有向图还是无向图，邻接链表表示的空间存储需求都是$\Theta (V+E)$</li>
+<li>缺点：无法快速判断一条边(u,v)是否是图中的一条边，唯一的办法是在邻接链表Adj[u]里搜索结点v</li>
+</ul>
+<h4 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h4><p>对图中结点进行编号$1,2,…,|V|$（任意的），邻接矩阵表示由一个$|V| \times |V|$的矩阵$A=(a_{ij})$予以表示：</p>
+<script type="math/tex; mode=display">a_{ij}= \begin{cases} 1, & \text {若 $(i,j) \in E$} \\0, & \text{其他} \end{cases}</script><ul>
+<li>空间复杂度：不管一个图有多少边，都需要空间$\Theta (V^2)$</li>
+<li>特点：<ul>
+<li>无向图的邻接矩阵是一个对称矩阵（$A=A^T$)，可以只存对角线及以上部分邻接矩阵；</li>
+<li>表示法更为简单，在图规模比较小的时候，倾向采用邻接矩阵表示</li>
+<li>每个记录只需要1位的空间</li>
+</ul>
+</li>
+</ul>
+<p><img src="markdown-img-paste-20190307214509445.png" alt=""></p>
+<h3 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h3><p>给定图$G=(V,E)$和一个可以识别的源结点s，广度优先搜索对图G中的边进行系统性的探索来发现可以从源结点s到达的所有结点。该算法能够计算源结点s到每个可以到达的结点的距离（最少边数），同时生成一棵广度优先树。</p>
+<p>以源结点s为根结点，包含所有可以从s到达的结点。对于每个从源结点s可以到达的v，在广度优先搜索树里从结点s到结点v的简单路径对应的就是图G中从s到v的“最短路径”，即包含最少边数的路径。该算法可用于有向图，也可用于无向图。</p>
+<ul>
+<li>广度优先搜索的结果可能依赖于每个节点的邻接结点的访问顺序：广度优先树可能会不一样，但本算法所计算出来的距离d是一样的</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line"><span class="string">"""基本的图算法：广度优先搜索"""</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BFS</span><span class="params">(graph,s)</span>:</span></span><br><span class="line">    color=&#123;&#125;</span><br><span class="line">    d=&#123;&#125;</span><br><span class="line">    p=&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="string">"""初始化所有结点"""</span></span><br><span class="line">    <span class="keyword">for</span> node <span class="keyword">in</span> graph:</span><br><span class="line">        color[node]=<span class="number">0</span>       <span class="comment"># whilte is 0,gray is 1,black is 2</span></span><br><span class="line">        d[node]=float(<span class="string">'inf'</span>)</span><br><span class="line">        p[node]=<span class="keyword">None</span></span><br><span class="line">    color[s]=<span class="number">1</span></span><br><span class="line">    d[s]=<span class="number">0</span></span><br><span class="line">    p[s]=<span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    queue=deque()</span><br><span class="line">    queue.append(s)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        u=queue.popleft()</span><br><span class="line">        <span class="keyword">for</span> v <span class="keyword">in</span> graph[u]:</span><br><span class="line">            <span class="keyword">if</span> color[v]==<span class="number">0</span>:</span><br><span class="line">                color[v]=<span class="number">1</span></span><br><span class="line">                d[v]=d[u]+<span class="number">1</span></span><br><span class="line">                p[v]=u</span><br><span class="line">                queue.append(v)</span><br><span class="line">        color[u]=<span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> d,p</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_path</span><span class="params">(graph,s,v,p)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> v==s:</span><br><span class="line">        print(s,end=<span class="string">' '</span>)</span><br><span class="line">    <span class="keyword">elif</span> p[v]==<span class="keyword">None</span>:</span><br><span class="line">        print(<span class="string">'no path from '</span>,s,<span class="string">'to'</span>,v)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print_path(graph,s,p[v],p)</span><br><span class="line">        print(v,end=<span class="string">' '</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    graph=&#123;</span><br><span class="line">        <span class="string">'v'</span> : &#123;<span class="string">'r'</span>&#125;,</span><br><span class="line">        <span class="string">'r'</span> : &#123;<span class="string">'v'</span>, <span class="string">'s'</span>&#125;,</span><br><span class="line">        <span class="string">'s'</span> : &#123;<span class="string">'r'</span>, <span class="string">'w'</span>&#125;,</span><br><span class="line">        <span class="string">'w'</span> : &#123;<span class="string">'s'</span>, <span class="string">'x'</span>, <span class="string">'t'</span>&#125;,</span><br><span class="line">        <span class="string">'x'</span> : &#123;<span class="string">'w'</span>, <span class="string">'t'</span>, <span class="string">'u'</span>, <span class="string">'y'</span>&#125;,</span><br><span class="line">        <span class="string">'t'</span> : &#123;<span class="string">'w'</span>, <span class="string">'x'</span>, <span class="string">'u'</span>&#125;,</span><br><span class="line">        <span class="string">'u'</span> : &#123;<span class="string">'t'</span>, <span class="string">'x'</span>, <span class="string">'y'</span>&#125;,</span><br><span class="line">        <span class="string">'y'</span> : &#123;<span class="string">'x'</span>, <span class="string">'u'</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    d,p=BFS(graph,<span class="string">'v'</span>)</span><br><span class="line">    print(<span class="string">'The shortest distance between s and v:\t'</span>,d)</span><br><span class="line">    print(<span class="string">'The parent of the nodes:\t'</span>,p)</span><br><span class="line">    print_path(graph,<span class="string">'v'</span>,<span class="string">'u'</span>,p)</span><br></pre></td></tr></table></figure>
+<h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul>
+<li>测试时可以确保每个结点的入队次数最多为一次，因而出队最多一次，出队和入队的时间均为$O(1)$，因而队列进行操作的总时间时$O(V)$</li>
+<li>一个结点出队的时候才对该结点的邻接链表进行扫描，所以每个链表最多扫描一次。由于连接链表长度之和是$\Theta (E)$，用于扫描邻接链表的总时间为$O(E)$</li>
+<li>初始化的成本是$O(V)$</li>
+</ul>
+<p>因此，广度优先搜索的总运行时间为$O(V+E)$，是图G的邻接链表大小的一个线性函数</p>
+<h4 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h4><p>从源结点s到结点v的最短路径距离$\delta (s,v)$：从结点s到结点v之间所有路径里面最少的边数。<br>从源结点s到结点v的最短路径：从结点s到结点v的长度$\delta (s,v)$</p>
+<ul>
+<li>给定$G=(V,E)$，G是一个有向图或无向图，设$s \in V$是任意一个结点，则对任意边$(u,v) \in E，\delta (s,v) \leq \delta(s,u)+1$</li>
+<li>设$G=(V,E)$为一个有向图或无向图，假设BFS一给定结点$s\in V$作为源结点在图G上运行。那么在BFS终结时，对于每个节点$v \in V$，BFS所计算出的v.d满足$v.d \leq \delta(s,v)$</li>
+<li>假定BFS在图$G=(V,E)$上运行的过程中，队列Q包含的结点$\langle v_1,v_2,…,v_r \rangle<br>$，这里$v_1$是队列的头，$v_r$是队列的尾，那么$v_r.d \leq v_1+1$，并且对$i=1,…,i-1，v_i.d \leq v_{i+1}.d$</li>
+<li>假定执行BFS时，结点$v_i$和结点$v_j$都加入队列Q里，并且$v_i$在$v_j$前面入队，则在$v_j$入队时，有$v_i.d \leq v_j.d$</li>
+<li>（广度优先搜索的正确性）设$G=(V,E)$为一个有向图或无向图，有假设BFS以s为源结点在图G上进行。那么算法执行过程中，BFS将发现从源结点s可以到达的所有节点$v \in V$，并在算法结束时，对所有的$v \in V,v.d=\delta(s,v)$。并且，对于任意可以从s到达的结点$v \neq s$，从源结点s到结点v的其中一条最短路径为从s到达$v.\pi$的最短路径加上边$(v.\pi,v)</li>
+</ul>
+<h4 id="广度优先树"><a href="#广度优先树" class="headerlink" title="广度优先树"></a>广度优先树</h4><p>过程BFS在对图进行搜索的过程中将创建一棵广度优先树。该树对应的是$\pi$属性。对图$G=(V,E)$的前驱子图$G_\pi=(V_\pi,E_\pi)$，其中$V_\pi={v \in V:v.\pi\neq NIL}\bigcup{s}，E={(v.\pi,v):v\in V_\pi-{s}}$。前驱子图是一棵优先树，树边$|E_\pi|=|V_\pi|-1$。</p>
+<h3 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h3><p>深度优先搜索总是对最近才发现的结点v的出发边进行搜索，知道该结点的所有出发边都被发现为止。一旦结点v的所有出发边都被发现，搜索则“回溯”到v的前驱结点（v是经过该结点才被发现），来搜索该前驱结点的出发边。该过程一直持续到从源结点可以到达的所有结点都被发现为止。如果还有未发现的结点，则深度优先搜索将从这些未被发现的结点中任选一个作为新的源结点，并重复同样的搜索过程。该算法重复整个过程，直到图中所有结点都被发现。</p>
+<p>深度优先搜索的前驱子图形成一个有多棵深度优先搜索树构成的深度优先深林。森林$E_\pi$中的边仍称为树边。</p>
+<ul>
+<li>创建一个深度优先搜索森林</li>
+<li>在每个结点v有两个时间戳：第一个时间戳v.d记录结点v第一次被 <strong>发现的时间</strong>（涂上灰色的时候），第二个时间戳v.f记录的是搜索完成对v的邻接链表扫描的时间（<strong>结束时间</strong>）（涂上黑色的时候）。这些时间戳提供了图结构的重要信息，通常能够有助于推断深度优先搜索算法的行为。</li>
+</ul>
+<p>深度优先搜索中也是对结点进行染色来指明结点的状态。每个节点的初始颜色都是白色，再借点被发现后变成灰色，在其邻接链表被扫描完成后变为黑色。该方法保证每个结点仅在一棵深度优先树中出现，因此，所有的深度优先树是不相交的。</p>
+<h4 id="深度优先搜索的性质"><a href="#深度优先搜索的性质" class="headerlink" title="深度优先搜索的性质"></a>深度优先搜索的性质</h4><ul>
+<li>深度优先搜索生成的前驱子图$G_\pi$形成一个由多棵树构成的森林，因为搜索可能从多个源结点重复进行</li>
+<li>结点的发现时间和结束时间具有所谓的括号化结构</li>
+<li>可以通过搜索对数如图G的边进行分类</li>
+</ul>
+<h5 id="定理及推论"><a href="#定理及推论" class="headerlink" title="定理及推论"></a>定理及推论</h5><p><strong>括号化定理</strong>：在对有向图或无向图$G=(V,E)$进行任意深度优先搜索中，对于任意两个结点u和v来说，下面三种情况只有一种成立：</p>
+<ul>
+<li>区间[u.d,u.f]和[v.d,v.f]完全分离，在深度优先森林中，结点u不是结点v的后代，结点v也不是结点u的后代</li>
+<li>区间[u.d,u.f]完全包含在[v.d,v.f]内，在深度优先森林中，结点u是结点v的后代</li>
+<li>区间[v.d,v.f]完全包含在[u.d,u.f]内，在深度优先森林中，结点v是结点u的后代</li>
+</ul>
+<p><strong>后代区间嵌套</strong>：在有向或者无向图的深度优先搜索中，结点v是结点u的真后代当且仅当$u.d&lt;v.d&lt;v.f&lt;u.f$</p>
+<p><strong>白色路径定理</strong>：在有向或者无向图的深度优先森林中，结点v是接待你u的后代，当且仅当在发现u的时间u.d，存在一条从结点u到结点v的全部白色结点所构成的路径。</p>
+<h3 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法导论/" rel="tag"># 算法导论</a>
+          
+            <a href="/tags/图/" rel="tag"># 图</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/18/Leetcode-109-有序链表转换二叉搜索树/" rel="next" title="Leetcode 109.有序链表转换二叉搜索树">
+                <i class="fa fa-chevron-left"></i> Leetcode 109.有序链表转换二叉搜索树
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/19/Leetcode-450-删除二叉搜索树中的节点/" rel="prev" title="Leetcode 450.删除二叉搜索树中的节点">
+                Leetcode 450.删除二叉搜索树中的节点 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2019/02/19/算法导论-基本的图算法/" data-title="算法导论 基本的图算法" data-url="http://yoursite.com/2019/02/19/算法导论-基本的图算法/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Lmin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">216</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#图算法"><span class="nav-number">1.</span> <span class="nav-text">图算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本的图算法"><span class="nav-number">1.1.</span> <span class="nav-text">基本的图算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图的表示"><span class="nav-number">1.1.1.</span> <span class="nav-text">图的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#邻接链表"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">邻接链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#邻接矩阵"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">邻接矩阵</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广度优先搜索"><span class="nav-number">1.1.2.</span> <span class="nav-text">广度优先搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复杂度分析"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">复杂度分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最短路径"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">最短路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#广度优先树"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">广度优先树</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度优先搜索"><span class="nav-number">1.1.3.</span> <span class="nav-text">深度优先搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#深度优先搜索的性质"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">深度优先搜索的性质</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定理及推论"><span class="nav-number">1.1.3.1.1.</span> <span class="nav-text">定理及推论</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拓扑排序"><span class="nav-number">1.1.4.</span> <span class="nav-text">拓扑排序</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lmin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"Lmin"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
