@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Lmin">
 <meta property="og:description" content="46.全排列题目给定一个没有重复数字的序列，返回其所有可能的全排列。123456789101112示例:输入: [1,2,3]输出:[  [1,2,3],  [1,3,2],  [2,1,3],  [2,3,1],  [3,1,2],  [3,2,1]] 方法方法1：回溯法给定一个没有重复元素的序列，本问题可以考虑n叉树（n=len(nums)），回溯点就是深度（temp长度）等于n（nums长度">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-27T09:02:06.728Z">
+<meta property="og:updated_time" content="2019-03-10T03:03:24.757Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 46.全排列">
 <meta name="twitter:description" content="46.全排列题目给定一个没有重复数字的序列，返回其所有可能的全排列。123456789101112示例:输入: [1,2,3]输出:[  [1,2,3],  [1,3,2],  [2,1,3],  [2,3,1],  [3,1,2],  [3,2,1]] 方法方法1：回溯法给定一个没有重复元素的序列，本问题可以考虑n叉树（n=len(nums)），回溯点就是深度（temp长度）等于n（nums长度">
@@ -346,7 +346,7 @@
 <li>res用来存储所有的返回所有排列，tep用来生成每个排列<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">permute</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res=[]</span><br><span class="line">        self.backtrack(nums, res, [])</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">backtrack</span><span class="params">(self, nums, res, temp)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(temp)==len(nums):      <span class="comment"># quit loop 回溯条件</span></span><br><span class="line">            res.append(list(temp))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">                <span class="keyword">if</span> n <span class="keyword">in</span> temp:         <span class="comment"># cut duplicate</span></span><br><span class="line">                    <span class="keyword">continue</span>          <span class="comment"># 如果在当前排列中已经有n了，就continue，相当于分支限界，即不对当前节点子树搜寻了</span></span><br><span class="line">                temp.append(n)</span><br><span class="line">                self.backtrack(nums, res, temp)</span><br><span class="line">                temp.pop()            <span class="comment"># 把结尾的元素用nums中的下一个值替换掉，遍历下一颗子树</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="方法2：剑指offer-字符串的排列"><a href="#方法2：剑指offer-字符串的排列" class="headerlink" title="方法2：剑指offer 字符串的排列"></a>方法2：剑指offer 字符串的排列</h4><p>复杂问题分解：数组堪称有两部分组成的，第一部分是第一个元素，第二部分是后面所有元素。求整个数组的排列，可以分为两步：</p>
+<h4 id="方法2：剑指offer-字符串的排列"><a href="#方法2：剑指offer-字符串的排列" class="headerlink" title="方法2：剑指offer 字符串的排列"></a>方法2：剑指offer 字符串的排列</h4><p>复杂问题分解：数组看成由两部分组成的，第一部分是第一个元素，第二部分是后面所有元素。求整个数组的排列，可以分为两步：</p>
 <ul>
 <li>第一步，求所有可能出现在第一个位置的元素，即把第一个元素和后面所有元素交换</li>
 <li>第二步，固定第一个元素，求后面所有元素的排列。此时，仍然把后面的数组分为两部分：后面元素的第一个元素，以及这个元素之后的所有元素</li>
@@ -496,7 +496,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
